@@ -26,78 +26,91 @@
       year: 2021 - 2023
       description:
         - Specialisation in Data Science, Statistics and Machine Learning
+        - Holder of the France Excellence Eiffel scholarship
 
     - title: Undergraduate degree
       institution: Federal University of Rio de Janeiro
       year: 2018 - 2021
       description:
-        - Specialisation in Applied Mathematics 
+        - Specialisation in Applied Mathematics with enphasis in Scientific Computing
 
 - title: Experience
   type: time_table
   contents:
-    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
-      year: 2023 - now
-      description: Organising research events, Webmaster
-    - title: Co-organiser of the PhD Student Seminar at MAP5
-      year: 2023 - 2024
-    - title: Research Internship
-      institution: MAP5, Université Paris-Cité
-      year: 2022
+    - title: Teaching Assistant
+      institution: Université Paris-Saclay
+      year: 2025
       description:
-        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
+        - Teaching assistant of the Recherche Clinique class from the first year of the Masters degree in Public Health in Université Paris-Saclay
+  
+    - title: Representative of the Fédération Parisienne de Modélisation Mathématique (FP2M) 
+      year: 2023 - now
+      description: Organising research events
+
+    - title: Research Internship
+      institution: MAP5, Université Paris-Cité; Institut Curie
+      year: 2023
+      description:
+        - Design of clinical trials using survival quantiles in the presence of censored data
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
-            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+            - Olivier Bouaziz
+            - Aurélien Latouche
     
     - title: Research Internship
-      institution: DIG-INFRES, Télécom Paris
-      year: 2021
+      institution: Amundi
+      year: 2022
       description:
-        - Extracting structured information from raw Wikipedia text using Deep Learning.
+        - Modeling scope 3 carbon emissions using supply chain data
         - title: Under the supervision of
           contents:
-            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
-            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
+            - Takaya Sekine
 
-    - title: Company Internship
-      institution: Stereolabs
+
+    - title: Research Internship
+      institution: Federal University of Rio de Janeiro
+      year: 2020-2021
+      description:
+        - Study of Hybrid Dynamical models: Joining Machine Learning and Differential Equations
+        - title: Under the supervision of
+          contents:
+            - Ricardo Rosa
+
+      - title: Research Internship
+      institution: Federal University of Rio de Janeiro
+      year: 2020-2021
+      description:
+        - Modeling and simulating epidemics, application to COVID-19 pandemic
+        - title: Under the supervision of
+          contents:
+            - Ricardo Rosa
+
+      - title: Research Internship
+      institution: Federal University of Rio de Janeiro
       year: 2020
       description:
-        - Human pose estimation with CNNs.
+        - Modeling and predicting clusterisation in Oil fields
+        - title: Under the supervision of
+          contents:
+            - Fabio Ramos
 
     - title: Teaching Assistant
-      institution: Université de Technologie du Cambodge
-      year: 2018
+      institution: Federal University of Rio de Janeiro
+      year: 2019
       description:
-        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/PythonOT">POT</a>
-      year: 2022-now
-      description: Contributing to the Python Optimal Transport Library.
+        - Teaching assistant of the Scientific Computing class from the first year of undergraduate in Applied Mathematics
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Optimal Transport
+    - title: Survival Analysis
       items: 
-        - (Generalised) Wasserstein Barycentres
-        - The Sliced Wasserstein Distance
-        - Gaussian Mixture Model Optimal Transport
-    - title: Signal Processing
-      items:
-        - Graph (Laplacian) Learning
-        - Graph Signal Processing
+        - Randomized Clinical Trials
+        - Right-censored data
+        - Quantile regression
 
 - title: Other Interests
   type: list
   contents:
-    - Mandarin Chinese
-    - Music (flute, saxophone)
-    - (Horrendous) chess
-    - Blender modelling and animation
-    - Tennis
+    - Running
+    - Analog photography
