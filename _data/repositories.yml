@@ -1,9 +1,9 @@
 github_users:
-  - eloitanguy
+  - beafarah
 
 github_repos:
-  - PythonOT/POT
-  - eloitanguy/ot_bar
-  - eloitanguy/maths
-  - eloitanguy/iptools 
-  - eloitanguy/tarotbot
+  - beafarah/dens-estimation-at-quantile
+  - beafarah/survival
+  - beafarah/ML-projects 
+  - beafarah/NLP_Intent_Classification
+  - beafarah/cloudcomputingensae
