@@ -3,7 +3,7 @@ layout: page
 permalink: /guandan/
 title: guandan
 description: Rules of Guandan
-nav: true
+nav: false
 nav_order: 7
 ---
 

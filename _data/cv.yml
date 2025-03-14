@@ -2,44 +2,30 @@
   type: map
   contents:
     - name: Full Name
-      value: Eloi Tanguy
-    - name: Date of Birth
-      value: 15th August 1999
+      value: Beatriz Farah
     - name: Languages
-      value: English, French, Spanish, <small> Mandarin Chinese </small>
+      value: Portuguese, English, French, Spanish
     - name: Contact
-      value: eloi.tanguy 'at' math.cnrs 'dot' fr
+      value: beatriz.farah 'at' math.cnrs 'dot' fr
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
       institution: Université Paris-Cité, laboratoire MAP5
-      year: 2022 - now
+      year: 2023 - now
       description:
-        - Generalised Wasserstein Barycentres
-        - Sliced Wasserstein Distance
-        - Optimal Transport Maps
-        - Optimal Transport between Gaussian Mixture Models
+        - Desing of clinical trials using differences of survival quantiles in the presence of right-censored data
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, MAP 5, Université Paris Cité)
-            - Agnès Desolneux (Directrice de Recherche CNRS at Centre Borelli and tenure Professor at ENS Paris-Saclay)
-    
-    - title: Masters Degree
-      institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
-      year: 2021
-      description:
-        - Deep Learning (Vision, NLP, Graphs)
-        - Optimal Transport
-        - Optimisation
-        - Statistics
+            - Olivier Bouaziz 
+            - Aurélien Latouche 
     
     - title: Ecole d'Ingénieur
-      institution: Ecole Polytechnique
-      year: 2018 - 2021
+      institution: ENSAE Paris
+      year: 2021 - 2023
       description:
-        - Specialisation in Pure and Applied Mathematics.
+        - Specialisation in Data Science, Statistics and Machine Learning
 
 - title: Experience
   type: time_table
