@@ -15,7 +15,7 @@
       institution: Université Paris-Cité, laboratoire MAP5
       year: 2023 - now
       description:
-        - Desing of clinical trials using differences of survival quantiles in the presence of right-censored data
+        - Design of clinical trials using differences of survival quantiles in the presence of right-censored data
         - title: Under the supervision of
           contents:
             - Olivier Bouaziz 
@@ -26,6 +26,12 @@
       year: 2021 - 2023
       description:
         - Specialisation in Data Science, Statistics and Machine Learning
+
+    - title: Undergraduate degree
+      institution: Federal University of Rio de Janeiro
+      year: 2018 - 2021
+      description:
+        - Specialisation in Applied Mathematics 
 
 - title: Experience
   type: time_table
