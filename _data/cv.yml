@@ -84,21 +84,17 @@
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Optimal Transport
+    - title: Survival Analysis
       items: 
-        - (Generalised) Wasserstein Barycentres
-        - The Sliced Wasserstein Distance
-        - Gaussian Mixture Model Optimal Transport
-    - title: Signal Processing
+        - Randomized clinical trials
+        - Quantile regression
+    - title: Biostatistics
       items:
-        - Graph (Laplacian) Learning
-        - Graph Signal Processing
+        - Tests of comparison of treatment effects
 
 - title: Other Interests
   type: list
   contents:
-    - Mandarin Chinese
-    - Music (flute, saxophone)
-    - (Horrendous) chess
-    - Blender modelling and animation
-    - Tennis
+    - Long-distance running
+    - Analog photography
+    - Literature (Contemporary and Non-fiction especially!)
