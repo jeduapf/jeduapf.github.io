@@ -74,7 +74,16 @@
         - title: Under the supervision of
           contents:
             - Ricardo Rosa
-            
+
+    - title: Research Project
+      institution: Federal University of Rio de Janeiro
+      year: 2020
+      description:
+        - Modeling and simulation of Epidemics, focusing on COVID-19 pandemic
+        - <a href="https://github.com/ModSiming">Julia end Python packages</a>
+        - title: Under the supervision of
+          contents:
+            - Ricardo Rosa            
 
     - title: Teaching Assistant
       institution: Université de Technologie du Cambodge
