@@ -37,74 +37,68 @@
 - title: Experience
   type: time_table
   contents:
-   - title: Teaching Assistant 
-      institution: Université Paris-Saclay
-      year: 2025
-      description:
-        - Responsible for the exercise classes of the Recherche Clinique class from the first year of the <a href="https://sites.google.com/view/m1-santepublique-paris-saclay/">Public Health Master's degree</a> from Université Paris Saclay
-            
-    - title: Student representative in the <a href="https://fp2m.math.cnrs.fr/">Fédération Parisienne de Modélisation Mathématique (FP2M)</a>
-      year: 2024 - now
-      description: Organising research events
-
-    - title: Research Internship 
-      institution: MAP5, Université Paris-Cité  & Institut Curie
-      year: 2023
-      description:
-        - Master 2 internship focusing on the design of clinical trials using differences of quantiles in the presence of censored data
-        - title: Under the supervision of
-          contents:
-            - Olivier Bouaziz
-            - Aurélien Latouche
-    
+    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
+      year: 2023 - now
+      description: Organising research events, Webmaster
+    - title: Co-organiser of the PhD Student Seminar at MAP5
+      year: 2023 - 2024
     - title: Research Internship
-      institution: AMUNDI Institute
+      institution: MAP5, Université Paris-Cité
       year: 2022
       description:
-        - Master 1 internship on modeling scope 3 carbon emissions using supply chain data
+        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
         - title: Under the supervision of
           contents:
-            - Takaya Sekine
-            
+            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
+            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+    
     - title: Research Internship
-      institution: Federal University of Rio de Janeiro
-      year: 2020-2021
+      institution: DIG-INFRES, Télécom Paris
+      year: 2021
       description:
-        - Study of Hybrid Dynamical models, joining machine learning and differential equations
+        - Extracting structured information from raw Wikipedia text using Deep Learning.
         - title: Under the supervision of
           contents:
-            - Ricardo Rosa
+            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
+            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
 
-    - title: Research Project
-      institution: Federal University of Rio de Janeiro
+    - title: Company Internship
+      institution: Stereolabs
       year: 2020
       description:
-        - Modeling and simulation of Epidemics, focusing on COVID-19 pandemic
-        - <a href="https://github.com/ModSiming">Julia end Python packages</a>
-        - title: Under the supervision of
-        contents:
-          - Ricardo Rosa
+        - Human pose estimation with CNNs.
 
-    - title: Research internship
-      institution: Federal University of Rio de Janeiro, Shell
-      year: 2019
+    - title: Teaching Assistant
+      institution: Université de Technologie du Cambodge
+      year: 2018
       description:
-        - Scale build-up prediction modeling for Multiphase Flow at oil fields
-        - title: Under the supervision of
-        contents:
-          - Fabio Ramos
+        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
+
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/PythonOT">POT</a>
+      year: 2022-now
+      description: Contributing to the Python Optimal Transport Library.
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Survival Analysis
+    - title: Optimal Transport
       items: 
-        - Quantile regression
-        - Randomized clinical trials
+        - (Generalised) Wasserstein Barycentres
+        - The Sliced Wasserstein Distance
+        - Gaussian Mixture Model Optimal Transport
+    - title: Signal Processing
+      items:
+        - Graph (Laplacian) Learning
+        - Graph Signal Processing
 
 - title: Other Interests
   type: list
   contents:
-    - Long-distance running
-    - Analog photography
-    - Literature, in particular contemporary and non-fiction
+    - Mandarin Chinese
+    - Music (flute, saxophone)
+    - (Horrendous) chess
+    - Blender modelling and animation
+    - Tennis
