@@ -2,115 +2,110 @@
   type: map
   contents:
     - name: Full Name
-      value: Beatriz Farah
+      value: Eloi Tanguy
+    - name: Date of Birth
+      value: 15th August 1999
     - name: Languages
-      value: Portuguese, English, French, Spanish
+      value: English, French, Spanish, <small> Mandarin Chinese </small>
     - name: Contact
-      value: beatriz.farah 'at' math.cnrs 'dot' fr
+      value: eloi.tanguy 'at' math.cnrs 'dot' fr
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
       institution: Université Paris-Cité, laboratoire MAP5
-      year: 2023 - now
+      year: 2022 - now
       description:
-        - Design of clinical trials using differences of survival quantiles in the presence of right-censored data
+        - Generalised Wasserstein Barycentres
+        - Sliced Wasserstein Distance
+        - Optimal Transport Maps
+        - Optimal Transport between Gaussian Mixture Models
         - title: Under the supervision of
           contents:
-            - Olivier Bouaziz 
-            - Aurélien Latouche 
+            - Julie Delon (Professeur des Universités, MAP 5, Université Paris Cité)
+            - Agnès Desolneux (Directrice de Recherche CNRS at Centre Borelli and tenure Professor at ENS Paris-Saclay)
+    
+    - title: Masters Degree
+      institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
+      year: 2021
+      description:
+        - Deep Learning (Vision, NLP, Graphs)
+        - Optimal Transport
+        - Optimisation
+        - Statistics
     
     - title: Ecole d'Ingénieur
-      institution: ENSAE Paris
-      year: 2021 - 2023
-      description:
-        - Specialisation in Data Science, Statistics and Machine Learning
-        - Holder of the France Excellence Eiffel scholarship
-
-    - title: Undergraduate degree
-      institution: Federal University of Rio de Janeiro
+      institution: Ecole Polytechnique
       year: 2018 - 2021
       description:
-        - Specialisation in Applied Mathematics with enphasis in Scientific Computing
+        - Specialisation in Pure and Applied Mathematics.
 
 - title: Experience
   type: time_table
   contents:
-    - title: Teaching Assistant
-      institution: Université Paris-Saclay
-      year: 2025
-      description:
-        - Teaching assistant of the Recherche Clinique class from the first year of the Masters degree in Public Health in Université Paris-Saclay
-  
-    - title: Student representative of the Fédération Parisienne de Modélisation Mathématique (FP2M) 
+    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
       year: 2023 - now
-      description: Organising research events
-
+      description: Organising research events, Webmaster
+    - title: Co-organiser of the PhD Student Seminar at MAP5
+      year: 2023 - 2024
     - title: Research Internship
-      institution: MAP5, Université Paris-Cité; Institut Curie
-      year: 2023
-      description:
-        - Design of clinical trials using survival quantiles in the presence of censored data
-        - title: Under the supervision of
-          contents:
-            - Olivier Bouaziz
-            - Aurélien Latouche
-    
-    - title: Research Internship
-      institution: Amundi
+      institution: MAP5, Université Paris-Cité
       year: 2022
       description:
-        - Modeling scope 3 carbon emissions using supply chain data
+        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
         - title: Under the supervision of
           contents:
-            - Takaya Sekine
-
-
+            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
+            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+    
     - title: Research Internship
-      institution: Federal University of Rio de Janeiro
-      year: 2020-2021
+      institution: DIG-INFRES, Télécom Paris
+      year: 2021
       description:
-        - Joining Machine Learning and Differential Equations
+        - Extracting structured information from raw Wikipedia text using Deep Learning.
         - title: Under the supervision of
           contents:
-            - Ricardo Rosa
+            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
+            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
 
-      - title: Research Internship
-      institution: Federal University of Rio de Janeiro
-      year: 2020-2021
-      description:
-        - Modeling and simulating epidemics, application to COVID-19 pandemic
-        - title: Under the supervision of
-          contents:
-            - Ricardo Rosa
-
-      - title: Research Internship
-      institution: Federal University of Rio de Janeiro
+    - title: Company Internship
+      institution: Stereolabs
       year: 2020
       description:
-        - Modeling and predicting clusterisation in Oil fields
-        - title: Under the supervision of
-          contents:
-            - Fabio Ramos
+        - Human pose estimation with CNNs.
 
     - title: Teaching Assistant
-      institution: Federal University of Rio de Janeiro
-      year: 2019
+      institution: Université de Technologie du Cambodge
+      year: 2018
       description:
-        - Teaching assistant of the Scientific Computing class from the first year of undergraduate in Applied Mathematics
+        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
+
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/PythonOT">POT</a>
+      year: 2022-now
+      description: Contributing to the Python Optimal Transport Library.
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Survival Analysis
+    - title: Optimal Transport
       items: 
-        - Randomized Clinical Trials
-        - Right-censored data
-        - Quantile regression
+        - (Generalised) Wasserstein Barycentres
+        - The Sliced Wasserstein Distance
+        - Gaussian Mixture Model Optimal Transport
+    - title: Signal Processing
+      items:
+        - Graph (Laplacian) Learning
+        - Graph Signal Processing
 
 - title: Other Interests
   type: list
   contents:
-    - Running
-    - Analog photography
+    - Mandarin Chinese
+    - Music (flute, saxophone)
+    - (Horrendous) chess
+    - Blender modelling and animation
+    - Tennis
