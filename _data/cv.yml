@@ -85,18 +85,14 @@
           contents:
             - Ricardo Rosa            
 
-    - title: Teaching Assistant
-      institution: Université de Technologie du Cambodge
-      year: 2018
+    - title: Research internship
+      institution: Federal University of Rio de Janeiro & Shell
+      year: 2019
       description:
-        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/PythonOT">POT</a>
-      year: 2022-now
-      description: Contributing to the Python Optimal Transport Library.
+        - Scale build-up prediction modeling for Multiphase Flow at oil fields
+        - title: Under the supervision of
+          contents:
+            - Fabio Ramos     
 
 
 - title: Academic Interests
