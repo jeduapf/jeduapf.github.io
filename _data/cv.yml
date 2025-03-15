@@ -95,12 +95,6 @@
         contents:
           - Fabio Ramos
 
-    - title: Teaching Assistant
-      institution: Federal University of Rio de Janeiro, Shell
-      year: 2019
-      description:
-        - Teaching assistant in the Scientific Computing class from the first year of undergraduate in Applied Mathematics
-
 - title: Academic Interests
   type: nested_list
   contents:
