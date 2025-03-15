@@ -58,23 +58,20 @@
             - Aurélien Latouche
     
     - title: Research Internship
-      institution: Amundi Institute
-      year: 2022
+      institution: DIG-INFRES, Télécom Paris
+      year: 2021
       description:
-        - Master 1 internship on modeling scope 3 carbon emissions using supply chain data
+        - Extracting structured information from raw Wikipedia text using Deep Learning.
         - title: Under the supervision of
           contents:
-            - Takaya Sekine
+            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
+            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
 
-    - title: Research Internship
-      institution: Federal University of Rio de Janeiro
-      year: 2020-2021
+    - title: Company Internship
+      institution: Stereolabs
+      year: 2020
       description:
-        Study of Hybrid Dynamical models, joining machine learning and differential equations
-        - title: Under the supervision of
-          contents:
-            - Ricardo Rosa
-
+        - Human pose estimation with CNNs.
     - title: Teaching Assistant
       institution: Université de Technologie du Cambodge
       year: 2018
