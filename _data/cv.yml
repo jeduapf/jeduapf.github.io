@@ -2,44 +2,37 @@
   type: map
   contents:
     - name: Full Name
-      value: Eloi Tanguy
-    - name: Date of Birth
-      value: 15th August 1999
+      value: Beatriz Farah
     - name: Languages
-      value: English, French, Spanish, <small> Mandarin Chinese </small>
+      value: Portuguese, English, French, Spanish
     - name: Contact
-      value: eloi.tanguy 'at' math.cnrs 'dot' fr
+      value: beatriz.farah 'at' math.cnrs 'dot' fr
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
-      institution: Université Paris-Cité, laboratoire MAP5
-      year: 2022 - now
+      institution: Université Paris-Cité, laboratoire MAP5 & Instutut Curie
+      year: 2023 - now
       description:
-        - Generalised Wasserstein Barycentres
-        - Sliced Wasserstein Distance
-        - Optimal Transport Maps
-        - Optimal Transport between Gaussian Mixture Models
+        - Design of randomized clinical trials using differences of quantiles in the presence of right-censored data
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, MAP 5, Université Paris Cité)
-            - Agnès Desolneux (Directrice de Recherche CNRS at Centre Borelli and tenure Professor at ENS Paris-Saclay)
+            - Olivier Bouaziz (Paul Painlevé laboratory, Université de Lille)
+            - Aurélien Latouche (U1331, Institut Curie & Cnam)
     
-    - title: Masters Degree
-      institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
-      year: 2021
+    - title: Ecole d'ingénieur
+      institution: Ecole nationale de la statistique et de l'administration économique (ENSAE Paris)
+      year: 2021-2023
       description:
-        - Deep Learning (Vision, NLP, Graphs)
-        - Optimal Transport
-        - Optimisation
-        - Statistics
+        - Holder of the France Excellence Eiffel scholarship
+        - Specialisation in Data Science, Statistics and Machine learning
     
-    - title: Ecole d'Ingénieur
-      institution: Ecole Polytechnique
+    - title: Undergraduate degree
+      institution: Federal University of Rio de Janeiro (UFRJ)
       year: 2018 - 2021
       description:
-        - Specialisation in Pure and Applied Mathematics.
+        - Degree in Applied Mathematics with specialisation in Scientific Computing
 
 - title: Experience
   type: time_table
