@@ -12,7 +12,7 @@
   type: time_table
   contents:
     - title: PhD
-      institution: Université Paris-Cité, laboratoire MAP5 & Institut Curie
+      institution: Université Paris-Cité, laboratoire MAP5 & Institut Curie, Unité U1331
       year: 2023 - now
       description:
         - Design of randomized clinical trials using differences of quantiles in the presence of right-censored data
@@ -80,7 +80,7 @@
       year: 2020
       description:
         - Modeling and simulation of Epidemics, focusing on COVID-19 pandemic
-        - <a href="https://github.com/ModSiming">Julia end Python packages</a>
+        - <a href="https://github.com/ModSiming">Julia and Python packages</a>
         - title: Under the supervision of
           contents:
             - Ricardo Rosa            
