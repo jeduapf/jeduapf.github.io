@@ -48,30 +48,32 @@
       description: 
       - Organising research events between the laboratories MAP5, Modal'X and SAMM
     - title: Research Internship
-      institution: MAP5, Université Paris-Cité
-      year: 2022
+      institution: MAP5, Université Paris-Cité & U1331, Institut Curie
+      year: 2023
       description:
-        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
+        - Master 2 internship focusing on the design of clinical trials using differences of quantiles in the presence of censored data
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
-            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+            - Olivier Bouaziz
+            - Aurélien Latouche
     
     - title: Research Internship
-      institution: DIG-INFRES, Télécom Paris
-      year: 2021
+      institution: Amundi Institute
+      year: 2022
       description:
-        - Extracting structured information from raw Wikipedia text using Deep Learning.
+        - Master 1 internship on modeling scope 3 carbon emissions using supply chain data
         - title: Under the supervision of
           contents:
-            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
-            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
+            - Takaya Sekine
 
-    - title: Company Internship
-      institution: Stereolabs
-      year: 2020
+    - title: Research Internship
+      institution: Federal University of Rio de Janeiro
+      year: 2020-2021
       description:
-        - Human pose estimation with CNNs.
+        Study of Hybrid Dynamical models, joining machine learning and differential equations
+        - title: Under the supervision of
+          contents:
+            - Ricardo Rosa
 
     - title: Teaching Assistant
       institution: Université de Technologie du Cambodge
