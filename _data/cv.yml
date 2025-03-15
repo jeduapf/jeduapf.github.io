@@ -95,6 +95,13 @@
         contents:
           - Fabio Ramos
 
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/PythonOT">POT</a>
+      year: 2022-now
+      description: Contributing to the Python Optimal Transport Library.
+
 - title: Academic Interests
   type: nested_list
   contents:
