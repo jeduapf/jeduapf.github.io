@@ -37,11 +37,17 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
-      year: 2023 - now
-      description: Organising research events, Webmaster
-    - title: Co-organiser of the PhD Student Seminar at MAP5
-      year: 2023 - 2024
+    - title: Teaching Assistant
+      institution: Université Paris-Saclay
+      year: 2025
+      description: 
+      - Responsible for the exercise classes of the Recherche Clinique class from the first year of the <a href="https://sites.google.com/view/m1-santepublique-paris-saclay/">Public Health Master's degree</a> from Université Paris Saclay
+      
+    - title: Student representative in the <a href="https://fp2m.math.cnrs.fr/">Fédération Parisienne de Modélisation Mathématique (FP2M)</a>
+      year: 2024-now
+      description: 
+      - Organising research events
+      
     - title: Research Internship
       institution: MAP5, Université Paris-Cité
       year: 2022
