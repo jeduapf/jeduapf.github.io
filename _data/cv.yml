@@ -47,53 +47,37 @@
       year: 2024-now
       description: 
       - Organising research events between the laboratories MAP5, Modal'X and SAMM
-      
-    - title: Research Internship
-      institution: MAP5, Université Paris-Cité  & Institut Curie
-      year: 2023
-      description:
-        - Master 2 internship focusing on the design of clinical trials using differences of quantiles in the presence of censored data
-        - title: Under the supervision of
-          contents:
-            - Olivier Bouaziz
-            - Aurélien Latouche
-    
-    - title: Research Internship
-      institution: Amundi Institute
+          - title: Research Internship
+      institution: MAP5, Université Paris-Cité
       year: 2022
       description:
-        - Master 1 internship on modeling scope 3 carbon emissions using supply chain data
+        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
         - title: Under the supervision of
           contents:
-            - Takaya Sekine
-
+            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
+            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+    
     - title: Research Internship
-      institution: Federal University of Rio de Janeiro
-      year: 2020-2021
+      institution: DIG-INFRES, Télécom Paris
+      year: 2021
       description:
-        - Study of Hybrid Dynamical models, joining machine learning and differential equations
-      - title: Under the supervision of
+        - Extracting structured information from raw Wikipedia text using Deep Learning.
+        - title: Under the supervision of
           contents:
-            - Ricardo Rosa
+            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
+            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
 
-    - title: Research Project
-      institution: Federal University of Rio de Janeiro
-      year: 2010
+    - title: Company Internship
+      institution: Stereolabs
+      year: 2020
       description:
-        - Modeling and simulation of Epidemics, focusing on COVID-19 pandemic
-        - <a href="https://github.com/ModSiming">Julia end Python packages</a>
-        - title: Under the supervision of
-        contents:
-          - Ricardo Rosa
-          
-    - title: Research internship
-      institution: Federal University of Rio de Janeiro, Shell
-      year: 2019
+        - Human pose estimation with CNNs.
+
+    - title: Teaching Assistant
+      institution: Université de Technologie du Cambodge
+      year: 2018
       description:
-        - Scale build-up prediction modeling for Multiphase Flow at oil fields
-        - title: Under the supervision of
-        contents:
-          - Fabio Ramos
+        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
 
 - title: Open Source Projects
   type: time_table
@@ -101,6 +85,7 @@
     - title: <a href="https://github.com/PythonOT">POT</a>
       year: 2022-now
       description: Contributing to the Python Optimal Transport Library.
+
 
 - title: Academic Interests
   type: nested_list
