@@ -66,6 +66,16 @@
           contents:
             - Takaya Sekine
 
+    - title: Research Internship
+      institution: Federal University of Rio de Janeiro
+      year: 2020-2021
+      description:
+        - Undergraduate internship on the study of Hybrid Dynamical models, joining machine learning and differential equations
+        - title: Under the supervision of
+          contents:
+            - Ricardo Rosa
+            
+
     - title: Teaching Assistant
       institution: Université de Technologie du Cambodge
       year: 2018
