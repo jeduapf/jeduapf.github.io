@@ -10,10 +10,10 @@ nav_order: 5
 
 #### M1 2025
 
-Chargé de TD Recherche Clinique from the first year of the [Masters degree](https://sites.google.com/view/m1-santepublique-paris-saclay/) in Public Health from Université Paris-Saclay
+Chargée de TD Recherche Clinique from the first year of the [Masters degree](https://sites.google.com/view/m1-santepublique-paris-saclay/) in Public Health from Université Paris-Saclay
 
 ### Federal University of Rio de Janeiro
 #### MC1 2019
 
-Chargé de TD Scientific Computing from the first year of the [Undergraduate degree](https://sites.google.com/matematica.ufrj.br/aplicada/matem%C3%A1tica-aplicada?authuser=0) in Applied Mathematics from Federal University of Rio de Janeiro
+Chargée de TD Scientific Computing from the first year of the [Undergraduate degree](https://sites.google.com/matematica.ufrj.br/aplicada/matem%C3%A1tica-aplicada?authuser=0) in Applied Mathematics from Federal University of Rio de Janeiro
 
