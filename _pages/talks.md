@@ -15,7 +15,7 @@ nav_order: 6
 - June 2024 Institut Curie, Séminaire de l'Unité U1331, Paris
 
 - May 2024 [18ème conférence francophone d’EPIdémiologie CLINique (EPICLIN)](https://epiclin2024.congres-scientifique.com/registration/), Dijon
-- *Sample size calculation based on differences of quantiles in the presence of censoring*
+  - *Sample size calculation based on differences of quantiles in the presence of censoring*;
   [poster](https://beafarah.github.io/assets/pdf/Poster_EPICLIN.pdf)
 
 - April 2024 [10èmes Rencontres des Jeunes Statisticien-ne-s](https://rjs2024.sciencesconf.org/?lang=fr), Porquerolles
