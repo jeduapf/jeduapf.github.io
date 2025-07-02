@@ -43,8 +43,12 @@ nav_order: 6
   }
 
   window.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("power-form").addEventListener("submit", function(e) {
+    const form = document.getElementById("power-form");
+    console.log("Form element found: form-id: power-form");
+
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
+      console.log("Form submitted!");
 
       const prob = parseFloat(document.getElementById("prob").value);
       const n = parseFloat(document.getElementById("sample-size").value);
@@ -52,20 +56,25 @@ nav_order: 6
       const diff = parseFloat(document.getElementById("diff").value);
       const rateCens = parseFloat(document.getElementById("rate-cens").value);
       const alpha = parseFloat(document.getElementById("alpha").value);
+      console.log({ prob, n, rateC, diff, rateCens, alpha });
 
       const z_critical = Math.abs(normSInv(1 - alpha / 2));
       const quantC = -Math.log(1 - prob) / rateC;
       const rateE = -Math.log(1 - prob) / (quantC - diff);
       const quantE = quantC - diff;
+      console.log({ z_critical, quantC, rateE, quantE });
 
       const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
       const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
+      console.log({ phiC, phiE });
 
       const sigma2 = Math.pow(1 - prob, 2) *
         (phiC / ((1 / 2) * expo_pdf(quantC, rateC)) +
          phiE / ((1 / 2) * expo_pdf(quantE, rateE)));
+      console.log("sigma2 =", sigma2);
 
       const se = Math.sqrt(sigma2 / n);
+      console.log("se =", se);
 
       const power =
         1 - normCDF(z_critical - diff / se) +
