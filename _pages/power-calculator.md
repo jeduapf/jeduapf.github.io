@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Power Calculator
 permalink: /power/
+title: Power Calculator
+nav: true
+nav_order: 6
 ---
 
 <h2>Power for test of Equality of Quantiles</h2>
