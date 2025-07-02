@@ -20,11 +20,7 @@ nav_order: 7
 
 <p id="result"></p>
 
-<canvas id="survival-chart" width="800" height="400"></canvas>
-
-<!-- Chart.js and Annotation Plugin -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+<canvas id="survivalChart" style="max-width:600px; max-height:400px;"></canvas>
 
 {% raw %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -34,7 +30,8 @@ nav_order: 7
 function normCDF(x) {
   var sign = x < 0 ? -1 : 1;
   x = Math.abs(x) / Math.sqrt(2);
-  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741,
+      a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
   var t = 1 / (1 + p * x);
   var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
   return 0.5 * (1 + sign * y);
@@ -56,17 +53,67 @@ function normSInv(p) {
   return Math.sqrt(2) * inverseErf(2 * p - 1);
 }
 
-// Exponential survival function S(t) = exp(-lambda * t)
-function survivalExp(t, lambda) {
-  return Math.exp(-lambda * t);
-}
-
 window.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("power-form");
-  const result = document.getElementById("result");
   const ctx = document.getElementById("survivalChart").getContext("2d");
 
-  let survivalChart = null;
+  // Initialize empty chart first
+  let survivalChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [], 
+      datasets: [
+        {
+          label: 'Survival Control',
+          borderColor: 'blue',
+          fill: false,
+          data: []
+        },
+        {
+          label: 'Survival Experimental',
+          borderColor: 'red',
+          fill: false,
+          data: []
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          title: { display: true, text: 'Time' },
+          min: 0,
+          max: 10
+        },
+        y: {
+          title: { display: true, text: 'Survival Probability' },
+          min: 0,
+          max: 1,
+          ticks: { stepSize: 0.1 }
+        }
+      },
+      plugins: {
+        annotation: {
+          annotations: {
+            line1: {
+              type: 'line',
+              yMin: 0, yMax: 1,
+              xMin: 0, xMax: 10,
+              borderColor: 'green',
+              borderWidth: 2,
+              label: {
+                content: '',
+                enabled: true,
+                position: 'start',
+                backgroundColor: 'green',
+                color: 'white',
+                font: { weight: 'bold' }
+              }
+            }
+          }
+        }
+      }
+    },
+  });
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -78,7 +125,6 @@ window.addEventListener("DOMContentLoaded", function () {
     const rateCens = parseFloat(document.getElementById("rate-cens").value);
     const alpha = parseFloat(document.getElementById("alpha").value);
 
-    // Calculate power
     const z_critical = Math.abs(normSInv(1 - alpha / 2));
     const quantC = -Math.log(1 - prob) / rateC;
     const rateE = -Math.log(1 - prob) / (quantC - diff);
@@ -88,8 +134,8 @@ window.addEventListener("DOMContentLoaded", function () {
     const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
 
     const sigma2 = Math.pow(1 - prob, 2) *
-      (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC), 2)) +
-       phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE), 2)));
+      (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC),2)) +
+       phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE),2) ));
 
     const se = Math.sqrt(sigma2 / n);
 
@@ -98,103 +144,37 @@ window.addEventListener("DOMContentLoaded", function () {
           normCDF(-z_critical - diff / se);
 
     if (isNaN(power)) {
-      result.innerText = "Error: invalid calculation.";
+      document.getElementById("result").innerText = "Error: invalid calculation.";
     } else {
-      result.innerText = "Estimated Power: " + (power * 100).toFixed(2) + "%";
+      document.getElementById("result").innerText =
+        "Estimated Power: " + (power * 100).toFixed(2) + "%";
     }
 
-    // Prepare data for survival plot (0 to max time)
-    const maxTime = quantC * 2; // Plot up to twice control quantile for visibility
-    const points = 100;
-    const step = maxTime / points;
-    let times = [];
-    let survivalControl = [];
-    let survivalExperimental = [];
+    // Plot survival functions from time=0 to 10 (you can adjust max time)
+    const maxTime = 10;
+    const steps = 100;
+    const timePoints = [];
+    const survivalControl = [];
+    const survivalExp = [];
 
-    for(let i = 0; i <= points; i++) {
-      let t = i * step;
-      times.push(t.toFixed(3));
-      survivalControl.push(survivalExp(t, rateC));
-      survivalExperimental.push(survivalExp(t, rateE));
+    for(let i = 0; i <= steps; i++) {
+      const t = (i / steps) * maxTime;
+      timePoints.push(t);
+      survivalControl.push(Math.exp(-rateC * t));
+      survivalExp.push(Math.exp(-rateE * t));
     }
 
-    // Destroy old chart if exists
-    if (survivalChart) survivalChart.destroy();
+    // Update the chart data
+    survivalChart.data.labels = timePoints;
+    survivalChart.data.datasets[0].data = survivalControl;
+    survivalChart.data.datasets[1].data = survivalExp;
 
-    survivalChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: times,
-        datasets: [
-          {
-            label: 'Control Survival',
-            data: survivalControl,
-            borderColor: 'blue',
-            fill: false,
-            tension: 0.2,
-            borderWidth: 2,
-          },
-          {
-            label: 'Experimental Survival',
-            data: survivalExperimental,
-            borderColor: 'red',
-            fill: false,
-            tension: 0.2,
-            borderWidth: 2,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: "Survival Functions",
-            font: { size: 18 }
-          },
-          annotation: {
-            annotations: {
-              hLine: {
-                type: 'line',
-                yMin: 1 - prob,
-                yMax: 1 - prob,
-                borderColor: 'green',
-                borderWidth: 2,
-                borderDash: [6, 6],
-                label: {
-                  content: `1 - p = ${(1 - prob).toFixed(2)}`,
-                  enabled: true,
-                  position: 'start',
-                  backgroundColor: 'rgba(0,0,0,0.7)',
-                  color: '#fff',
-                  font: { style: 'italic' }
-                }
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: "Time"
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: "Survival Probability"
-            },
-            min: 0,
-            max: 1,
-            ticks: {
-              stepSize: 0.1
-            }
-          }
-        }
-      },
-      plugins: [Chart.registry.getPlugin('annotation')]
-    });
+    // Update horizontal line annotation at y = 1 - p with label '1 - p'
+    survivalChart.options.plugins.annotation.annotations.line1.yMin = 1 - prob;
+    survivalChart.options.plugins.annotation.annotations.line1.yMax = 1 - prob;
+    survivalChart.options.plugins.annotation.annotations.line1.label.content = `1 - p = ${(1 - prob).toFixed(2)}`;
+
+    survivalChart.update();
   });
 });
 </script>
