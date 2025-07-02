@@ -20,6 +20,7 @@ nav_order: 6
 
 <p id="result"></p>
 
+{% raw %}
 <script>
   function normCDF(x) {
     return (1 - Math.erf(-x / Math.sqrt(2))) / 2;
@@ -86,3 +87,4 @@ nav_order: 6
     return p < 0.5 ? -r : r;
   }
 </script>
+{% endraw %}
