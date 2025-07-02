@@ -8,12 +8,10 @@ nav_order: 7
 
 <h2>power for test of equality of quantiles</h2>
 
-<p>
 Power calculator based on the test of equality of quantiles as described in the paper ["Univariate and multivariate tests of equality of quantiles with right-censored data"](https://arxiv.org/abs/2505.03234).
 This calculator assumes exponential distributions for control, experimental, and censoring times, with balanced groups.  
-Enter your parameters and click **Calculate Power** to view the analytical power alongside the survival curves. 🙂
+Enter your parameters and click **Calculate Power** to view the analytical power alongside the survival curves :)
 
-</p>
 
 <form id="power-form">
   <label>Probability: <input type="number" id="prob" step="any" required></label><br>
