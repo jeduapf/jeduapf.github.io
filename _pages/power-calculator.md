@@ -93,7 +93,9 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     // --- Survival Function Plot ---
-    const timePoints = Array.from({ length: 100 }, (_, i) => i * quantC / 2 / 100);
+    const timeMax = quantC * 1.5; // extend a bit beyond quantile
+    const timePoints = Array.from({ length: 100 }, (_, i) => +(timeMax * i / 99).toFixed(2)); // 2 decimals
+
     const survivalC = timePoints.map(t => Math.exp(-rateC * t));
     const survivalE = timePoints.map(t => Math.exp(-rateE * t));
 
@@ -103,79 +105,85 @@ window.addEventListener("DOMContentLoaded", function () {
     if (window.survivalChartInstance) {
       window.survivalChartInstance.destroy();
     }
+
     window.survivalChartInstance = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: timePoints,
-    datasets: [
-      {
-        label: "Control Arm",
-        data: survivalC,
-        borderColor: "blue",
-        fill: false,
+      type: "line",
+      data: {
+        labels: timePoints,
+        datasets: [
+          {
+            label: "Control Arm",
+            data: survivalC,
+            borderColor: "blue",
+            fill: false,
+          },
+          {
+            label: "Experimental Arm",
+            data: survivalE,
+            borderColor: "red",
+            fill: false,
+          }
+        ],
       },
-      {
-        label: "Experimental Arm",
-        data: survivalE,
-        borderColor: "red",
-        fill: false,
-      }
-    ],
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Survival Functions",
-        font: { size: 18 }
-      },
-      annotation: {
-        annotations: {
-          hLine: {
-            type: 'line',
-            yMin: 1 - prob,
-            yMax: 1 - prob,
-            borderColor: 'green',
-            borderWidth: 2,
-            borderDash: [6, 6],
-            label: {
-              content: `1 - p = ${(1 - prob).toFixed(2)}`,
-              enabled: true,
-              position: 'start',
-              backgroundColor: 'rgba(0,0,0,0.7)',
-              color: '#fff',
-              font: { style: 'italic' }
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Survival Functions",
+            font: { size: 18 }
+          },
+          legend: {
+            labels: {
+              font: { size: 14 }
+            }
+          },
+          annotation: {
+            annotations: {
+              hLine: {
+                type: 'line',
+                yMin: 1 - prob,
+                yMax: 1 - prob,
+                borderColor: 'green',
+                borderWidth: 2,
+                borderDash: [6, 6],
+                label: {
+                  content: `1 - p = ${(1 - prob).toFixed(2)}`,
+                  enabled: true,
+                  position: 'start',
+                  backgroundColor: 'rgba(0,0,0,0.7)',
+                  color: '#fff',
+                  font: { style: 'italic' }
+                }
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Time"
+            },
+            ticks: {
+              callback: val => +val.toFixed(2)
+            }
+          },
+          y: {
+            min: 0,
+            max: 1,
+            title: {
+              display: true,
+              text: "Survival Probability"
+            },
+            ticks: {
+              stepSize: 0.2,
+              callback: val => val.toFixed(1)
             }
           }
         }
       }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Time"
-        },
-        ticks: {
-          callback: function(value) {
-            return Number(value).toFixed(2); // Truncate x-axis labels to 2 decimals
-          }
-        }
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Survival Probability"
-        },
-        min: 0,
-        max: 1
-      }
-    }
-  }
-});
-
-
+    });
   });
 });
 </script>
