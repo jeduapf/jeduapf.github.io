@@ -20,12 +20,13 @@ nav_order: 7
 
 <p id="result"></p>
 
-<canvas id="survivalChart" style="max-width:600px; max-height:400px;"></canvas>
+<canvas id="survival-chart" width="800" height="400"></canvas>
+
+<!-- Chart.js and Annotation Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
 
 {% raw %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0/dist/chartjs-plugin-annotation.min.js"></script>
-
 <script>
 function normCDF(x) {
   var sign = x < 0 ? -1 : 1;
@@ -55,65 +56,6 @@ function normSInv(p) {
 
 window.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("power-form");
-  const ctx = document.getElementById("survivalChart").getContext("2d");
-
-  // Initialize empty chart first
-  let survivalChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [], 
-      datasets: [
-        {
-          label: 'Survival Control',
-          borderColor: 'blue',
-          fill: false,
-          data: []
-        },
-        {
-          label: 'Survival Experimental',
-          borderColor: 'red',
-          fill: false,
-          data: []
-        }
-      ]
-    },
-    options: {
-      scales: {
-        x: {
-          title: { display: true, text: 'Time' },
-          min: 0,
-          max: 10
-        },
-        y: {
-          title: { display: true, text: 'Survival Probability' },
-          min: 0,
-          max: 1,
-          ticks: { stepSize: 0.1 }
-        }
-      },
-      plugins: {
-        annotation: {
-          annotations: {
-            line1: {
-              type: 'line',
-              yMin: 0, yMax: 1,
-              xMin: 0, xMax: 10,
-              borderColor: 'green',
-              borderWidth: 2,
-              label: {
-                content: '',
-                enabled: true,
-                position: 'start',
-                backgroundColor: 'green',
-                color: 'white',
-                font: { weight: 'bold' }
-              }
-            }
-          }
-        }
-      }
-    },
-  });
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -134,8 +76,8 @@ window.addEventListener("DOMContentLoaded", function () {
     const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
 
     const sigma2 = Math.pow(1 - prob, 2) *
-      (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC),2)) +
-       phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE),2) ));
+      (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC), 2)) +
+       phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE), 2)));
 
     const se = Math.sqrt(sigma2 / n);
 
@@ -150,31 +92,84 @@ window.addEventListener("DOMContentLoaded", function () {
         "Estimated Power: " + (power * 100).toFixed(2) + "%";
     }
 
-    // Plot survival functions from time=0 to 10 (you can adjust max time)
-    const maxTime = 10;
-    const steps = 100;
-    const timePoints = [];
-    const survivalControl = [];
-    const survivalExp = [];
+    // --- Survival Function Plot ---
+    const timePoints = Array.from({ length: 100 }, (_, i) => i * quantC / 2 / 100);
+    const survivalC = timePoints.map(t => Math.exp(-rateC * t));
+    const survivalE = timePoints.map(t => Math.exp(-rateE * t));
 
-    for(let i = 0; i <= steps; i++) {
-      const t = (i / steps) * maxTime;
-      timePoints.push(t);
-      survivalControl.push(Math.exp(-rateC * t));
-      survivalExp.push(Math.exp(-rateE * t));
+    const ctx = document.getElementById("survival-chart").getContext("2d");
+
+    // Destroy old chart if exists
+    if (window.survivalChartInstance) {
+      window.survivalChartInstance.destroy();
     }
 
-    // Update the chart data
-    survivalChart.data.labels = timePoints;
-    survivalChart.data.datasets[0].data = survivalControl;
-    survivalChart.data.datasets[1].data = survivalExp;
-
-    // Update horizontal line annotation at y = 1 - p with label '1 - p'
-    survivalChart.options.plugins.annotation.annotations.line1.yMin = 1 - prob;
-    survivalChart.options.plugins.annotation.annotations.line1.yMax = 1 - prob;
-    survivalChart.options.plugins.annotation.annotations.line1.label.content = `1 - p = ${(1 - prob).toFixed(2)}`;
-
-    survivalChart.update();
+    window.survivalChartInstance = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: timePoints,
+        datasets: [
+          {
+            label: "Control Arm",
+            data: survivalC,
+            borderColor: "blue",
+            fill: false,
+          },
+          {
+            label: "Experimental Arm",
+            data: survivalE,
+            borderColor: "red",
+            fill: false,
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Survival Functions",
+            font: { size: 18 }
+          },
+          annotation: {
+            annotations: {
+              hLine: {
+                type: 'line',
+                yMin: 1 - prob,
+                yMax: 1 - prob,
+                borderColor: 'green',
+                borderWidth: 2,
+                borderDash: [6, 6],
+                label: {
+                  content: `1 - p = ${(1 - prob).toFixed(2)}`,
+                  enabled: true,
+                  position: 'start',
+                  backgroundColor: 'rgba(0,0,0,0.7)',
+                  color: '#fff',
+                  font: { style: 'italic' }
+                }
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Time"
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Survival Probability"
+            },
+            min: 0,
+            max: 1
+          }
+        }
+      }
+    });
   });
 });
 </script>
