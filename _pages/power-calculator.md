@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /power/
-title: power Calculator
+title: power calculator
 nav: true
 nav_order: 6
 ---
