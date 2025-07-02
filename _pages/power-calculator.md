@@ -59,9 +59,9 @@ nav_order: 6
     const quantE = quantC - diff;
     const phiC = rateC/(rateC+rateCens) * (Math.exp((rateC+rateCens)*quantC) - 1);
     const phiE = rateE/(rateE+rateCens) * (Math.exp((rateE+rateCens)*quantE) - 1);
-    const sigma2 = (1-prob)^2 * (phiC/((1/2)*expo_pdf(quantC, rateC)) +  phiE/((1/2)*expo_pdf(quantE, rateE)) );
+    const sigma2 = Math.pow(1 - prob, 2) * (phiC/((1/2)*expo_pdf(quantC, rateC)) +  phiE/((1/2)*expo_pdf(quantE, rateE)) );
     const z_critical = normSInv(1 - alpha / 2);
-    const power = 1-normCDF(z_power - Math.sqrt(n)*diff/(Math.sqrt(sigma^2 )) +  normCDF(-z_power - Math.sqrt(n)*diff/(Math.sqrt(sigma^2 )) ;
+    const power = 1-normCDF(z_critical - Math.sqrt(n)*diff/(Math.sqrt(sigma2 )) +  normCDF(-z_critical - Math.sqrt(n)*diff/(Math.sqrt(sigma2 )) ;
 
     document.getElementById("result").innerText = "Estimated Power: " + (power * 100).toFixed(2) + "%";
   });
