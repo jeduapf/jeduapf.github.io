@@ -42,43 +42,44 @@ nav_order: 6
     return Math.sqrt(2) * inverseErf(2 * p - 1);
   }
 
-  document.getElementById("power-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  window.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("power-form").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    const prob = parseFloat(document.getElementById("prob").value);
-    const n = parseFloat(document.getElementById("sample-size").value);
-    const rateC = parseFloat(document.getElementById("rate-control").value);
-    const diff = parseFloat(document.getElementById("diff").value);
-    const rateCens = parseFloat(document.getElementById("rate-cens").value);
-    const alpha = parseFloat(document.getElementById("alpha").value);
+      const prob = parseFloat(document.getElementById("prob").value);
+      const n = parseFloat(document.getElementById("sample-size").value);
+      const rateC = parseFloat(document.getElementById("rate-control").value);
+      const diff = parseFloat(document.getElementById("diff").value);
+      const rateCens = parseFloat(document.getElementById("rate-cens").value);
+      const alpha = parseFloat(document.getElementById("alpha").value);
 
-    const z_critical = Math.abs(normSInv(1 - alpha / 2));
-    const quantC = -Math.log(1 - prob) / rateC;
-    const rateE = -Math.log(1 - prob) / (quantC - diff);
-    const quantE = quantC - diff;
+      const z_critical = Math.abs(normSInv(1 - alpha / 2));
+      const quantC = -Math.log(1 - prob) / rateC;
+      const rateE = -Math.log(1 - prob) / (quantC - diff);
+      const quantE = quantC - diff;
 
-    const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
-    const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
+      const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
+      const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
 
-    const sigma2 = Math.pow(1 - prob, 2) *
-      (phiC / ((1 / 2) * expo_pdf(quantC, rateC)) +
-       phiE / ((1 / 2) * expo_pdf(quantE, rateE)));
+      const sigma2 = Math.pow(1 - prob, 2) *
+        (phiC / ((1 / 2) * expo_pdf(quantC, rateC)) +
+         phiE / ((1 / 2) * expo_pdf(quantE, rateE)));
 
-    const se = Math.sqrt(sigma2 / n);
+      const se = Math.sqrt(sigma2 / n);
 
-    const power =
-      1 - normCDF(z_critical - diff / se) +
-          normCDF(-z_critical - diff / se);
+      const power =
+        1 - normCDF(z_critical - diff / se) +
+            normCDF(-z_critical - diff / se);
 
-    console.log("Power computed:", power);
+      console.log("Power computed:", power);
 
-if (isNaN(power)) {
-  document.getElementById("result").innerText = "Error: invalid calculation.";
-} else {
-  document.getElementById("result").innerText =
-    "Estimated Power: " + (power * 100).toFixed(2) + "%";
-}
-    
+      if (isNaN(power)) {
+        document.getElementById("result").innerText = "Error: invalid calculation.";
+      } else {
+        document.getElementById("result").innerText =
+          "Estimated Power: " + (power * 100).toFixed(2) + "%";
+      }
+    });
   });
 </script>
 {% endraw %}
