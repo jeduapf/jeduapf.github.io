@@ -54,6 +54,9 @@ function normSInv(p) {
   return Math.sqrt(2) * inverseErf(2 * p - 1);
 }
 
+// Register the annotation plugin with Chart.js
+Chart.register(window['chartjs-plugin-annotation']);
+
 window.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("power-form");
 
