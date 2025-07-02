@@ -1,12 +1,12 @@
 ---
 layout: default
 permalink: /power/
-title: Power Calculator
+title: power Calculator
 nav: true
 nav_order: 6
 ---
 
-<h2>Power for Test of Equality of Quantiles</h2>
+<h2>power for test of equality of quantiles</h2>
 
 <form id="power-form">
   <label>Probability (p): <input type="number" id="prob" step="any" required></label><br>
@@ -70,8 +70,15 @@ nav_order: 6
       1 - normCDF(z_critical - diff / se) +
           normCDF(-z_critical - diff / se);
 
-    document.getElementById("result").innerText =
-      "Estimated Power: " + (power * 100).toFixed(2) + "%";
+    console.log("Power computed:", power);
+
+if (isNaN(power)) {
+  document.getElementById("result").innerText = "Error: invalid calculation.";
+} else {
+  document.getElementById("result").innerText =
+    "Estimated Power: " + (power * 100).toFixed(2) + "%";
+}
+    
   });
 </script>
 {% endraw %}
