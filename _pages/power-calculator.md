@@ -22,9 +22,24 @@ nav_order: 6
 
 {% raw %}
 <script>
-  function normCDF(x) {
-    return (1 - Math.erf(-x / Math.sqrt(2))) / 2;
-  }
+function normCDF(x) {
+  // Approximation of the standard normal CDF using the Abramowitz and Stegun formula
+  var sign = x < 0 ? -1 : 1;
+  x = Math.abs(x) / Math.sqrt(2);
+
+  // Constants
+  var a1 = 0.254829592,
+      a2 = -0.284496736,
+      a3 = 1.421413741,
+      a4 = -1.453152027,
+      a5 = 1.061405429,
+      p = 0.3275911;
+
+  var t = 1 / (1 + p * x);
+  var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+
+  return 0.5 * (1 + sign * y);
+}
 
   function expo_pdf(x, lambda) {
     return lambda * Math.exp(-lambda * x);
