@@ -1,17 +1,17 @@
 ---
 layout: default
 permalink: /power/
-title: Power Calculator
+title: power calculator
 nav: true
 nav_order: 7
 ---
 
-<h2>Power for Test of Equality of Quantiles</h2>
+<h2>power for test of equality of quantiles</h2>
 
 <form id="power-form">
-  <label>Probability (p): <input type="number" id="prob" step="any" required></label><br>
-  <label>Difference (d): <input type="number" id="diff" step="any" required></label><br>
-  <label>Total Sample Size (n): <input type="number" id="sample-size" required></label><br>
+  <label>Probability: <input type="number" id="prob" step="any" required></label><br>
+  <label>Difference: <input type="number" id="diff" step="any" required></label><br>
+  <label>Total Sample Size: <input type="number" id="sample-size" required></label><br>
   <label>Rate of Control Arm: <input type="number" id="rate-control" step="any" required></label><br>
   <label>Rate of Censoring: <input type="number" id="rate-cens" step="any" required></label><br>
   <label>Significance Level (alpha): <input type="number" id="alpha" step="any" required></label><br>
@@ -27,12 +27,14 @@ nav_order: 7
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
 
 {% raw %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+
 <script>
 function normCDF(x) {
   var sign = x < 0 ? -1 : 1;
   x = Math.abs(x) / Math.sqrt(2);
-  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741,
-      a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
   var t = 1 / (1 + p * x);
   var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
   return 0.5 * (1 + sign * y);
@@ -54,8 +56,17 @@ function normSInv(p) {
   return Math.sqrt(2) * inverseErf(2 * p - 1);
 }
 
+// Exponential survival function S(t) = exp(-lambda * t)
+function survivalExp(t, lambda) {
+  return Math.exp(-lambda * t);
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("power-form");
+  const result = document.getElementById("result");
+  const ctx = document.getElementById("survivalChart").getContext("2d");
+
+  let survivalChart = null;
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -67,6 +78,7 @@ window.addEventListener("DOMContentLoaded", function () {
     const rateCens = parseFloat(document.getElementById("rate-cens").value);
     const alpha = parseFloat(document.getElementById("alpha").value);
 
+    // Calculate power
     const z_critical = Math.abs(normSInv(1 - alpha / 2));
     const quantC = -Math.log(1 - prob) / rateC;
     const rateE = -Math.log(1 - prob) / (quantC - diff);
@@ -86,42 +98,51 @@ window.addEventListener("DOMContentLoaded", function () {
           normCDF(-z_critical - diff / se);
 
     if (isNaN(power)) {
-      document.getElementById("result").innerText = "Error: invalid calculation.";
+      result.innerText = "Error: invalid calculation.";
     } else {
-      document.getElementById("result").innerText =
-        "Estimated Power: " + (power * 100).toFixed(2) + "%";
+      result.innerText = "Estimated Power: " + (power * 100).toFixed(2) + "%";
     }
 
-    // --- Survival Function Plot ---
-    const timePoints = Array.from({ length: 100 }, (_, i) => i * quantC / 2 / 100);
-    const survivalC = timePoints.map(t => Math.exp(-rateC * t));
-    const survivalE = timePoints.map(t => Math.exp(-rateE * t));
+    // Prepare data for survival plot (0 to max time)
+    const maxTime = quantC * 2; // Plot up to twice control quantile for visibility
+    const points = 100;
+    const step = maxTime / points;
+    let times = [];
+    let survivalControl = [];
+    let survivalExperimental = [];
 
-    const ctx = document.getElementById("survival-chart").getContext("2d");
+    for(let i = 0; i <= points; i++) {
+      let t = i * step;
+      times.push(t.toFixed(3));
+      survivalControl.push(survivalExp(t, rateC));
+      survivalExperimental.push(survivalExp(t, rateE));
+    }
 
     // Destroy old chart if exists
-    if (window.survivalChartInstance) {
-      window.survivalChartInstance.destroy();
-    }
+    if (survivalChart) survivalChart.destroy();
 
-    window.survivalChartInstance = new Chart(ctx, {
-      type: "line",
+    survivalChart = new Chart(ctx, {
+      type: 'line',
       data: {
-        labels: timePoints,
+        labels: times,
         datasets: [
           {
-            label: "Control Arm",
-            data: survivalC,
-            borderColor: "blue",
+            label: 'Control Survival',
+            data: survivalControl,
+            borderColor: 'blue',
             fill: false,
+            tension: 0.2,
+            borderWidth: 2,
           },
           {
-            label: "Experimental Arm",
-            data: survivalE,
-            borderColor: "red",
+            label: 'Experimental Survival',
+            data: survivalExperimental,
+            borderColor: 'red',
             fill: false,
+            tension: 0.2,
+            borderWidth: 2,
           }
-        ],
+        ]
       },
       options: {
         responsive: true,
@@ -165,10 +186,14 @@ window.addEventListener("DOMContentLoaded", function () {
               text: "Survival Probability"
             },
             min: 0,
-            max: 1
+            max: 1,
+            ticks: {
+              stepSize: 0.1
+            }
           }
         }
-      }
+      },
+      plugins: [Chart.registry.getPlugin('annotation')]
     });
   });
 });
