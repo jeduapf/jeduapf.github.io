@@ -84,8 +84,8 @@ function normCDF(x) {
       console.log({ phiC, phiE });
 
       const sigma2 = Math.pow(1 - prob, 2) *
-        (phiC / ((1 / 2) * expo_pdf(quantC, rateC)) +
-         phiE / ((1 / 2) * expo_pdf(quantE, rateE)));
+        (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC),2)) +
+         phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE),2) ));
       console.log("sigma2 =", sigma2);
 
       const se = Math.sqrt(sigma2 / n);
