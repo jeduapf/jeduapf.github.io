@@ -82,7 +82,28 @@ window.addEventListener("DOMContentLoaded", function () {
 
     const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
     const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
-
+    
+    if (prob <= 0 || prob >= 1) {
+      alert("Probability must be between 0 and 1 (exclusive).");
+      return;
+    }
+    if (n <= 0) {
+      alert("Sample size must be positive.");
+      return;
+    }
+    if (alpha <= 0 || alpha >= 1) {
+      alert("Alpha must be between 0 and 1.");
+      return;
+    }
+    if (rateC < 0 || rateCens < 0) {
+      alert("Rates must be non-negative.");
+      return;
+    }
+    if (rateE < 0) {
+      alert("Parameters not valid.");
+      return;
+    }
+    
     const sigma2 = Math.pow(1 - prob, 2) *
       (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC), 2)) +
        phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE), 2)));
