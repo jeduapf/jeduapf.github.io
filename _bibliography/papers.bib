@@ -1,98 +1,19 @@
 ---
 ---
 
-@Article{tanguy2024computing,
+@Article{farah2025univariatemultivariatetestsequality,
   abbr={PREPRINT},
-  author  = {Tanguy, Eloi and Delon, Julie and Gozlan, Nathaël},
-  journal = {arXiv preprint arXiv:2501.04016},
-  title   = {Computing Barycentres of Measures for Generic Transport Costs},
-  year    = {2024},
-  month   = {December},
-  abstract={Wasserstein barycentres represent average distributions between multiple probability measures for the Wasserstein distance. 
-  The numerical computation of Wasserstein barycentres is notoriously challenging. A common approach is to use Sinkhorn iterations, where an entropic regularisation term is introduced to make the problem more manageable. Another approach involves using fixed-point methods, akin to those employed for computing Fréchet means on manifolds. The convergence of such methods for 2-Wasserstein barycentres, specifically with a quadratic cost function and absolutely continuous measures, was studied by Alvarez-Esteban et al. (2016). In this paper, we delve into the main ideas behind this fixed-point method and explore how it can be generalised to accommodate more diverse transport costs and generic probability measures, thereby extending its applicability to a broader range of problems. We show convergence results for this approach and illustrate its numerical behaviour on several barycentre problems.},
-  pdf={ot_bar.pdf},
+  author  = {Farah, Beatriz and Bouaziz, Olivier and Latouche, Aurélien},
+  journal = {arXiv preprint arXiv:2505.03234},
+  title   = {Univariate and multivariate tests of equality of quantiles with right-censored data},
+  year    = {2025},
+  month   = {April},
+  abstract={A nonparametric test for equality of quantiles in the presence of right-censored data is studied. We propose to construct an asymptotic test statistic for the comparison of one quantile between two treatment groups, as well as for the comparison of a collection of quantiles. Under the null hypothesis of equality of quantiles, the test statistic follows asymptotically a normal distribution in the univariate case and a chi-square with J degrees of freedom in the multivariate case, with J the number of quantiles compared. Deriving the variance of the test statistic requires the estimation of the probability density function of the distribution of failure times at the quantile being tested. A resampling method is presented as an alternative to kernel density estimation to perform such task. Extensive simulation studies are performed to show that the proposed approach provides reasonable type I probabilities and powers. We illustrate the proposed test in a phase III randomized clinical trial where the proportional hazards assumption between treatment arms does not hold.},
+  pdf={Univariate and multivariate tests _ HAL ARXIV.pdf},
   selected={true},
-  arxiv={2501.04016},
+  arxiv={2505.03234},
   bibtex_show={true},
-  slides={ot_bar_slides.pdf},
-  code={https://github.com/eloitanguy/ot_bar}
+  code={https://github.com/beafarah/dens-estimation-at-quantile}
 }
 
-@Article{tanguy2024constrained,
-  abbr={PREPRINT},
-  author  = {Tanguy, Eloi and Desolneux, Agn\`es and Delon, Julie},
-  journal = {arXiv preprint arXiv:2407.13445},
-  title   = {Constrained Approximate Optimal Transport Maps},
-  year    = {2024},
-  month   = {July},
-  abstract={We investigate finding a map \(g\) within a function class \(G\ \) that minimises an Optimal Transport (OT) cost between a target measure \(\nu\ \) and the image by \(g\ \) of a source measure \(\mu\ \). This is relevant when an OT map from \(\mu\ \) to \(\nu\ \) does not exist or does not satisfy the desired constraints of \(G\). We address existence and uniqueness for generic subclasses of \(L\)-Lipschitz functions, including gradients of (strongly) convex functions and typical Neural Networks. We explore a variant that approaches a transport plan, showing equivalence to a map problem in some cases. For the squared Euclidean cost, we propose alternating minimisation over a transport plan \(\pi\ \) and map \(g\ \), with the optimisation over \(g\ \) being the \(L^2\ \) projection on \(G\ \) of the barycentric mapping \(\overline{\pi}\). In dimension one, this global problem equates the \(L^2\ \) projection of \(\overline{\pi^*}\ \) onto \(G\ \) for an OT plan \(\pi^*\ \) between \(\mu\ \) and \(\nu\ \), but this does not extend to higher dimensions. We introduce a simple kernel method to find $g$ within a Reproducing Kernel Hilbert Space in the discrete case. Finally, we present numerical methods for \(L\)-Lipschitz gradients of \(\ell\)-strongly convex potentials..},
-  pdf={constrained_maps.pdf},
-  selected={true},
-  arxiv={2407.13445},
-  slides={constrained_maps_slides.pdf},
-  bibtex_show={true}
-}
 
-@Article{tanguy2023discrete_sw_losses,
-  abbr={MCOM},
-  author  = {Tanguy, Eloi and Flamary, R{\'e}mi and Delon, Julie},
-  journal = {Mathematics of Computation},
-  title   = {Properties of Discrete Sliced {W}asserstein Losses},
-  month   = {June},
-  year    = {2024},
-  abstract={The Sliced Wasserstein (SW) distance has become a popular alternative to the Wasserstein distance for comparing probability measures. Widespread applications include image processing, domain adaptation and generative modelling, where it is common to optimise some parameters in order to minimise SW, which serves as a loss function between discrete probability measures (since measures admitting densities are numerically unattainable). All these optimisation problems bear the same sub-problem, which is minimising the Sliced Wasserstein energy. In this paper we study the properties of  \(E: Y \longmapsto SW_2^2(\gamma_Y, \gamma_Z)\), i.e. the SW distance between two uniform discrete measures with the same amount of points as a function of the support \(Y \in R^{n \times d}\) of one of the measures. We investigate the regularity and optimisation properties of this energy, as well as its Monte-Carlo approximation \(E_p\) (estimating the expectation in SW using only \(p\) samples) and show convergence results on the critical points of \(E_p\) to those of $\(E\)$, as well as an almost-sure uniform convergence and a uniform Central Limit result on the process \(E_p\). Finally, we show that in a certain sense, Stochastic Gradient Descent methods minimising \(E\) and \(E_p\) converge towards (Clarke) critical points of these energies.  },
-  pdf={slicedloss.pdf},
-  slides={slicedloss_slides.pdf},
-  selected={true},
-  arxiv={2307.10352},
-  bibtex_show={true},
-  url={https://www.ams.org/journals/mcom/0000-000-00/S0025-5718-2024-03994-7/}
-}
-
-@Article{tanguy2024reconstructing,
-  abbr={CRAS},
-  author  = {Tanguy, Eloi and Flamary, R{\'e}mi and Delon, Julie},
-  journal = {Comptes Rendus. Math\'ematique},
-  pages = {1121--1129},
-  title   = {Reconstructing discrete measures from projections. Consequences on the empirical Sliced {W}asserstein Distance},
-  publisher = {Acad\'emie des sciences, Paris},
-  volume = {362},
-  year = {2024},
-  abstract={This paper deals with the reconstruction of a discrete measure \(\gamma_Z\ \) on \(R^d\) from the knowledge of its pushforward measures \(P_i\)#\(\gamma_Z\) linear applications \(P_i: R^d \rightarrow R^{h}\) (for instance projections onto subspaces). The measure \(\gamma_Z\ \) being fixed, assuming that the rows of the matrices \(P_i\) are independent realizations of laws which do not give mass to hyperplanes, we show that if \(\sum_i h_i > d\), this reconstruction problem has almost certainly a unique solution. This holds for any number of points in \(\gamma_Z\). A direct consequence of this result is an almost-sure separability property on the empirical Sliced Wasserstein distance.},
-  pdf={reconstruction.pdf},
-  selected={true},
-  arxiv={2304.12029},
-  bibtex_show={true},
-  doi = {10.5802/crmath.601},
-  url={https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.5802/crmath.601/}
-}
-
-@report{reportGWB,
-  abbr={MASTER THESIS},
-  title={[Report] Generalised Wasserstein Barycentres},
-  author={Eloi Tanguy and Julie Delon and Rémi Flamary},
-  abstract={We generalise Wasserstein Barycentres, allowing the computation of barycentres between measures in different spaces. We provide efficient solvers for this new problem, and study a particular case which corresponds to a reconstruction problem. Studying the properties of this problem, we draw partial conclusions on the optima of the discrete Sliced Wasserstein Distance.},
-  year={2022},
-  month={September},
-  pdf={GWB_report.pdf},
-  selected={true},
-  journal={Master Thesis},
-  bibtex_show={true}
-}
-
-@Article{tanguy2023convergence_sgd_sw_nn,
-  abbr={TMLR},
-  author  = {Eloi Tanguy},
-  journal = {Transactions on Machine Learning Research},
-  title   = {Convergence of SGD for Training Neural Networks with Sliced {W}asserstein Losses},
-  year    = {2023},
-  month   = {October},
-  abstract={Optimal Transport has sparked vivid interest in recent years, in particular thanks to the Wasserstein distance, which provides a geometrically sensible and intuitive way of comparing probability measures. For computational reasons, the Sliced Wasserstein (SW) distance was introduced as an alternative to the Wasserstein distance, and has seen uses for training generative Neural Networks (NNs). While convergence of Stochastic Gradient Descent (SGD) has been observed practically in such a setting, there is to our knowledge no theoretical guarantee for this observation. Leveraging recent works on convergence of SGD on non-smooth and non-convex functions by Bianchi et al. (2022), we aim to bridge that knowledge gap, and provide a realistic context under which fixed-step SGD trajectories for the SW loss on NN parameters converge. More precisely, we show that the trajectories approach the set of (sub)-gradient flow equations as the step decreases. Under stricter assumptions, we show a much stronger convergence result for noised and projected SGD schemes, namely that the long-run limits of the trajectories approach a set of generalised critical points of the loss function.},
-  pdf={nn_loss.pdf},
-  selected={true},
-  arxiv={2307.11714},
-  bibtex_show={true},
-  year={2023},
-  url={https://openreview.net/forum?id=aqqfB3p9ZA},
-  issn={2835-8856},
-}
