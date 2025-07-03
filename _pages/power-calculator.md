@@ -139,8 +139,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     if (isNaN(sigma2) || sigma2 <= 0) {
-       alert("Error: invalid parameters.");
-        return;
+      document.getElementById("result").innerText = "Error: invalid parameters.";
+      return;
     }
 
     const se = Math.sqrt(sigma2 / n);
@@ -207,5 +207,3 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 {% endraw %}
-
-
