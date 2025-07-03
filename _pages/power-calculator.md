@@ -27,9 +27,10 @@ Enter your parameters and click **Calculate Power** to view the analytical power
 
 <canvas id="survival-chart" width="800" height="400"></canvas>
 
-<!-- Chart.js and Annotation Plugin -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+<!-- Chart.js v4 + Annotation plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+
 
 {% raw %}
 <script>
@@ -143,13 +144,13 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             label: "Control Arm",
             data: survivalC,
-            borderColor: "blue",
+            borderColor: "#2e7d32",
             fill: false,
           },
           {
             label: "Experimental Arm",
             data: survivalE,
-            borderColor: "red",
+            borderColor: "#66bb6a",
             fill: false,
           }
         ],
