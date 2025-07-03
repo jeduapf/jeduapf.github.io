@@ -30,7 +30,6 @@ Enter your parameters and click **Calculate Power** to view the analytical power
 
   <div id="piecewise-fields" style="display:none;">
     <label>Cutoff Time (t_cut): <input type="number" id="tcut" step="any"></label><br>
-    <label>Rate After Cutoff (λ2): <input type="number" id="lambda2" step="any"></label><br>
   </div>
 
   <button type="submit">Calculate Power</button>
@@ -48,20 +47,20 @@ Enter your parameters and click **Calculate Power** to view the analytical power
 Chart.register(window['chartjs-plugin-annotation']);
 
 function normCDF(x) {
-  var sign = x < 0 ? -1 : 1;
+  const sign = x < 0 ? -1 : 1;
   x = Math.abs(x) / Math.sqrt(2);
-  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741,
-      a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
-  var t = 1 / (1 + p * x);
-  var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+  const a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741,
+        a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+  const t = 1 / (1 + p * x);
+  const y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
   return 0.5 * (1 + sign * y);
 }
 
 function inverseErf(x) {
-  let a = 0.147;
-  let ln = Math.log(1 - x * x);
-  let term1 = 2 / (Math.PI * a) + ln / 2;
-  let term2 = ln / a;
+  const a = 0.147;
+  const ln = Math.log(1 - x * x);
+  const term1 = 2 / (Math.PI * a) + ln / 2;
+  const term2 = ln / a;
   return Math.sign(x) * Math.sqrt(Math.sqrt(term1 * term1 - term2) - term1);
 }
 
@@ -95,75 +94,69 @@ window.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const prob = parseFloat(document.getElementById("prob").value);
+    const p = parseFloat(document.getElementById("prob").value);
+    const diff = parseFloat(document.getElementById("diff").value);
     const n = parseFloat(document.getElementById("sample-size").value);
     const rateC = parseFloat(document.getElementById("rate-control").value);
-    const diff = parseFloat(document.getElementById("diff").value);
     const rateCens = parseFloat(document.getElementById("rate-cens").value);
     const alpha = parseFloat(document.getElementById("alpha").value);
+    const z = Math.abs(normSInv(1 - alpha / 2));
 
-    const z_critical = Math.abs(normSInv(1 - alpha / 2));
-    const quantC = -Math.log(1 - prob) / rateC;
+    const quantC = -Math.log(1 - p) / rateC;
+    let rateE, quantE, phiE;
 
-    let quantE, rateE, phiE;
-
-    if (model === "exponential") {
-      rateE = -Math.log(1 - prob) / (quantC - diff);
+    if (model === 'exponential') {
       quantE = quantC - diff;
+      rateE = -Math.log(1 - p) / quantE;
       phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
     } else {
       const tcut = parseFloat(document.getElementById("tcut").value);
-      const lambda2 = parseFloat(document.getElementById("lambda2").value);
 
       if ((quantC - tcut) <= diff) {
-        alert("For piecewise, require that quantC - tcut > diff");
+        alert("Condition not met: quantC - tcut must be > diff.");
         return;
       }
 
-      rateE = (Math.log(1 - prob) + rateC * tcut) / (tcut + diff - quantC);
+      rateE = (Math.log(1 - p) + rateC * tcut) / (tcut + diff - quantC);
 
-      const cutoffProb = 1 - Math.exp(-rateC * tcut);
-      if (prob < cutoffProb) {
-        quantE = -Math.log(1 - prob) / rateC;
+      const boundary = 1 - Math.exp(-rateC * tcut);
+      if (p < boundary) {
+        quantE = -Math.log(1 - p) / rateC;
       } else {
-        quantE = tcut - ((Math.log(1 - prob) + rateC * tcut) / rateE);
+        quantE = tcut - ((Math.log(1 - p) + rateC * tcut) / rateE);
       }
 
-      phiE = (rateC / (rateC + rateCens)) * (Math.exp((rateC + rateCens) * tcut) - 1)
-           + (rateE / (rateE + rateCens)) * Math.exp((rateC - rateE) * tcut) *
-             (Math.exp((rateE + rateCens) * quantE) - Math.exp((rateE + rateCens) * tcut));
-    }
-
-    if (prob <= 0 || prob >= 1 || n <= 0 || alpha <= 0 || alpha >= 1 || rateC < 0 || rateCens < 0 || rateE < 0) {
-      alert("Invalid input values.");
-      return;
+      phiE =
+        (rateC / (rateC + rateCens)) * (Math.exp((rateC + rateCens) * tcut) - 1) +
+        (rateE / (rateE + rateCens)) *
+        Math.exp((rateC - rateE) * tcut) *
+        (Math.exp((rateE + rateCens) * quantE) - Math.exp((rateE + rateCens) * tcut));
     }
 
     const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
-    const sigma2 = Math.pow(1 - prob, 2) *
-      (phiC / ((0.5) * Math.pow(expo_pdf(quantC, rateC), 2)) +
-       phiE / ((0.5) * Math.pow(expo_pdf(quantE, rateE), 2)));
+    const sigma2 = Math.pow(1 - p, 2) * (
+      phiC / (0.5 * Math.pow(expo_pdf(quantC, rateC), 2)) +
+      phiE / (0.5 * Math.pow(expo_pdf(quantE, rateE), 2))
+    );
 
     const se = Math.sqrt(sigma2 / n);
-    const power = 1 - normCDF(z_critical - diff / se) + normCDF(-z_critical - diff / se);
+    const power = 1 - normCDF(z - diff / se) + normCDF(-z - diff / se);
 
     document.getElementById("result").innerText = isNaN(power)
-      ? "Error: invalid calculation."
+      ? "Error in power computation."
       : "Estimated Power: " + (power * 100).toFixed(2) + "%";
 
-    const timeMax = quantC * 1.5;
-    const timePoints = Array.from({ length: 100 }, (_, i) => +(timeMax * i / 99).toFixed(2));
+    const maxTime = Math.max(quantC, quantE) * 1.5;
+    const timePoints = Array.from({ length: 100 }, (_, i) => +(maxTime * i / 99).toFixed(2));
     const survivalC = timePoints.map(t => Math.exp(-rateC * t));
     let survivalE;
 
-    if (model === "exponential") {
+    if (model === 'exponential') {
       survivalE = timePoints.map(t => Math.exp(-rateE * t));
     } else {
       const tcut = parseFloat(document.getElementById("tcut").value);
       survivalE = timePoints.map(t =>
-        t <= tcut
-          ? Math.exp(-rateC * t)
-          : Math.exp(-rateC * tcut - rateE * (t - tcut))
+        t <= tcut ? Math.exp(-rateC * t) : Math.exp(-rateC * tcut - rateE * (t - tcut))
       );
     }
 
@@ -180,19 +173,19 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             label: "Control Arm",
             data: survivalC,
-            borderColor: "limegreen",
-            fill: false,
-            tension: 0.3,
+            borderColor: "blue",
             borderWidth: 2,
+            tension: 0.3,
+            fill: false,
           },
           {
             label: "Experimental Arm",
             data: survivalE,
-            borderColor: "darkgreen",
-            fill: false,
-            tension: 0.3,
+            borderColor: "darkred",
             borderWidth: 2,
-          }
+            tension: 0.3,
+            fill: false,
+          },
         ],
       },
       options: {
@@ -200,26 +193,24 @@ window.addEventListener("DOMContentLoaded", function () {
         plugins: {
           title: {
             display: true,
-            text: "Survival Functions",
-            font: { size: 18 }
+            text: "Survival Curves",
+            font: { size: 18 },
           },
           legend: {
-            labels: {
-              font: { size: 14 }
-            }
+            labels: { font: { size: 14 } },
           },
           annotation: {
             annotations: {
               hLine: {
                 type: 'line',
-                yMin: 1 - prob,
-                yMax: 1 - prob,
+                yMin: 1 - p,
+                yMax: 1 - p,
                 borderColor: 'green',
-                borderWidth: 2,
                 borderDash: [6, 6],
+                borderWidth: 2,
                 label: {
-                  content: `1 - p = ${(1 - prob).toFixed(2)}`,
                   enabled: true,
+                  content: `1 - p = ${(1 - p).toFixed(2)}`,
                   position: 'start',
                   backgroundColor: 'rgba(0,0,0,0.7)',
                   color: '#fff',
@@ -230,21 +221,10 @@ window.addEventListener("DOMContentLoaded", function () {
           }
         },
         scales: {
-          x: {
-            title: {
-              display: true,
-              text: "Time",
-              font: { size: 16 }
-            }
-          },
+          x: { title: { display: true, text: "Time", font: { size: 16 } } },
           y: {
-            min: 0,
-            max: 1,
-            title: {
-              display: true,
-              text: "Survival Probability",
-              font: { size: 16 }
-            }
+            min: 0, max: 1,
+            title: { display: true, text: "Survival Probability", font: { size: 16 } }
           }
         }
       }
@@ -253,4 +233,5 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 {% endraw %}
+
 
