@@ -122,7 +122,7 @@ window.addEventListener("DOMContentLoaded", function () {
         "Estimated Power: " + (power * 100).toFixed(2) + "%";
     }
 
-    // --- Survival Function Plot ---
+      // --- Survival Function Plot ---
     const timeMax = quantC * 1.5; // extend a bit beyond quantile
     const timePoints = Array.from({ length: 100 }, (_, i) => +(timeMax * i / 99).toFixed(2)); // 2 decimals
 
@@ -144,14 +144,18 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             label: "Control Arm",
             data: survivalC,
-            borderColor: "#2e7d32",
+            borderColor: "limegreen",
             fill: false,
+            tension: 0.3,
+            borderWidth: 2,
           },
           {
             label: "Experimental Arm",
             data: survivalE,
-            borderColor: "#66bb6a",
+            borderColor: "darkgreen",
             fill: false,
+            tension: 0.3,
+            borderWidth: 2,
           }
         ],
       },
@@ -190,14 +194,12 @@ window.addEventListener("DOMContentLoaded", function () {
           }
         },
         scales: {
-            x: {
-    title: {
-      display: true,
-      text: "Time",
-      font: {
-        size: 16
-      }
-    },
+          x: {
+            title: {
+              display: true,
+              text: "Time",
+              font: { size: 16 }
+            },
             ticks: {
               callback: val => +val.toFixed(2)
             }
@@ -207,7 +209,8 @@ window.addEventListener("DOMContentLoaded", function () {
             max: 1,
             title: {
               display: true,
-              text: "Survival Probability"
+              text: "Survival Probability",
+              font: { size: 16 }
             },
             ticks: {
               stepSize: 0.2,
@@ -217,6 +220,14 @@ window.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
+
+    function clearChart() {
+      if (window.survivalChartInstance) {
+        window.survivalChartInstance.destroy();
+        window.survivalChartInstance = null;
+      }
+      document.getElementById("result").innerText = "";
+    }
   });
 });
 </script>
