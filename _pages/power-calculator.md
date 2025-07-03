@@ -10,24 +10,24 @@ nav_order: 7
 
 Power calculator based on the test of equality of quantiles as described in the paper ["Univariate and multivariate tests of equality of quantiles with right-censored data"](https://arxiv.org/abs/2505.03234).
 This calculator assumes exponential distributions for control and censoring times, with balanced groups.  
-Choose the model type: Proportional assumes exponential experimental arm, and Nonproportional assumes piecewise exponential.
+You can choose the model type: Proportional hazards for exponential experimental arm, and Nonproportional for piecewise exponential with late treatment effects.
 Enter your parameters and click **Calculate Power** to view the analytical power alongside the survival curves :)
 
 <div>
   <label><strong>Model Type:</strong></label><br>
-  <button id="model-exp" class="model-btn" style="margin-right: 10px;">Exponential</button>
-  <button id="model-piecewise" class="model-btn">Piecewise Exponential</button>
+  <button id="model-exp" class="model-btn" style="margin-right: 10px;">Proportional hazards</button>
+  <button id="model-piecewise" class="model-btn">Nonproportional hazards</button>
 </div>
 
 <form id="power-form" style="margin-top: 20px;">
-  <label>Probability (p): <input type="number" id="prob" step="any" required></label><br>
-  <label>Difference (diff): <input type="number" id="diff" step="any" required></label><br>
-  <label>Total Sample Size (n): <input type="number" id="sample-size" required></label><br>
-  <label>Rate of Control Arm (rateC): <input type="number" id="rate-control" step="any" required></label><br>
-  <label>Rate of Censoring (rateCens): <input type="number" id="rate-cens" step="any" required></label><br>
+  <label>Probability: <input type="number" id="prob" step="any" required></label><br>
+  <label>Difference of quantiles: <input type="number" id="diff" step="any" required></label><br>
+  <label>Total Sample Size: <input type="number" id="sample-size" required></label><br>
+  <label>Rate of Control Arm: <input type="number" id="rate-control" step="any" required></label><br>
+  <label>Rate of Censoring: <input type="number" id="rate-cens" step="any" required></label><br>
   <label>Significance Level (alpha): <input type="number" id="alpha" step="any" required></label><br>
   <div id="tcut-container" style="display:none">
-    <label>Piecewise Cut Time (tcut): <input type="number" id="tcut" step="any"></label><br>
+    <label>Piecewise Cut Time: <input type="number" id="tcut" step="any"></label><br>
   </div>
   <button type="submit">Calculate Power</button>
 </form>
