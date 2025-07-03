@@ -72,6 +72,16 @@ function expo_pdf(x, lambda) {
   return lambda * Math.exp(-lambda * x);
 }
 
+  function piecewise_pdf(x, rateC, rateE, tcut) {
+  if (x <= tcut) {
+    return rateC * Math.exp(-rateC * x);
+  } else {
+    const s_tcut = Math.exp(-rateC * tcut); // S(tcut)
+    const delta_t = x - tcut;
+    return rateE * s_tcut * Math.exp(-rateE * delta_t);
+  }
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   let model = 'exponential';
   const form = document.getElementById("power-form");
@@ -128,16 +138,22 @@ window.addEventListener("DOMContentLoaded", function () {
 
       phiE =
         (rateC / (rateC + rateCens)) * (Math.exp((rateC + rateCens) * tcut) - 1) +
-        (rateE / (rateE + rateCens)) *
+        ((rateE / (rateE + rateCens)) *
         Math.exp((rateC - rateE) * tcut) *
-        (Math.exp((rateE + rateCens) * quantE) - Math.exp((rateE + rateCens) * tcut));
+        (Math.exp((rateE + rateCens) * quantE) - Math.exp((rateE + rateCens) * tcut)) );
     }
 
     const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
-    const sigma2 = Math.pow(1 - p, 2) * (
-      phiC / (0.5 * Math.pow(expo_pdf(quantC, rateC), 2)) +
-      phiE / (0.5 * Math.pow(expo_pdf(quantE, rateE), 2))
-    );
+let sigma2;
+if (model === 'exponential') {
+  sigma2 = Math.pow(1 - prob, 2) *
+    (phiC / (0.5 * Math.pow(expo_pdf(quantC, rateC), 2)) +
+     phiE / (0.5 * Math.pow(expo_pdf(quantE, rateE), 2)));
+} else {
+  sigma2 = Math.pow(1 - prob, 2) *
+    (phiC / (0.5 * Math.pow(expo_pdf(quantC, rateC), 2)) +
+     phiE / (0.5 * Math.pow(piecewise_pdf(quantE, rateC, rateE, tcut), 2)));
+}
 
     const se = Math.sqrt(sigma2 / n);
     const power = 1 - normCDF(z - diff / se) + normCDF(-z - diff / se);
@@ -173,7 +189,7 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             label: "Control Arm",
             data: survivalC,
-            borderColor: "blue",
+            borderColor: "limegreen",
             borderWidth: 2,
             tension: 0.3,
             fill: false,
@@ -181,7 +197,7 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             label: "Experimental Arm",
             data: survivalE,
-            borderColor: "darkred",
+            borderColor: "darkgreen",
             borderWidth: 2,
             tension: 0.3,
             fill: false,
