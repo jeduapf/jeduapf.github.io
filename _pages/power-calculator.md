@@ -145,7 +145,7 @@ window.addEventListener("DOMContentLoaded", function () {
             label: "Control Arm",
             data: survivalC,
             borderColor: "limegreen",
-            fill: false,
+            fill: true,
             tension: 0.3,
             borderWidth: 2,
           },
@@ -153,7 +153,7 @@ window.addEventListener("DOMContentLoaded", function () {
             label: "Experimental Arm",
             data: survivalE,
             borderColor: "darkgreen",
-            fill: false,
+            fill: true,
             tension: 0.3,
             borderWidth: 2,
           }
