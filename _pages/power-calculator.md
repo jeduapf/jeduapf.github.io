@@ -9,17 +9,26 @@ nav_order: 7
 <h2>power for test of equality of quantiles</h2>
 
 Power calculator based on the test of equality of quantiles as described in the paper ["Univariate and multivariate tests of equality of quantiles with right-censored data"](https://arxiv.org/abs/2505.03234).
-This calculator assumes exponential distributions for control, experimental, and censoring times, with balanced groups.  
+This calculator assumes exponential distributions for control and censoring times, with balanced groups.  
+Choose the model type: Proportional assumes exponential experimental arm, and Nonproportional assumes piecewise exponential.
 Enter your parameters and click **Calculate Power** to view the analytical power alongside the survival curves :)
 
+<div>
+  <label><strong>Model Type:</strong></label><br>
+  <button id="model-exp" class="model-btn" style="margin-right: 10px;">Exponential</button>
+  <button id="model-piecewise" class="model-btn">Piecewise Exponential</button>
+</div>
 
-<form id="power-form">
-  <label>Probability: <input type="number" id="prob" step="any" required></label><br>
-  <label>Difference: <input type="number" id="diff" step="any" required></label><br>
-  <label>Total Sample Size: <input type="number" id="sample-size" required></label><br>
-  <label>Rate of Control Arm: <input type="number" id="rate-control" step="any" required></label><br>
-  <label>Rate of Censoring: <input type="number" id="rate-cens" step="any" required></label><br>
+<form id="power-form" style="margin-top: 20px;">
+  <label>Probability (p): <input type="number" id="prob" step="any" required></label><br>
+  <label>Difference (diff): <input type="number" id="diff" step="any" required></label><br>
+  <label>Total Sample Size (n): <input type="number" id="sample-size" required></label><br>
+  <label>Rate of Control Arm (rateC): <input type="number" id="rate-control" step="any" required></label><br>
+  <label>Rate of Censoring (rateCens): <input type="number" id="rate-cens" step="any" required></label><br>
   <label>Significance Level (alpha): <input type="number" id="alpha" step="any" required></label><br>
+  <div id="tcut-container" style="display:none">
+    <label>Piecewise Cut Time (tcut): <input type="number" id="tcut" step="any"></label><br>
+  </div>
   <button type="submit">Calculate Power</button>
 </form>
 
@@ -27,13 +36,12 @@ Enter your parameters and click **Calculate Power** to view the analytical power
 
 <canvas id="survival-chart" width="800" height="400"></canvas>
 
-<!-- Chart.js v4 + Annotation plugin -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
 
+{% raw %}<script>
+Chart.register(window['chartjs-plugin-annotation']);
 
-{% raw %}
-<script>
 function normCDF(x) {
   var sign = x < 0 ? -1 : 1;
   x = Math.abs(x) / Math.sqrt(2);
@@ -42,10 +50,6 @@ function normCDF(x) {
   var t = 1 / (1 + p * x);
   var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
   return 0.5 * (1 + sign * y);
-}
-
-function expo_pdf(x, lambda) {
-  return lambda * Math.exp(-lambda * x);
 }
 
 function inverseErf(x) {
@@ -60,60 +64,66 @@ function normSInv(p) {
   return Math.sqrt(2) * inverseErf(2 * p - 1);
 }
 
-// Register the annotation plugin with Chart.js
-Chart.register(window['chartjs-plugin-annotation']);
+function expo_pdf(x, lambda) {
+  return lambda * Math.exp(-lambda * x);
+}
+
+let modelType = "exponential";
 
 window.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("power-form");
+  document.getElementById("model-exp").addEventListener("click", () => {
+    modelType = "exponential";
+    document.getElementById("tcut-container").style.display = "none";
+  });
+  document.getElementById("model-piecewise").addEventListener("click", () => {
+    modelType = "piecewise";
+    document.getElementById("tcut-container").style.display = "block";
+  });
 
-  form.addEventListener("submit", function(e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
-
     const prob = parseFloat(document.getElementById("prob").value);
+    const diff = parseFloat(document.getElementById("diff").value);
     const n = parseFloat(document.getElementById("sample-size").value);
     const rateC = parseFloat(document.getElementById("rate-control").value);
-    const diff = parseFloat(document.getElementById("diff").value);
     const rateCens = parseFloat(document.getElementById("rate-cens").value);
     const alpha = parseFloat(document.getElementById("alpha").value);
-
     const z_critical = Math.abs(normSInv(1 - alpha / 2));
+
     const quantC = -Math.log(1 - prob) / rateC;
-    const rateE = -Math.log(1 - prob) / (quantC - diff);
-    const quantE = quantC - diff;
+    let rateE, quantE, phiE;
+
+    if (modelType === "piecewise") {
+      const tcut = parseFloat(document.getElementById("tcut").value);
+      if (quantC - tcut <= diff) {
+        alert("Invalid parameters: quantC - tcut must be greater than diff.");
+        return;
+      }
+      rateE = (Math.log(1 - prob) + rateC * tcut) / (tcut + diff - quantC);
+      const cutoffProb = 1 - Math.exp(-rateC * tcut);
+      if (prob < cutoffProb) {
+        quantE = -Math.log(1 - prob) / rateC;
+      } else {
+        quantE = tcut - (Math.log(1 - prob) + rateC * tcut) / rateE;
+      }
+      phiE = (rateC / (rateC + rateCens)) * (Math.exp((rateC + rateCens) * tcut) - 1)
+          + (rateE / (rateE + rateCens)) * Math.exp((rateC - rateE) * tcut)
+          * (Math.exp((rateE + rateCens) * quantE) - Math.exp((rateE + rateCens) * tcut));
+    } else {
+      rateE = -Math.log(1 - prob) / (quantC - diff);
+      quantE = quantC - diff;
+      phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
+    }
 
     const phiC = rateC / (rateC + rateCens) * (Math.exp((rateC + rateCens) * quantC) - 1);
-    const phiE = rateE / (rateE + rateCens) * (Math.exp((rateE + rateCens) * quantE) - 1);
-    
-    if (prob <= 0 || prob >= 1) {
-      alert("Probability must be between 0 and 1 (exclusive).");
-      return;
-    }
-    if (n <= 0) {
-      alert("Sample size must be positive.");
-      return;
-    }
-    if (alpha <= 0 || alpha >= 1) {
-      alert("Alpha must be between 0 and 1.");
-      return;
-    }
-    if (rateC < 0 || rateCens < 0) {
-      alert("Rates must be non-negative.");
-      return;
-    }
-    if (rateE < 0) {
-      alert("Parameters not valid.");
-      return;
-    }
-    
-    const sigma2 = Math.pow(1 - prob, 2) *
-      (phiC / ((1 / 2) * Math.pow(expo_pdf(quantC, rateC), 2)) +
-       phiE / ((1 / 2) * Math.pow(expo_pdf(quantE, rateE), 2)));
 
+    const sigma2 = Math.pow(1 - prob, 2) * (
+      phiC / (0.5 * Math.pow(expo_pdf(quantC, rateC), 2)) +
+      phiE / (0.5 * Math.pow(expo_pdf(quantE, rateE), 2))
+    );
     const se = Math.sqrt(sigma2 / n);
-
-    const power =
-      1 - normCDF(z_critical - diff / se) +
-          normCDF(-z_critical - diff / se);
+    const power = 1 - normCDF(z_critical - diff / se) + normCDF(-z_critical - diff / se);
 
     if (isNaN(power)) {
       document.getElementById("result").innerText = "Error: invalid calculation.";
@@ -122,19 +132,23 @@ window.addEventListener("DOMContentLoaded", function () {
         "Estimated Power: " + (power * 100).toFixed(2) + "%";
     }
 
-      // --- Survival Function Plot ---
-    const timeMax = quantC * 1.5; // extend a bit beyond quantile
-    const timePoints = Array.from({ length: 100 }, (_, i) => +(timeMax * i / 99).toFixed(2)); // 2 decimals
+    const timeMax = Math.max(quantC, quantE) * 1.5;
+    const timePoints = Array.from({ length: 100 }, (_, i) => +(timeMax * i / 99).toFixed(2));
 
     const survivalC = timePoints.map(t => Math.exp(-rateC * t));
-    const survivalE = timePoints.map(t => Math.exp(-rateE * t));
+    let survivalE;
+    if (modelType === "piecewise") {
+      const tcut = parseFloat(document.getElementById("tcut").value);
+      survivalE = timePoints.map(t => {
+        if (t <= tcut) return Math.exp(-rateC * t);
+        return Math.exp(-rateC * tcut) * Math.exp(-rateE * (t - tcut));
+      });
+    } else {
+      survivalE = timePoints.map(t => Math.exp(-rateE * t));
+    }
 
     const ctx = document.getElementById("survival-chart").getContext("2d");
-
-    // Destroy old chart if exists
-    if (window.survivalChartInstance) {
-      window.survivalChartInstance.destroy();
-    }
+    if (window.survivalChartInstance) window.survivalChartInstance.destroy();
 
     window.survivalChartInstance = new Chart(ctx, {
       type: "line",
@@ -167,11 +181,7 @@ window.addEventListener("DOMContentLoaded", function () {
             text: "Survival Functions",
             font: { size: 18 }
           },
-          legend: {
-            labels: {
-              font: { size: 14 }
-            }
-          },
+          legend: { labels: { font: { size: 14 } } },
           annotation: {
             annotations: {
               hLine: {
@@ -195,40 +205,19 @@ window.addEventListener("DOMContentLoaded", function () {
         },
         scales: {
           x: {
-            title: {
-              display: true,
-              text: "Time",
-              font: { size: 16 }
-            },
-            ticks: {
-              callback: val => +val.toFixed(2)
-            }
+            title: { display: true, text: "Time", font: { size: 16 } },
+            ticks: { callback: val => +val.toFixed(2) }
           },
           y: {
             min: 0,
             max: 1,
-            title: {
-              display: true,
-              text: "Survival Probability",
-              font: { size: 16 }
-            },
-            ticks: {
-              stepSize: 0.2,
-              callback: val => val.toFixed(1)
-            }
+            title: { display: true, text: "Survival Probability", font: { size: 16 } },
+            ticks: { stepSize: 0.2, callback: val => val.toFixed(1) }
           }
         }
       }
     });
-
-    function clearChart() {
-      if (window.survivalChartInstance) {
-        window.survivalChartInstance.destroy();
-        window.survivalChartInstance = null;
-      }
-      document.getElementById("result").innerText = "";
-    }
   });
 });
-</script>
-{% endraw %}
+</script>{% endraw %}
+
