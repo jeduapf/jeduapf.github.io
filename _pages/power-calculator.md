@@ -189,13 +189,14 @@ window.addEventListener("DOMContentLoaded", function () {
           }
         },
         scales: {
-           title: {
-             display: true,
-             text: "Time", 
-             font: {
-               size: 16
-             }
-           },
+            x: {
+    title: {
+      display: true,
+      text: "Time",
+      font: {
+        size: 16
+      }
+    },
             ticks: {
               callback: val => +val.toFixed(2)
             }
