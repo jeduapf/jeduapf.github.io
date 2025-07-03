@@ -139,8 +139,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     if (isNaN(sigma2) || sigma2 <= 0) {
-      document.getElementById("result").innerText = "Error: invalid sigma2.";
-      return;
+       alert("Error: invalid parameters.");
+        return;
     }
 
     const se = Math.sqrt(sigma2 / n);
