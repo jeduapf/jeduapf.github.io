@@ -15,8 +15,8 @@ You can choose the model type: *Proportional hazards* (exponential experimental 
 Enter your parameters and click **Calculate Power** to view the analytical power alongside the survival curves :)
 
 <p>Choose model type:</p>
-<button onclick="setModel('exponential')">Exponential</button>
-<button onclick="setModel('piecewise')">Piecewise Exponential</button>
+<button onclick="setModel('exponential')">Proportional</button>
+<button onclick="setModel('piecewise')">Nonproportional</button>
 <p>Current model: <span id="model-type">Exponential</span></p>
 
 <form id="power-form">
