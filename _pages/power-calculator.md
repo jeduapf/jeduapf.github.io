@@ -139,7 +139,28 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     if (isNaN(sigma2) || sigma2 <= 0) {
-      document.getElementById("result").innerText = "Error: invalid sigma2.";
+       alert("Error: invalid parameters.");
+      return;
+    }
+
+      if (prob <= 0 || prob >= 1) {
+      alert("Probability must be between 0 and 1 (exclusive).");
+      return;
+    }
+    if (n <= 0) {
+      alert("Sample size must be positive.");
+      return;
+    }
+    if (alpha <= 0 || alpha >= 1) {
+      alert("Alpha must be between 0 and 1.");
+      return;
+    }
+    if (rateC < 0 || rateCens < 0) {
+      alert("Rates must be non-negative.");
+      return;
+    }
+    if (rateE < 0) {
+      alert("Parameters not valid.");
       return;
     }
 
@@ -207,5 +228,3 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 {% endraw %}
-
-
