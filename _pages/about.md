@@ -5,7 +5,7 @@ permalink: /
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: cartoon_me.png
   image_circular: false # crops the image to make it circular
   address: >
     <p>814D, MAP5, Université Paris-Cité</p>
