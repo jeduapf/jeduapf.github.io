@@ -1,3 +1,29 @@
+<style>
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem; /* space between buttons */
+}
+
+.lang-btn {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: #fff;
+  background-color: #003057; /* Mines Paris PSL blue */
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.lang-btn:hover {
+  background-color: #001f3f;
+}
+
+.lang-btn.active {
+  background-color: #0057b8; /* slightly brighter for the selected language */
+}
+
+</style>
+
 <header>
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}">
     <div class="container">
@@ -38,22 +64,17 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center flex-nowrap">
 
-          <!-- Left side: language switcher -->
-          <li class="nav-item dropdown lang-switcher">
-            <!-- Always show current language -->
-            <span class="nav-link dropdown-toggle" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ page.lang | upcase }}
-            </span>
-            <div class="dropdown-menu" aria-labelledby="langDropdown">
-              {% assign langs = site.languages %}
-              {% for l in langs %}
-                {% if l != page.lang %}
-                  {% assign path_without_lang = page.url | remove_first: '/' | split:'/' | slice:1,10 | join:'/' %}
-                  <a class="dropdown-item" href="/{{ l }}/{{ path_without_lang }}">{{ l | upcase }}</a>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </li>
+          <!-- Left side: language buttons -->
+          <div class="lang-switcher d-flex align-items-center mr-3">
+            {% assign langs = site.languages %}
+            {% for l in langs %}
+              {% assign path_without_lang = page.url | remove_first: '/' | split:'/' | slice:1,10 | join:'/' %}
+              <a href="/{{ l }}/{{ path_without_lang }}"
+                class="lang-btn {% if l == page.lang %}active{% endif %}">
+                {{ l | upcase }}
+              </a>
+            {% endfor %}
+          </div>
 
           <!-- Center / Main links -->
           <div class="d-flex justify-content-center flex-grow-1">
@@ -131,3 +152,5 @@
   </progress>
   {% endif %}
 </header>
+
+
