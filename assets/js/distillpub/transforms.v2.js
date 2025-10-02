@@ -11063,7 +11063,7 @@
   defineSymbol(math, main, textord, "\u2135", "\\aleph");
   defineSymbol(math, main, textord, "\u2200", "\\forall");
   defineSymbol(math, main, textord, "\u210F", "\\hbar");
-  defineSymbol(math, main, textord, "\u2203", "\\exists");
+  defineSymbol(math, main, textord, "\u2203", "\\exist");
   defineSymbol(math, main, textord, "\u2207", "\\nabla");
   defineSymbol(math, main, textord, "\u266D", "\\flat");
   defineSymbol(math, main, textord, "\u2113", "\\ell");
@@ -11200,7 +11200,7 @@
   defineSymbol(math, ams, textord, "\xAE", "\\circledR");
   defineSymbol(text, ams, textord, "\xAE", "\\circledR");
   defineSymbol(math, ams, textord, "\u2221", "\\measuredangle");
-  defineSymbol(math, ams, textord, "\u2204", "\\nexists");
+  defineSymbol(math, ams, textord, "\u2204", "\\nexist");
   defineSymbol(math, ams, textord, "\u2127", "\\mho");
   defineSymbol(math, ams, textord, "\u2132", "\\Finv");
   defineSymbol(math, ams, textord, "\u2141", "\\Game");
