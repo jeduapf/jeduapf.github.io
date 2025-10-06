@@ -3,7 +3,7 @@ layout: page
 title: projects
 lang: en
 permalink: /en/projects/
-description: A growing collection of your cool projects.
+description: A growing collection of your cool projectss.
 nav: false
 nav_order: 2
 display_categories: [work, fun]
