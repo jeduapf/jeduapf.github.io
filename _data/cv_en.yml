@@ -1,0 +1,91 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: José Eduardo Alves Pereira Filho
+    - name: Age
+      value: 27
+    - name: Languages
+      value: Portuguese (C2), French (C1), English (C1), Chinese (A1)
+    - name: Contact
+      value: jeduapf 'at' gmail 'dot' com
+    - name: GitHub
+      value: github.com/jeduapf
+    - name: LinkedIn
+      value: linkedin.com/in/jeduapf
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Mastère Spécialisé – Optimisation des Systèmes Énergétiques (OSE)
+      institution: Mines Paris – PSL (in partnership with EDHEC & CREDEN)
+      year: 2024 - 2025
+      description:
+        - Focus on financial modeling, applied statistics, stochastic optimization, and energy economics
+        - Alternance at EDF: quantitative tools for cost optimization, electrification, and techno-economic evaluation
+    
+    - title: Double Engineering Degree
+      institution: École Centrale de Nantes (France) & UNICAMP (Brazil)
+      year: 2016 - 2023
+      description:
+        - Centrale Nantes: general engineering, specialization in data analysis, signal & image processing
+        - UNICAMP: Electrical Engineering, one of the top universities in Latin America
+        - Awarded CREA-SP Prize 2022 for best electrical engineering student
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Responsable d’Études Énergétiques (Alternance)
+      institution: EDF, La Défense & Sophia Antipolis
+      year: 2024 - 2025
+      description:
+        - Conducted operational studies and techno-economic analysis for energy transition projects from district to regional scale
+        - Evaluated key metrics: gas prices, industrial electrification rates, vehicle energy consumption, operational costs
+        - Developed modeling tools for prospective energy scenario analysis
+    
+    - title: Researcher in Cybersecurity
+      institution: INSA Lyon
+      year: 2024
+      description:
+        - Integrated Physics-Informed Neural Networks (PINNs) into cyberattack threat detection
+        - Validated methods through automated testing
+    
+    - title: Data Analyst
+      institution: Eldorado/Motorola
+      year: 2021 - 2023
+      description:
+        - Designed AI models for defect detection on 4G/5G smartphone networks
+        - Built automated pipelines for fault alerting
+        - Developed predictive features for consumer preferences using Google Cloud Platform
+    
+    - title: Researcher in Artificial Intelligence
+      institution: Fiberwork
+      year: 2021
+      description:
+        - Developed algorithms for monitoring using fiber optic signals (DAS)
+    
+    - title: Researcher in HVDC Networks
+      institution: SuperGrid
+      year: 2020 - 2021
+      description:
+        - Developed HVDC monitoring software using action theory & automated planning
+        - Created a simplified HVDC network model with Modular Multilevel Converters
+
+- title: Skills
+  type: list
+  contents:
+    - Programming: Python, Matlab, C/C++, SQL
+    - Tools: PowerBI, Tableau, Autocad, SolidWorks, Quartus, PSpice, Simulink, Eagle
+    - Office: Excel, Word, PowerPoint
+    - Methods: Git, JIRA
+    - Driving license: Permis B
+
+- title: Other Interests
+  type: list
+  contents:
+    - Karate (black belt – founder of UNICAMP club)
+    - Boxing
+    - Volleyball
+    - Chess
+    - Video games
+    - Cooking

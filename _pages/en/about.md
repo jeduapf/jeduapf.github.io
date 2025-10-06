@@ -1,6 +1,8 @@
 ---
 layout: about
-title: about
+title: Profile
+lang: en
+nav: true
 permalink: /en/about/
 
 profile:

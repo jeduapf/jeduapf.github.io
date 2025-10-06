@@ -1,14 +1,14 @@
 ---
 layout: page
-permalink: /en/repositories/
+permalink: /fr/repositories/
 title: GitHub
-lang: en
-description: A quick overview of my open-source contributions.
-nav: true
+description: Un aperçu rapide de mes contributions open-source.
+nav: false
+lang: fr
 nav_order: 3
 ---
 
-## GitHub users
+## Utilisateurs GitHub
 
 {% if site.data.repositories.github_users %}
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
@@ -20,7 +20,7 @@ nav_order: 3
 
 ---
 
-## GitHub Repositories
+## Référentiels GitHub
 
 {% if site.data.repositories.github_repos %}
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">

@@ -19,7 +19,7 @@
 }
 
 .lang-btn.active {
-  background-color: #0057b8; /* slightly brighter for the selected language */
+  background-color: #fb2525; /* slightly brighter for the selected language */
 }
 
 </style>
@@ -76,6 +76,7 @@
             {% endfor %}
           </div>
 
+
           <!-- Center / Main links -->
           <div class="d-flex justify-content-center flex-grow-1">
             {%- for page in site.pages -%}
@@ -107,6 +108,7 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ p.title }}
                     {% if page.title == p.title %}<span class="sr-only">(current)</span>{% endif %}
                   </a>
+
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     {% for child in p.children %}
                       {% if child.title == 'divider' %}
@@ -116,6 +118,7 @@
                       {% endif %}
                     {% endfor %}
                   </div>
+
                 </li>
                 {% else %}
                 <li class="nav-item {% if page.title == p.title %}active{% endif %}">
@@ -123,6 +126,7 @@
                     {% if page.title == p.title %}<span class="sr-only">(current)</span>{% endif %}
                   </a>
                 </li>
+                
                 {% endif %}
               {% endif %}
             {% endfor %}

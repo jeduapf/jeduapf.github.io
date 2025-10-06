@@ -1,7 +1,23 @@
 ---
 layout: default
 ---
+<style>
+.cv-download a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
 
+.cv-download a:hover {
+  background: #0056b3;
+}
+
+</style>
 <!-- about.html -->
       <div class="post">
         <header class="post-header">
@@ -25,16 +41,27 @@ layout: default
                 {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
               {% endif %}
 
-              {% include figure.html 
-              path=profile_image_path 
-              class=profile_image_class
-              alt=page.profile.image -%}
+              <!-- Wrap the profile image in a CV download link -->
+              <a href="https://jeduapf.github.io/assets/pdf/CV.pdf"
+                download="CV_Jose_ALVES_en_fr_pt.pdf"
+                title="Download my CV">
+                {% include figure.html 
+                  path=profile_image_path 
+                  class=profile_image_class
+                  alt=page.profile.image -%}
+              </a>
             {% endif -%}
             {%- if page.profile.address %}
             <div class="address">
               {{ page.profile.address }}
             </div>
             {%- endif %}
+
+          </div>
+
+
+
+
           </div>
           {%- endif %}
 
@@ -46,16 +73,19 @@ layout: default
           <!-- News -->
           {%- include news.html %}
           {%- endif %}
+
           {% if page.selected_papers -%}
             <!-- Selected papers -->
             {%- include selected_papers.html %}
           {%- endif %}
           {%- if page.social %}
+
           <!-- Social -->
           <div class="social">
             <div class="contact-icons">
             {% include social.html %}
             </div>
+    
 
             <div class="contact-note">
               {{ site.contact_note }}

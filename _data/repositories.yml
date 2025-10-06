@@ -1,9 +1,6 @@
 github_users:
-  - beafarah
+  - jeduapf
 
 github_repos:
-  - beafarah/dens-estimation-at-quantile
-  - beafarah/survival
-  - beafarah/ML-projects 
-  - beafarah/NLP_Intent_Classification
-  - beafarah/cloudcomputingensae
+  - jeduapf/PINN-SPRING
+  - jeduapf/TCC

@@ -3,8 +3,8 @@
  ******************************************************************************/
 
 :root {
-  --global-bg-color: #0057B8;        /* MINES Paris PSL blue background */
-  // --global-bg-color: #{$white-color};
+  // --global-bg-color: #0057B8;        /* MINES Paris PSL blue background */
+  --global-bg-color: #{$white-color};
   --global-code-bg-color: #{$code-bg-color-light};
   --global-text-color: #{$black-color};
   --global-text-color-light: #{$grey-color};
