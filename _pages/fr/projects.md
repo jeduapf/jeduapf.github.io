@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Projects
-lang: en
-permalink: /en/projects/
-description: A growing collection of your cool projects.
-nav: true
+title: Projets
+lang: fr
+permalink: /fr/projects/
+description: Une collection de quelques projets intéressants.
+nav: false
 nav_order: 2
-display_categories: [work, fun]
+display_categories: [travail, cool]
 horizontal: false
 ---
 
