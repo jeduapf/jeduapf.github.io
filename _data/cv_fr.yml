@@ -8,7 +8,7 @@
     - name: Langues
       value: Portugais (C2), Français (C1), Anglais (C1), Chinois (A1)
     - name: Contact
-      value: jeduapf 'at' gmail 'dot' com
+      value: jeduapf@gmail.com
     - name: GitHub
       value: github.com/jeduapf
     - name: LinkedIn
@@ -21,16 +21,16 @@
       institution: Mines Paris – PSL (en partenariat avec EDHEC & CREDEN)
       year: 2024 - 2025
       description:
-        - Axé sur la modélisation financière, les statistiques appliquées, l’optimisation stochastique et l’économie de l’énergie
-        - Alternance chez EDF : outils quantitatifs pour l’optimisation des coûts, l’électrification et l’évaluation technico-économique
+        - "Axé sur la modélisation financière, les statistiques appliquées, l’optimisation stochastique et l’économie de l’énergie"
+        - "Alternance chez EDF : outils quantitatifs pour l’optimisation des coûts, l’électrification et l’évaluation technico-économique"
     
     - title: Double Diplôme d’Ingénieur
       institution: École Centrale de Nantes (France) & UNICAMP (Brésil)
       year: 2016 - 2023
       description:
-        - Centrale Nantes : ingénierie généraliste, spécialisation en analyse de données, traitement du signal et de l’image
-        - UNICAMP : Génie électrique, une des meilleures universités d’Amérique latine
-        - Lauréat du Prix CREA-SP 2022 comme meilleur étudiant en génie électrique
+        - "Centrale Nantes : ingénierie généraliste, spécialisation en analyse de données, traitement du signal et de l’image"
+        - "UNICAMP : Génie électrique, une des meilleures universités d’Amérique latine"
+        - "Lauréat du Prix CREA-SP 2022 comme meilleur étudiant en génie électrique"
 
 - title: Expérience Professionnelle
   type: time_table
@@ -39,53 +39,53 @@
       institution: EDF, La Défense & Sophia Antipolis
       year: 2024 - 2025
       description:
-        - Réalisation d’études opérationnelles et d’analyses technico-économiques pour des projets de transition énergétique à l’échelle d’un quartier à une région
-        - Évaluation d’indicateurs clés : prix du gaz, taux d’électrification industrielle, consommation énergétique des véhicules, coûts opérationnels
-        - Développement d’outils de modélisation pour l’analyse de scénarios énergétiques prospectifs
+        - "Réalisation d’études opérationnelles et d’analyses technico-économiques pour des projets de transition énergétique à l’échelle d’un quartier à une région"
+        - "Évaluation d’indicateurs clés : prix du gaz, taux d’électrification industrielle, consommation énergétique des véhicules, coûts opérationnels"
+        - "Développement d’outils de modélisation pour l’analyse de scénarios énergétiques prospectifs"
     
     - title: Chercheur en Cybersécurité
       institution: INSA Lyon
       year: 2024
       description:
-        - Intégration de réseaux de neurones informés par la physique (PINNs) dans la détection des cyberattaques
-        - Validation des méthodes par tests automatisés
+        - "Intégration de réseaux de neurones informés par la physique (PINNs) dans la détection des cyberattaques"
+        - "Validation des méthodes par tests automatisés"
     
     - title: Analyste de Données
       institution: Eldorado/Motorola
       year: 2021 - 2023
       description:
-        - Conception de modèles d’IA pour la détection de défauts sur les réseaux 4G/5G
-        - Mise en place de pipelines automatisés pour l’alerte en cas de défaut
-        - Développement de variables prédictives des préférences des consommateurs via Google Cloud Platform
+        - "Conception de modèles d’IA pour la détection de défauts sur les réseaux 4G/5G"
+        - "Mise en place de pipelines automatisés pour l’alerte en cas de défaut"
+        - "Développement de variables prédictives des préférences des consommateurs via Google Cloud Platform"
     
     - title: Chercheur en Intelligence Artificielle
       institution: Fiberwork
       year: 2021
       description:
-        - Développement d’algorithmes de surveillance via signaux de fibres optiques (DAS)
+        - "Développement d’algorithmes de surveillance via signaux de fibres optiques (DAS)"
     
     - title: Chercheur Réseaux HVDC
       institution: SuperGrid
       year: 2020 - 2021
       description:
-        - Développement d’un logiciel de surveillance de réseaux HVDC basé sur la théorie de l’action et la planification automatique
-        - Création d’un modèle simplifié de réseaux HVDC avec convertisseurs modulaires multiniveaux
+        - "Développement d’un logiciel de surveillance de réseaux HVDC basé sur la théorie de l’action et la planification automatique"
+        - "Création d’un modèle simplifié de réseaux HVDC avec convertisseurs modulaires multiniveaux"
 
 - title: Compétences
   type: list
   contents:
-    - Programmation : Python, Matlab, C/C++, SQL
-    - Outils : PowerBI, Tableau, Autocad, SolidWorks, Quartus, PSpice, Simulink, Eagle
-    - Bureautique : Excel, Word, PowerPoint
-    - Méthodes : Git, JIRA
-    - Permis B
+    - "Programmation : Python, Matlab, C/C++, SQL"
+    - "Outils : PowerBI, Tableau, Autocad, SolidWorks, Quartus, PSpice, Simulink, Eagle"
+    - "Bureautique : Excel, Word, PowerPoint"
+    - "Méthodes : Git, JIRA"
+    - "Permis B"
 
 - title: Centres d’Intérêt
   type: list
   contents:
-    - Karaté (ceinture noire – fondateur du club UNICAMP)
-    - Boxe
-    - Volleyball
-    - Échecs
-    - Jeux vidéo
-    - Cuisine
+    - "Karaté (ceinture noire – fondateur du club UNICAMP)"
+    - "Boxe"
+    - "Volleyball"
+    - "Échecs"
+    - "Jeux vidéo"
+    - "Cuisine"
