@@ -26,6 +26,7 @@ $$
 $$
 
 où :
+
 - \(m\) est la masse du véhicule,  
 - \(v\) sa vitesse instantanée,  
 - \(\mu_d\) le coefficient de frottement,  
