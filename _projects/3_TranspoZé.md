@@ -27,14 +27,17 @@ $$
 
 où :
 
-- \(m\) est la masse du véhicule,  
-- \(v\) sa vitesse instantanée,  
-- \(\mu_d\) le coefficient de frottement,  
-- \(\theta\) l’inclinaison de la route,  
-- \(\rho_{ar}\) la densité de l’air (fonction de l’altitude),  
-- \(C_d\) le coefficient aérodynamique,  
-- \(A\) la surface frontale,  
-- et \(P_{elim}\) la puissance perdue (ex. accessoires, frottements internes).
+où :
+
+- \( m \) est la masse du véhicule  
+- \( v \) sa vitesse instantanée  
+- \( \mu_d \) le coefficient de frottement  
+- \( \theta \) l’inclinaison de la route  
+- \( \rho_{ar} \) la densité de l’air  
+- \( C_d \) le coefficient aérodynamique  
+- \( A \) la surface frontale  
+- \( P_{elim} \) la puissance perdue
+
 ---
 
 ## Données d’entrée
