@@ -26,24 +26,14 @@ $$
 $$
 
 où :
-- $m$ est la masse du véhicule,  
-- $v$ sa vitesse instantanée,  
-- $\mu_d$ le coefficient de frottement,  
-- $\theta$ l’inclinaison de la route,  
-- $\rho_{ar}$ la densité de l’air (fonction de l’altitude),  
-- $C_d$ le coefficient aérodynamique,  
-- $A$ la surface frontale,  
-- et $P_{elim}$ la puissance perdue (ex. accessoires, frottements internes).
-
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.html path="assets/img/transpoze_equation.png" title="Modèle énergétique de TranspoZé" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-<div class="caption">
-    Figure 1 : Modélisation physique de la consommation d’énergie par unité de distance.
-</div>
-
+- \(m\) est la masse du véhicule,  
+- \(v\) sa vitesse instantanée,  
+- \(\mu_d\) le coefficient de frottement,  
+- \(\theta\) l’inclinaison de la route,  
+- \(\rho_{ar}\) la densité de l’air (fonction de l’altitude),  
+- \(C_d\) le coefficient aérodynamique,  
+- \(A\) la surface frontale,  
+- et \(P_{elim}\) la puissance perdue (ex. accessoires, frottements internes).
 ---
 
 ## Données d’entrée

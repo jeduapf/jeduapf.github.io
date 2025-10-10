@@ -123,14 +123,14 @@ Les portefeuilles sont naturellement diversifiés.
 Sous contrainte carbone stricte, les secteurs **Énergie** et **Services publics** deviennent quasi inexistants.  
 La stratégie **Risk Parity** tend à équilibrer les secteurs, même sans contrainte d’égalisation imposée.
 
-<div class="row">
-  <div class="col-12 col-md-6 mt-3">
-    {% include figure.html path="assets/img/sector_rp_02.png" title="Répartition sectorielle RP (ξ = 0.2)" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-12 col-md-6 mt-3">
-    {% include figure.html path="assets/img/sector_de_08.png" title="Répartition sectorielle DE (ξ = 0.8)" class="img-fluid rounded z-depth-1" %}
-  </div>
+<div class="mt-3">
+  {% include figure.html path="assets/img/sector_rp_02.png" title="Répartition sectorielle RP (ξ = 0.2)" class="img-fluid rounded z-depth-1" %}
 </div>
+
+<div class="mt-3">
+  {% include figure.html path="assets/img/sector_de_08.png" title="Répartition sectorielle DE (ξ = 0.8)" class="img-fluid rounded z-depth-1" %}
+</div>
+
 <div class="caption">
     Figure 5 : Composition sectorielle des portefeuilles selon le niveau de décarbonation.
 </div>
