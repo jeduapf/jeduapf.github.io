@@ -2,7 +2,7 @@
 layout: page
 title: Décarbonisation du S&P500
 description: Stratégies d’investissement à faibles émissions de carbone
-img: /assets/img/AT.jpg
+img: assets/img/AT.png
 lang: fr
 importance: 3
 category: travail
@@ -39,19 +39,22 @@ Quatre profils d’investissement ont été définis :
 Les performances des portefeuilles ont été testées sur **30 ans de données (1989–2019)** avec des mises à jour trimestrielles des poids optimaux.
 
 <div class="row">
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/te_02.png" title="Erreur de suivi pour ξ = 0.2" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/te_05.png" title="Erreur de suivi pour ξ = 0.5" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+</div>
+<div class="row">
+  <div class="col-12 mt-3">
     {% include figure.html path="assets/img/te_08.png" title="Erreur de suivi pour ξ = 0.8" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 <div class="caption">
     Figure 1 : Erreur de suivi (Tracking Error) pour différentes contraintes carbone.
 </div>
+
 
 ---
 
@@ -61,13 +64,15 @@ Les portefeuilles **Global Minimum Variance (GMV)** et **Tracking Error (TE)** a
 À l’inverse, la stratégie **Également pondérée (EW)** présente la variabilité la plus importante, notamment sous contrainte carbone stricte (ξ = 0.2).
 
 <div class="row">
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/returns_vol_02.png" title="Rendement et volatilité (ξ = 0.2)" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/returns_vol_05.png" title="Rendement et volatilité (ξ = 0.5)" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+</div>
+<div class="row">
+  <div class="col-12 mt-3">
     {% include figure.html path="assets/img/returns_vol_08.png" title="Rendement et volatilité (ξ = 0.8)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
@@ -75,14 +80,15 @@ Les portefeuilles **Global Minimum Variance (GMV)** et **Tracking Error (TE)** a
     Figure 2 : Rendements et volatilités annualisés selon le niveau de contrainte carbone.
 </div>
 
+
 ---
 
 ### Croissance cumulée
 
 Une simulation d’investissement de **1 000 $** au 1er janvier 1989 montre que toutes les stratégies surpassent l’indice S&P500 à long terme, même sous fortes contraintes carbone.
 
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10 mt-3">
     {% include figure.html path="assets/img/Portifolios_cumulative.png" title="Croissance cumulée des portefeuilles" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
@@ -98,10 +104,10 @@ Les ratios de Sharpe confirment la solidité des stratégies, avec des valeurs s
 Une contrainte carbone plus faible (ξ = 0.8) tend à améliorer le ratio de Sharpe.
 
 <div class="row">
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/sharpe_02.png" title="Sharpe (ξ = 0.2)" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/sharpe_08.png" title="Sharpe (ξ = 0.8)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
@@ -118,10 +124,10 @@ Sous contrainte carbone stricte, les secteurs **Énergie** et **Services publics
 La stratégie **Risk Parity** tend à équilibrer les secteurs, même sans contrainte d’égalisation imposée.
 
 <div class="row">
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/sector_rp_02.png" title="Répartition sectorielle RP (ξ = 0.2)" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm mt-3 mt-md-0">
+  <div class="col-12 col-md-6 mt-3">
     {% include figure.html path="assets/img/sector_de_08.png" title="Répartition sectorielle DE (ξ = 0.8)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
