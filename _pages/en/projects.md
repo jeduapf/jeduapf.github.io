@@ -2,6 +2,10 @@
 layout: page
 title: Projects
 lang: en
+key: projects
+translations:
+  fr: /fr/about/
+  pt: /pt/about/
 permalink: /en/projects/
 description: A growing collection of your cool projects.
 nav: true

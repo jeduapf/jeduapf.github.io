@@ -3,8 +3,11 @@ layout: about
 title: sobre
 lang: pt
 permalink: /pt/about/
+translations:
+  en: /en/about/
+  fr: /fr/about/
 nav: false
-
+key: about
 profile:
   align: right
   image: CV.png

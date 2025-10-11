@@ -3,6 +3,10 @@ layout: page
 permalink: /pt/repositories/
 title: GitHub
 lang: pt
+key: repo
+translations:
+  en: /en/about/
+  fr: /fr/about/
 description: Uma visão geral rápida das minhas contribuições open-source.
 nav: false
 nav_order: 3

@@ -1,8 +1,12 @@
 ---
 layout: page
-permalink: /en/repositories/
 title: GitHub
-lang: en
+lang: 
+key: repo
+permalink: /en/repositories/
+translations:
+  fr: /fr/about/
+  pt: /pt/about/
 description: A quick overview of my open-source contributions.
 nav: true
 nav_order: 3

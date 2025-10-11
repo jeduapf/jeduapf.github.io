@@ -2,9 +2,12 @@
 layout: about
 title: à propos
 permalink: /fr/about/
+translations:
+  en: /en/about/
+  pt: /pt/about/
 nav: false
 lang: fr
-
+key: about
 profile:
   align: right
   image: CV.png

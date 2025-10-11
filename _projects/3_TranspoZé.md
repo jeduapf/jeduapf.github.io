@@ -29,14 +29,17 @@ où :
 
 où :
 
-- \( m \) est la masse du véhicule  
-- \( v \) sa vitesse instantanée  
-- \( \mu_d \) le coefficient de frottement  
-- \( \theta \) l’inclinaison de la route  
-- \( \rho_{ar} \) la densité de l’air  
-- \( C_d \) le coefficient aérodynamique  
-- \( A \) la surface frontale  
-- \( P_{elim} \) la puissance perdue
+$$
+m \text{ est la masse du véhicule} \\
+v \text{ sa vitesse instantanée} \\
+\mu_d \text{ le coefficient de frottement} \\
+\theta \text{ l’inclinaison de la route} \\
+\rho_{ar} \text{ la densité de l’air} \\
+C_d \text{ le coefficient aérodynamique} \\
+A \text{ la surface frontale} \\
+P_{elim} \text{ la puissance perdue}
+$$
+
 
 ---
 

@@ -68,11 +68,13 @@
           <div class="lang-switcher d-flex align-items-center mr-3">
             {% assign langs = site.languages %}
             {% for l in langs %}
-              {% assign path_without_lang = page.url | remove_first: '/' | split:'/' | slice:1,10 | join:'/' %}
-              <a href="/{{ l }}/{{ path_without_lang }}"
-                class="lang-btn {% if l == page.lang %}active{% endif %}">
-                {{ l | upcase }}
-              </a>
+              {% assign target_page = site.pages | where: "key", page.key | where: "lang", l | first %}
+              {% if target_page %}
+                <a href="{{ target_page.url | relative_url }}"
+                  class="lang-btn {% if l == page.lang %}active{% endif %}">
+                  {{ l | upcase }}
+                </a>
+              {% endif %}
             {% endfor %}
           </div>
 

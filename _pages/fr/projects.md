@@ -2,7 +2,11 @@
 layout: page
 title: Projets
 lang: fr
+key: projects
 permalink: /fr/projects/
+translations:
+  en: /en/about/
+  pt: /pt/about/
 description: Une collection de quelques projets intéressants.
 nav: false
 nav_order: 2
