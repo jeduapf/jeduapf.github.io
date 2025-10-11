@@ -4,8 +4,8 @@ title: Projects
 lang: en
 key: projects
 translations:
-  fr: /fr/about/
-  pt: /pt/about/
+  fr: /fr/projects/
+  pt: /pt/projects/
 permalink: /en/projects/
 description: A growing collection of your cool projects.
 nav: true

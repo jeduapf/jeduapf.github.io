@@ -2,7 +2,7 @@
 layout: about
 title: Profile
 lang: en
-nav: 
+nav: true
 key: about
 permalink: /en/about/
 translations:

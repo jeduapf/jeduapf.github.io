@@ -5,8 +5,8 @@ lang: fr
 key: projects
 permalink: /fr/projects/
 translations:
-  en: /en/about/
-  pt: /pt/about/
+  en: /en/projects/
+  pt: /pt/projects/
 description: Une collection de quelques projets intéressants.
 nav: false
 nav_order: 2

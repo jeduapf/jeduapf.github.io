@@ -2,13 +2,13 @@
 layout: page
 permalink: /fr/repositories/
 title: GitHub
-key: repo
+key: repositories
 description: Un aperçu rapide de mes contributions open-source.
 nav: false
 lang: fr
 translations:
-  en: /en/about/
-  pt: /pt/about/
+  en: /en/repositories/
+  pt: /pt/repositories/
 nav_order: 3
 ---
 
