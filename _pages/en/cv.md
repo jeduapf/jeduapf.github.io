@@ -1,6 +1,6 @@
 ---
 layout: cv
-title: 
+title: CV
 key: cv
 lang: en
 permalink: /en/cv/

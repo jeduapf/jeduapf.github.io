@@ -1,6 +1,6 @@
 ---
 layout: about
-title: sobre
+title: Sobre
 lang: pt
 permalink: /pt/about/
 translations:

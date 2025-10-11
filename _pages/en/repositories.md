@@ -1,7 +1,7 @@
 ---
 layout: page
 title: GitHub
-lang: 
+lang: en
 key: repositories
 permalink: /en/repositories/
 translations:
