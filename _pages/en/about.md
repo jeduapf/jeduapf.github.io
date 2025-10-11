@@ -4,10 +4,12 @@ title: Profile
 lang: en
 nav: true
 key: about
+
 permalink: /en/about/
 translations:
   fr: /fr/about/
   pt: /pt/about/
+
 profile:
   align: right
   image: CV.png
