@@ -10,10 +10,10 @@ category: travail
 
 ## Introduction
 
-**TranspoZé** est un projet d’ingénierie et d’analyse énergétique visant à modéliser et optimiser la consommation d’énergie des véhicules thermiques dans une optique de **décarbonation du transport routier**.  
-Conçu dans le cadre du mastère **OSE — Mines Paris – PSL**, le projet combine une approche **physique, mathématique et algorithmique** pour simuler les déplacements, estimer la consommation et analyser les leviers d’amélioration énergétique.
+**TranspoZé** est un projet d’analyse énergétique visant à modéliser la consommation d’énergie des véhicules thermiques et éléctriques dans une optique de **décarbonation du transport routier**.  
+Conçu dans le cadre de mon alternance chez EDF, le projet combine une approche **physique, mathématique et algorithmique** pour simuler les déplacements, estimer la consommation et analyser les leviers d’amélioration énergétique.
 
-L’objectif est de proposer une méthode reproductible permettant de **quantifier les émissions et la dépense énergétique** d’un véhicule en fonction de son profil de conduite, du relief, et des conditions environnementales.
+L’objectif est de proposer une méthode reproductible permettant de **quantifier les émissions et la dépense énergétique** d’un véhicule en fonction de son profil de conduite, du relief et d'autres conditions du véhicules ou de la route.
 
 ---
 
@@ -27,50 +27,31 @@ $$
 
 où :
 
-$$
-m \text{ est la masse du véhicule}
-$$
+$$m$$ est la masse du véhicule
 
-$$
-v \text{ sa vitesse instantanée} 
-$$
+$$v$$ sa vitesse instantanée
 
-$$
-\mu_d \text{ le coefficient de frottement} 
-$$
+$$\mu_d$$ le coefficient de frottement
 
-$$
-\theta \text{ l’inclinaison de la route} 
-$$
+$$\theta$$ l’inclinaison de la route 
 
-$$
-\rho_{ar} \text{ la densité de l’air} 
-$$
+$$\rho_{ar}$$  la densité de l’air
 
-$$
-C_d \text{ le coefficient aérodynamique} 
-$$
+$$C_d$$ le coefficient aérodynamique
 
-$$
-A \text{ la surface frontale} 
-$$
+$$A$$ la surface frontale
 
-$$
-P_{elim} \text{ la puissance perdue}
-$$
-
+$$P_{elim}$$ la puissance perdue
 
 ---
 
 ## Données d’entrée
 
-Le modèle repose sur des **données de trajet détaillées** comprenant :
+Le modèle repose sur des **données de trajet détaillées** récupérées de la base française [BD Topo](https://geoservices.ign.fr/bdtopo), comprenant :  
 - le profil d’altitude,  
-- les vitesses maximales par segment,  
-- les coefficients de frottement,  
-- et les arrêts complets (feux, intersections, etc.).
+- les vitesses maximales par segment.  
 
-L’altitude permet d’estimer la **densité de l’air**, tandis que le **profil de vitesse** est ajusté par un **régulateur PI** simulant une conduite réaliste.
+L’altitude permet d’estimer la **densité de l’air**, tandis que les **vitesses maximales** sont **ajustées** pour estimer un **profil de vitesses** simulant une conduite réaliste.
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
@@ -94,10 +75,11 @@ Les routes présentant des pentes supérieures à **5 %** entraînent une hausse
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="assets/img/transpoze_energy.png" title="Comparaison énergétique selon le relief" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="assets/img/transpoze_energy.png" title="Consommation selon le style de conduite" class="img-fluid rounded z-depth-1" %}
+    {% include figure.html 
+       path="assets/img/transpoze_energy.png" 
+       title="Comparaison énergétique selon le relief et vitesse" 
+       class="img-fluid rounded z-depth-1" 
+    %}
   </div>
 </div>
 <div class="caption">
@@ -107,5 +89,5 @@ Les routes présentant des pentes supérieures à **5 %** entraînent une hausse
 
 ---
 <div class="caption">
-Projet TranspoZé — Mastère OSE, Mines Paris – PSL, 2025.
+Projet TranspoZé — Mastère OSE, Mines Paris – PSL, 2025. Réalisé dans le cadre de mon alternance chez EDF.
 </div>
