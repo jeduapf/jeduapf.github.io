@@ -145,18 +145,23 @@ Comme $$\sigma^2_{SP500}$$ est constante, elle n’intervient pas dans l’optim
 Les performances des portefeuilles ont été testées sur **30 ans de données (1989–2019)** avec des mises à jour trimestrielles des poids optimaux.
 
 <div class="row">
-  <div class="col-12 col-md-6 mt-3">
+  <div class="col-12 col-md-6 mt-3 text-center">
     {% include figure.html path="assets/img/te_02.png" title="Erreur de suivi pour ξ = 0.2" class="img-fluid rounded z-depth-1" %}
+    <div class="figure-caption">Erreur de suivi pour ξ = 0.2</div>
   </div>
-  <div class="col-12 col-md-6 mt-3">
+  <div class="col-12 col-md-6 mt-3 text-center">
     {% include figure.html path="assets/img/te_05.png" title="Erreur de suivi pour ξ = 0.5" class="img-fluid rounded z-depth-1" %}
+    <div class="figure-caption">Erreur de suivi pour ξ = 0.5</div>
   </div>
 </div>
+
 <div class="row">
-  <div class="col-12 mt-3">
+  <div class="col-12 mt-3 text-center">
     {% include figure.html path="assets/img/te_08.png" title="Erreur de suivi pour ξ = 0.8" class="img-fluid rounded z-depth-1" %}
+    <div class="figure-caption">Erreur de suivi pour ξ = 0.8</div>
   </div>
 </div>
+
 <div class="caption">
     Figure 1 : Erreur de suivi (Tracking Error) pour différentes contraintes carbone.
 </div>
