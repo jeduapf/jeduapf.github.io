@@ -11,7 +11,7 @@ category: work
 ## Introduction
 
 This project analyzes and optimizes the **daily planning of electricity generation** using **Mixed-Integer Linear Programming (MILP)**.  
-Developed by **José ALVES**, this work was carried out as part of the course taught by [**Sophie DEMASSEY**](https://sofdem.github.io/) at the **École des Mines de Paris (PSL)**.  
+Developed by **José ALVES**, this work was carried out as part of the course taught by [Sophie DEMASSEY](https://sofdem.github.io/) at the **École des Mines de Paris (PSL)**.  
 
 The project studies different configurations of power plants (thermal and hydroelectric) in order to **minimize production costs** while satisfying **demand** and **reserve constraints**.  
 
