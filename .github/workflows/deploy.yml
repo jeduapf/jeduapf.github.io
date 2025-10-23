@@ -60,16 +60,17 @@ jobs:
     #       echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
     #     fi
     #     echo "::set-output name=DEPLOY_BRANCH::gh-pages"
-    
+
     # If no changes to commit, git commit will return non-zero exit code
     # - name: Fix permissions
     #   run: |
     #     chmod a+x bin/*
     #     git commit -am "add execute permission to bin/deploy"  
-    - name: Fix permissions
+    - name: Fix permissions and commit
       run: |
         chmod a+x bin/*
-        git commit -am "add execute permission to bin/deploy" || echo "nothing to commit"
+        git add bin/*
+        git commit -m "Update execute permissions and bin scripts" || echo "nothing to commit"
     - name: Deploy website 
       run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
                     --src ${{ steps.setup.outputs.SRC_BRANCH }} 
