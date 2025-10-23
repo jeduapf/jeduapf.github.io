@@ -24,6 +24,8 @@ languages: ["en", "fr", "pt"]   # <--- ADD THIS
 default_lang: "en"              # <--- optional: choose your default
 icon: cartoon_me.png  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
+
+repository: jeduapf/jeduapf.github.io
 url: https://jeduapf.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
 last_updated: true # set to true if you want to display last updated in the footer
