@@ -14,64 +14,65 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2.2'
-    - name: Enable bundler cache
-      uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Install deps
-      run: |
-        gem install bundler
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-        npm install -g mermaid.cli
-    - name: Setup deploy options
-      id: setup
-      run: |
-        git config --global user.name "GitHub Action"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      # Checkout full history so Jekyll metadata works
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-        if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
-          echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> "$GITHUB_OUTPUT"
-          echo "NO_PUSH=--no-push" >> "$GITHUB_OUTPUT"
-        elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
-          echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
-        fi
+      # Setup Ruby
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
 
-        echo "DEPLOY_BRANCH=gh-pages" >> "$GITHUB_OUTPUT"
-    # Deprecated syntax
-    # - name: Setup deploy options
-    #   id: setup
-    #   run: |
-    #     git config --global user.name "GitHub Action"
-    #     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    #     if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
-    #       echo "::set-output name=SRC_BRANCH::${GITHUB_HEAD_REF}"
-    #       echo "::set-output name=NO_PUSH::--no-push"
-    #     elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
-    #       echo "::set-output name=SRC_BRANCH::${GITHUB_REF#refs/heads/}"
-    #     fi
-    #     echo "::set-output name=DEPLOY_BRANCH::gh-pages"
+      # Enable bundler cache
+      - name: Enable bundler cache
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-    # If no changes to commit, git commit will return non-zero exit code
-    # - name: Fix permissions
-    #   run: |
-    #     chmod a+x bin/*
-    #     git commit -am "add execute permission to bin/deploy"  
-    - name: Fix permissions and commit
-      run: |
-        chmod a+x bin/*
-        git add bin/*
-        git commit -m "Update execute permissions and bin scripts" || echo "nothing to commit"
-    - name: Deploy website 
-      run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
-                    --src ${{ steps.setup.outputs.SRC_BRANCH }} 
-                    --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
+      # Install dependencies
+      - name: Install deps
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          npm install -g mermaid.cli
+
+      # Setup deploy options and outputs
+      - name: Setup deploy options
+        id: setup
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then
+            echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> "$GITHUB_OUTPUT"
+            echo "NO_PUSH=--no-push" >> "$GITHUB_OUTPUT"
+          elif [[ ${GITHUB_REF} = refs/heads/* ]]; then
+            echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "DEPLOY_BRANCH=gh-pages" >> "$GITHUB_OUTPUT"
+
+      # Commit bin/ changes if needed
+      - name: Fix permissions and commit
+        run: |
+          chmod a+x bin/*
+          git add bin/*
+          git diff-index --quiet HEAD -- || git commit -m "Update execute permissions and bin scripts"
+
+      # Set GitHub Pages repo environment for Jekyll
+      - name: Set GitHub Pages environment
+        run: echo "PAGES_REPO_NWO=${GITHUB_REPOSITORY}" >> $GITHUB_ENV
+
+      # Deploy website
+      - name: Deploy website
+        run: |
+          yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }} \
+                                --src ${{ steps.setup.outputs.SRC_BRANCH }} \
+                                --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }}
