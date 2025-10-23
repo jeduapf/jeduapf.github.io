@@ -10,9 +10,12 @@ category: travail
 
 ## Introduction
 
-Ce projet analyse et optimise la **planification journalière de la production d'électricité** en utilisant la **programmation linéaire en nombres entiers mixtes (MILP)**. Développé par **José Eduardo Alves Pereira Filho**, ce travail étudie différentes configurations de centrales électriques (thermiques et hydroélectriques) pour minimiser les coûts de production tout en respectant les contraintes de demande et de réserve.
+Ce projet analyse et optimise la **planification journalière de la production d'électricité** en utilisant la **programmation linéaire en nombres entiers mixtes (MILP)**.  
+Développé par **José ALVES***, ce travail a été réalisé dans le cadre du cours de [**Sophie DEMASSEY**](https://sofdem.github.io/) à l’**École des Mines de Paris (PSL)**.  
 
-L'objectif principal est de déterminer le nombre optimal de centrales à activer et leurs puissances à chaque période de la journée, en tenant compte des coûts de fonctionnement, des coûts de démarrage et des contraintes opérationnelles.
+Le projet étudie différentes configurations de centrales électriques (thermiques et hydroélectriques) afin de **minimiser les coûts de production** tout en respectant les contraintes de **demande** et de **réserve**.  
+
+L'objectif principal est de déterminer le **nombre optimal de centrales à activer** et leurs **puissances** à chaque période de la journée, en tenant compte des **coûts de fonctionnement**, des **coûts de démarrage** et des **contraintes opérationnelles**.
 
 ---
 

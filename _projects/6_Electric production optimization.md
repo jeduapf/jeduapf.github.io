@@ -10,9 +10,12 @@ category: work
 
 ## Introduction
 
-This project analyzes and optimizes the **daily electricity generation planning** using **Mixed-Integer Linear Programming (MILP)**. Developed by **José Eduardo Alves Pereira Filho**, this work studies different configurations of power plants (thermal and hydroelectric) to minimize production costs while meeting demand and reserve constraints.
+This project analyzes and optimizes the **daily planning of electricity generation** using **Mixed-Integer Linear Programming (MILP)**.  
+Developed by **José ALVES**, this work was carried out as part of the course taught by [**Sophie DEMASSEY**](https://sofdem.github.io/) at the **École des Mines de Paris (PSL)**.  
 
-The main goal is to determine the optimal number of power plants to activate and their generation levels at each period of the day, taking into account operating costs, startup costs, and operational constraints.
+The project studies different configurations of power plants (thermal and hydroelectric) in order to **minimize production costs** while satisfying **demand** and **reserve constraints**.  
+
+The main objective is to determine the **optimal number of plants to operate** and their **power outputs** at each time period of the day, considering **operating costs**, **startup costs**, and **operational constraints**.
 
 ---
 
