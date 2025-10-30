@@ -5,7 +5,7 @@ description: A local full-stack restaurant system hosted over Wi-Fi, built for s
 img: assets/img/zeco_simple.png
 lang: en
 importance: 1
-category: cool
+category: fun
 ---
 
 ## Introduction
