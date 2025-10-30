@@ -79,7 +79,11 @@ The goal is to make installation **as easy as plugging in a coffee machine** ☕
 > - Waiters and kitchen connect through WebSockets  
 > - Central computer runs Docker stack and database  
 
-![Architecture placeholder](assets/img/restaurant_system_architecture.png)
+
+<div class="mt-3 text-center">
+  {% include figure.html path="assets/img/restaurant_system_architecture.png" title="Data flow simplified diagram" class="img-fluid rounded z-depth-1" %}
+  <div class="figure-caption">Data flow simplified diagram</div>
+</div>
 
 ---
 
