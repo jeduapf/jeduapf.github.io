@@ -28,7 +28,7 @@ It manages:
 - Tables, orders, and menus  
 - Staff authentication  
 - Communication between clients, waiters, and the kitchen  
-- Storage via an internal database (SQLite inside a Docker container)
+- Storage via an internal database (SQLite for the moment)
 
 ---
 
@@ -70,20 +70,92 @@ The goal is to make installation **as easy as plugging in a coffee machine** ☕
 
 ---
 
-## 🗺️ System Architecture Illustration
+## 🧩 Database Schema (ER Diagram)
 
-*Diagram showing data flow between the client phone, waiter tablet, kitchen display, and local server.*
+Below is the complete **Entity–Relationship Diagram** showing how users, orders, and items connect — including analytical extensions like costs, promotions, and inventory logs.
 
-> **Suggested diagram:**  
-> - Clients connect via Wi-Fi to the local server (QR code)  
-> - Waiters and kitchen connect through WebSockets  
-> - Central computer runs Docker stack and database  
+```mermaid
+erDiagram
+    USERS {
+        int id PK
+        string username
+        string hashed_password
+        string email
+        int age 
+        bool gender
+        string role
+        int table_id FK
+    }
 
+    TABLES {
+        int id PK
+        int number
+        int capacity
+        string status
+        string location_zone
+        datetime reservation_start
+    }
 
-<div class="mt-3 text-center">
-  {% include figure.html path="assets/img/restaurant_system_architecture.png" title="Data flow simplified diagram" class="img-fluid rounded z-depth-1" %}
-  <div class="figure-caption">Data flow simplified diagram</div>
-</div>
+    ITEMS {
+        int id PK
+        string name
+        int stock
+        float price
+        float base_cost
+        float tax_rate
+        string category
+        boolean available
+        datetime last_updated
+    }
+
+    ORDERS {
+        int id PK
+        int user_id FK
+        int table_id FK
+        string status
+        datetime created_at
+        datetime finished_at
+        string specifications
+        float total_amount
+        float discount_applied
+        string payment_method
+        string promo_code FK
+    }
+
+    ORDER_ITEMS {
+        int order_id FK
+        int item_id FK
+        int quantity
+        float item_price
+        float item_cost
+    }
+
+    PROMOTIONS {
+        int id PK
+        string code
+        string description
+        float discount_percentage
+        string target_category
+        datetime start_date
+        datetime end_date
+    }
+
+    INVENTORY_LOGS {
+        int id PK
+        int item_id FK
+        datetime timestamp
+        int stock_change
+        string reason
+    }
+
+    USERS ||--o{ ORDERS : "places"
+    TABLES ||--o{ USERS : "assigned to"
+    TABLES ||--o{ ORDERS : "serves"
+    ORDERS ||--|{ ORDER_ITEMS : "contains"
+    ITEMS ||--|{ ORDER_ITEMS : "part of"
+    PROMOTIONS ||--o{ ORDERS : "applied to"
+    ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
+```
 
 ---
 
