@@ -186,12 +186,13 @@ Below is the **request and role-based dataflow** for both public clients and aut
 
       %% === Database ===
       DB["(Orders, Items, Tables, Users)"]
+      SPDB["(Items, Tables)"]
 
       %% === Roles branching ===
       RoleCheck --> DB
       
       %% === Shared backend access ===
-      PublicAPI --> DB
+      PublicAPI --> SPDB
 </div>
 
 ---
