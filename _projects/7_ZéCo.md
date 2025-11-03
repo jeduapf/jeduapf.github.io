@@ -75,86 +75,123 @@ The goal is to make installation **as easy as plugging in a coffee machine** ☕
 Below is the complete **Entity–Relationship Diagram** showing how users, orders, and items connect — including analytical extensions like costs, promotions, and inventory logs.
 
 <div class="mermaid">
-erDiagram
-    USERS {
-        int id PK
-        string username
-        string hashed_password
-        string email
-        int age 
-        bool gender
-        string role
-        int table_id FK
-    }
+   erDiagram
+      USERS {
+         int id PK
+         string username
+         string hashed_password
+         string email
+         int age 
+         bool gender
+         string role
+         int table_id FK
+      }
 
-    TABLES {
-        int id PK
-        int number
-        int capacity
-        string status
-        string location_zone
-        datetime reservation_start
-    }
+      TABLES {
+         int id PK
+         int number
+         int capacity
+         string status
+         string location_zone
+         datetime reservation_start
+      }
 
-    ITEMS {
-        int id PK
-        string name
-        int stock
-        float price
-        float base_cost
-        float tax_rate
-        string category
-        boolean available
-        datetime last_updated
-    }
+      ITEMS {
+         int id PK
+         string name
+         int stock
+         float price
+         float base_cost
+         float tax_rate
+         string category
+         boolean available
+         datetime last_updated
+      }
 
-    ORDERS {
-        int id PK
-        int user_id FK
-        int table_id FK
-        string status
-        datetime created_at
-        datetime finished_at
-        string specifications
-        float total_amount
-        float discount_applied
-        string payment_method
-        string promo_code FK
-    }
+      ORDERS {
+         int id PK
+         int user_id FK
+         int table_id FK
+         string status
+         datetime created_at
+         datetime finished_at
+         string specifications
+         float total_amount
+         float discount_applied
+         string payment_method
+         string promo_code FK
+      }
 
-    ORDER_ITEMS {
-        int order_id FK
-        int item_id FK
-        int quantity
-        float item_price
-        float item_cost
-    }
+      ORDER_ITEMS {
+         int order_id FK
+         int item_id FK
+         int quantity
+         float item_price
+         float item_cost
+      }
 
-    PROMOTIONS {
-        int id PK
-        string code
-        string description
-        float discount_percentage
-        string target_category
-        datetime start_date
-        datetime end_date
-    }
+      PROMOTIONS {
+         int id PK
+         string code
+         string description
+         float discount_percentage
+         string target_category
+         datetime start_date
+         datetime end_date
+      }
 
-    INVENTORY_LOGS {
-        int id PK
-        int item_id FK
-        datetime timestamp
-        int stock_change
-        string reason
-    }
+      INVENTORY_LOGS {
+         int id PK
+         int item_id FK
+         datetime timestamp
+         int stock_change
+         string reason
+      }
 
-    USERS ||--o{ ORDERS : "places"
-    TABLES ||--o{ USERS : "assigned to"
-    TABLES ||--o{ ORDERS : "serves"
-    ORDERS ||--|{ ORDER_ITEMS : "contains"
-    ITEMS ||--|{ ORDER_ITEMS : "part of"
-    PROMOTIONS ||--o{ ORDERS : "applied to"
-    ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
+      USERS ||--o{ ORDERS : "places"
+      TABLES ||--o{ USERS : "assigned to"
+      TABLES ||--o{ ORDERS : "serves"
+      ORDERS ||--|{ ORDER_ITEMS : "contains"
+      ITEMS ||--|{ ORDER_ITEMS : "part of"
+      PROMOTIONS ||--o{ ORDERS : "applied to"
+      ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
+</div>
+
+---
+
+## 🔄 System Dataflow
+
+Below is the **request and role-based dataflow** for both public clients and authenticated users.
+
+<div class="mermaid">
+   flowchart TD
+      %% === Public client flow ===
+      subgraph GuestClient["Guest Client (no login)"]
+         GC["Client (Guest)"] -->|"GET /menu"| PublicAPI
+         GC -->|"POST /orders"| PublicAPI
+      end
+
+      %% === Unified Authenticated flow ===
+      subgraph AuthFlow["Authenticated Users (Client or Staff)"]
+         Login["User logs in (Client / Waiter / Kitchen / Admin) -> POST /token"] --> AuthEndpoint["Auth Endpoint"]
+         AuthEndpoint --> UsersDB["Users Table"]
+         AuthEndpoint --> JWT["JWT Token Created"]
+         JWT --> API["Authenticated API (profile, orders, management, etc.)"]
+         API --> RoleCheck["Role-based Access"]
+         RoleCheck --> Client["Client: access personal data & order history"]
+         RoleCheck --> Waiter["Waiter: manage orders & receive WS updates"]
+         RoleCheck --> Kitchen["Kitchen: update order statuses"]
+         RoleCheck --> Admin["Admin: manage menu & users"]
+      end
+
+      %% === Database ===
+      DB["(Orders, Items, Tables, Users)"]
+
+      %% === Roles branching ===
+      RoleCheck --> DB
+      
+      %% === Shared backend access ===
+      PublicAPI --> DB
 </div>
 
 ---
