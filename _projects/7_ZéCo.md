@@ -74,7 +74,7 @@ The goal is to make installation **as easy as plugging in a coffee machine** ☕
 
 Below is the complete **Entity–Relationship Diagram** showing how users, orders, and items connect — including analytical extensions like costs, promotions, and inventory logs.
 
-```mermaid
+<div class="mermaid">
 erDiagram
     USERS {
         int id PK
@@ -155,7 +155,7 @@ erDiagram
     ITEMS ||--|{ ORDER_ITEMS : "part of"
     PROMOTIONS ||--o{ ORDERS : "applied to"
     ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
-```
+<\div>
 
 ---
 
