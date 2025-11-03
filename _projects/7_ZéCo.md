@@ -96,16 +96,32 @@ Below is the complete **Entity–Relationship Diagram** showing how users, order
          datetime reservation_start
       }
 
-      ITEMS {
+      BASIC_ITEMS {
          int id PK
          string name
-         int stock
-         float price
+         float stock
+         string unit
          float base_cost
          float tax_rate
          string category
-         boolean available
+         datetime expiry_date
          datetime last_updated
+         string description
+      }
+
+      MENU_ITEMS {
+         int id PK
+         string name
+         float price
+         string category
+         boolean available
+         string description
+      }
+
+      MENU_ITEM_COMPONENTS {
+         int menu_item_id FK
+         int basic_item_id FK
+         float quantity_required
       }
 
       ORDERS {
@@ -124,10 +140,9 @@ Below is the complete **Entity–Relationship Diagram** showing how users, order
 
       ORDER_ITEMS {
          int order_id FK
-         int item_id FK
+         int menu_item_id FK
          int quantity
-         float item_price
-         float item_cost
+
       }
 
       PROMOTIONS {
@@ -142,19 +157,23 @@ Below is the complete **Entity–Relationship Diagram** showing how users, order
 
       INVENTORY_LOGS {
          int id PK
-         int item_id FK
+         int user_id FK
+         int basic_item_id FK
          datetime timestamp
-         int stock_change
+         float stock_change
          string reason
       }
 
+      %% Relationships
       USERS ||--o{ ORDERS : "places"
       TABLES ||--o{ USERS : "assigned to"
       TABLES ||--o{ ORDERS : "serves"
       ORDERS ||--|{ ORDER_ITEMS : "contains"
-      ITEMS ||--|{ ORDER_ITEMS : "part of"
+      MENU_ITEMS ||--|{ ORDER_ITEMS : "ordered as"
+      MENU_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "composed of"
+      BASIC_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "ingredient of"
       PROMOTIONS ||--o{ ORDERS : "applied to"
-      ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
+      BASIC_ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
 </div>
 
 ---
