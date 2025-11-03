@@ -155,7 +155,7 @@ erDiagram
     ITEMS ||--|{ ORDER_ITEMS : "part of"
     PROMOTIONS ||--o{ ORDERS : "applied to"
     ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
-<\div>
+</div>
 
 ---
 
