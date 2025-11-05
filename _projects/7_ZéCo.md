@@ -75,105 +75,120 @@ The goal is to make installation **as easy as plugging in a coffee machine** ☕
 Below is the complete **Entity–Relationship Diagram** showing how users, orders, and items connect — including analytical extensions like costs, promotions, and inventory logs.
 
 <div class="mermaid">
-   erDiagram
-      USERS {
-         int id PK
-         string username
-         string hashed_password
-         string email
-         int age 
-         bool gender
-         string role
-         int table_id FK
-      }
+erDiagram
+    USERS {
+        int id PK
+        string username UK
+        string hashed_password
+        string email UK
+        int age
+        bool gender "nullable"
+        enum role "admin, kitchen, client, waiter"
+        int table_id FK "nullable"
+    }
 
-      TABLES {
-         int id PK
-         int number
-         int capacity
-         string status
-         string location_zone
-         datetime reservation_start
-      }
+    TABLES {
+        int id PK
+        int number UK "physical table number"
+        int capacity
+        enum status "available, occupied, reserved, cleaning"
+        enum location_zone "indoor, outdoor, terrace, bar, vip"
+        datetime reservation_start "nullable"
+    }
 
-      BASIC_ITEMS {
-         int id PK
-         string name
-         float stock
-         string unit
-         float base_cost
-         float tax_rate
-         string category
-         datetime expiry_date
-         datetime last_updated
-         string description
-      }
+    BASIC_ITEMS {
+        int id PK
+        string name
+        float stock "current quantity"
+        string unit "kg, liters, pieces"
+        float base_cost "cost per unit"
+        float tax_rate "0.0 to 1.0"
+        datetime expiration_date
+        datetime last_updated
+        int last_updated_by FK
+        text description "nullable"
+    }
 
-      MENU_ITEMS {
-         int id PK
-         string name
-         float price
-         string category
-         boolean available
-         string description
-      }
+    MENU_ITEMS {
+        int id PK
+        string name UK "dish name"
+        float price "customer price"
+        int stock "estimated servings"
+        enum category "entry, main_course, dessert, beverage"
+        bool available "can be ordered"
+        datetime created_at
+        text description "nullable"
+    }
 
-      MENU_ITEM_COMPONENTS {
-         int menu_item_id FK
-         int basic_item_id FK
-         float quantity_required
-      }
+    MENU_ITEM_COMPONENTS {
+        int menu_item_id PK,FK
+        int basic_item_id PK,FK
+        float quantity_required "amount needed per serving (unit in basic_items)"
+    }
 
-      ORDERS {
-         int id PK
-         int user_id FK
-         int table_id FK
-         string status
-         datetime created_at
-         datetime finished_at
-         string specifications
-         float total_amount
-         float discount_applied
-         string payment_method
-         string promo_code FK
-      }
+    ORDERS {
+        int id PK
+        int user_id FK "nullable for guest orders"
+        int table_id FK
+        enum status "pending, confirmed, preparing, ready, served, completed, cancelled"
+        datetime created_at
+        datetime finished_at "nullable"
+        text specifications "nullable - special requests"
+        float total_amount
+        float discount_applied
+        enum payment_method "cash, card, mobile, voucher, pending"
+        string promo_code FK "nullable"
+    }
 
-      ORDER_ITEMS {
-         int order_id FK
-         int menu_item_id FK
-         int quantity
+    ORDER_ITEMS {
+        int order_id PK,FK
+        int item_id PK,FK
+        int quantity
+        float item_price "price snapshot at order time"
+        float item_cost "cost snapshot for profit calculation"
+    }
 
-      }
+    PROMOTIONS {
+        int id PK
+        string code UK "promo code customers enter"
+        text description
+        float discount_percentage "0.0 to 1.0"
+        enum target_category "nullable - if applies to specific category"
+        int target_menu_item "nullable - if applies to specific item"
+        datetime start_date
+        datetime end_date
+    }
 
-      PROMOTIONS {
-         int id PK
-         string code
-         string description
-         float discount_percentage
-         string target_category
-         datetime start_date
-         datetime end_date
-      }
+    INVENTORY_LOGS {
+        int id PK
+        int user_id FK
+        int item_id FK "references basic_items"
+        datetime timestamp
+        float stock_change "positive or negative"
+        enum reason "initial_stock, restock, sale, waste, theft, correction, return, sample"
+        string notes "nullable - additional context"
+    }
 
-      INVENTORY_LOGS {
-         int id PK
-         int user_id FK
-         int basic_item_id FK
-         datetime timestamp
-         float stock_change
-         string reason
-      }
-
-      %% Relationships
-      USERS ||--o{ ORDERS : "places"
-      TABLES ||--o{ USERS : "assigned to"
-      TABLES ||--o{ ORDERS : "serves"
-      ORDERS ||--|{ ORDER_ITEMS : "contains"
-      MENU_ITEMS ||--|{ ORDER_ITEMS : "ordered as"
-      MENU_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "composed of"
-      BASIC_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "ingredient of"
-      PROMOTIONS ||--o{ ORDERS : "applied to"
-      BASIC_ITEMS ||--o{ INVENTORY_LOGS : "tracked by"
+    %% Core Relationships
+    USERS ||--o{ ORDERS : "places/manages"
+    TABLES ||--o{ USERS : "seats"
+    TABLES ||--o{ ORDERS : "serves at"
+    
+    %% Order Structure
+    ORDERS ||--|{ ORDER_ITEMS : "contains"
+    MENU_ITEMS ||--o{ ORDER_ITEMS : "ordered as"
+    
+    %% Menu Composition (Recipe)
+    MENU_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "composed of"
+    BASIC_ITEMS ||--o{ MENU_ITEM_COMPONENTS : "ingredient in"
+    
+    %% Inventory Management
+    USERS ||--o{ BASIC_ITEMS : "last updated by"
+    USERS ||--o{ INVENTORY_LOGS : "performs change"
+    BASIC_ITEMS ||--o{ INVENTORY_LOGS : "tracked in"
+    
+    %% Promotions
+    PROMOTIONS ||--o{ ORDERS : "applied to"
 </div>
 
 ---
@@ -247,7 +262,8 @@ Your insights could help refine this concept into a production-ready, open-sourc
 
 ## Source Code
 
-👉 **[ZeCo Backend on GitHub](https://github.com/jeduapf/ZeCo_backend)**
+👉 **[ZeCo Backend on GitHub](https://github.com/jeduapf/ZeCo)**
+👉 **[ZeCo Dashboard on Streamlit](https://zecodashboarddcf.streamlit.app/)**
 
 ---
 
