@@ -76,6 +76,7 @@ Below is the complete **Entity–Relationship Diagram** showing how users, order
 
 <div class="mermaid">
 erDiagram
+    %% === USERS ===
     USERS {
         int id PK
         string username UK
@@ -87,6 +88,7 @@ erDiagram
         int table_id FK "nullable"
     }
 
+    %% === TABLES ===
     TABLES {
         int id PK
         int number UK "physical table number"
@@ -96,36 +98,40 @@ erDiagram
         datetime reservation_start "nullable"
     }
 
+    %% === BASIC ITEMS ===
     BASIC_ITEMS {
         int id PK
         string name
-        float stock "current quantity"
+        float stock
         string unit "kg, liters, pieces"
-        float base_cost "cost per unit"
-        float tax_rate "0.0 to 1.0"
+        float base_cost
+        float tax_rate
         datetime expiration_date
         datetime last_updated
         int last_updated_by FK
         text description "nullable"
     }
 
+    %% === MENU ITEMS ===
     MENU_ITEMS {
         int id PK
-        string name UK "dish name"
-        float price "customer price"
-        int stock "estimated servings"
+        string name UK
+        float price
+        int stock
         enum category "entry, main_course, dessert, beverage"
-        bool available "can be ordered"
+        bool available
         datetime created_at
         text description "nullable"
     }
 
+    %% === MENU ITEM COMPONENTS ===
     MENU_ITEM_COMPONENTS {
         int menu_item_id PK,FK
         int basic_item_id PK,FK
-        float quantity_required "amount needed per serving (unit in basic_items)"
+        float quantity_required
     }
 
+    %% === ORDERS ===
     ORDERS {
         int id PK
         int user_id FK "nullable for guest orders"
@@ -133,62 +139,109 @@ erDiagram
         enum status "pending, confirmed, preparing, ready, served, completed, cancelled"
         datetime created_at
         datetime finished_at "nullable"
-        text specifications "nullable - special requests"
+        text specifications "nullable"
         float total_amount
         float discount_applied
         enum payment_method "cash, card, mobile, voucher, pending"
         string promo_code FK "nullable"
+        int num_customers "number of people for this order"
     }
 
+    %% === ORDER ITEMS ===
     ORDER_ITEMS {
         int order_id PK,FK
         int item_id PK,FK
         int quantity
-        float item_price "price snapshot at order time"
-        float item_cost "cost snapshot for profit calculation"
+        float item_price
+        float item_cost
     }
 
+    %% === PROMOTIONS ===
     PROMOTIONS {
         int id PK
-        string code UK "promo code customers enter"
+        string code UK
         text description
-        float discount_percentage "0.0 to 1.0"
-        enum target_category "nullable - if applies to specific category"
-        int target_menu_item "nullable - if applies to specific item"
+        float discount_percentage
+        enum target_category "nullable"
+        int target_menu_item "nullable"
         datetime start_date
         datetime end_date
     }
 
+    %% === INVENTORY LOGS ===
     INVENTORY_LOGS {
         int id PK
         int user_id FK
-        int item_id FK "references basic_items"
+        int item_id FK
         datetime timestamp
-        float stock_change "positive or negative"
+        float stock_change
         enum reason "initial_stock, restock, sale, waste, theft, correction, return, sample"
-        string notes "nullable - additional context"
+        string notes "nullable"
     }
 
-    %% Core Relationships
+    %% === STAFF SHIFTS ===
+    STAFF_SHIFTS {
+        int id PK
+        int user_id FK
+        datetime shift_start
+        datetime shift_end
+        enum role "waiter, kitchen"
+    }
+
+    %% === DAILY LOGS ===
+    DAILY_LOGS {
+        int id PK
+        date log_date UK
+        int total_customers
+        float total_revenue
+        float total_expenses
+        float worked_time
+    }
+
+    %% === MONTHLY OVERVIEW ===
+    MONTHLY_OVERVIEW {
+        int id PK
+        date month_start "e.g., 2025-11-01"
+        string category "revenue, food_cost, staff_cost, electricity, rent, taxes, etc."
+        float amount "positive for income, negative for expense"
+        text notes "optional"
+    }
+
+    %% === MONTHLY ITEM STATS ===
+    MONTHLY_ITEM_STATS {
+        int id PK
+        int menu_item_id FK
+        date month_start
+        int quantity_sold
+        float revenue_generated
+        float total_item_cost
+        float avg_margin
+    }
+
+    %% === RELATIONSHIPS ===
     USERS ||--o{ ORDERS : "places/manages"
     TABLES ||--o{ USERS : "seats"
     TABLES ||--o{ ORDERS : "serves at"
-    
-    %% Order Structure
+
     ORDERS ||--|{ ORDER_ITEMS : "contains"
     MENU_ITEMS ||--o{ ORDER_ITEMS : "ordered as"
-    
-    %% Menu Composition (Recipe)
+
     MENU_ITEMS ||--|{ MENU_ITEM_COMPONENTS : "composed of"
     BASIC_ITEMS ||--o{ MENU_ITEM_COMPONENTS : "ingredient in"
-    
-    %% Inventory Management
+
     USERS ||--o{ BASIC_ITEMS : "last updated by"
     USERS ||--o{ INVENTORY_LOGS : "performs change"
     BASIC_ITEMS ||--o{ INVENTORY_LOGS : "tracked in"
-    
-    %% Promotions
+
     PROMOTIONS ||--o{ ORDERS : "applied to"
+
+    DAILY_LOGS ||--o{ STAFF_SHIFTS : "includes staff shifts"
+    DAILY_LOGS ||--o{ ORDERS : "summarizes orders of the day"
+
+    MONTHLY_ITEM_STATS ||--|| MENU_ITEMS : "analyzes"
+    MONTHLY_ITEM_STATS ||--|| MONTHLY_OVERVIEW : "belongs to month"
+    DAILY_LOGS ||--o{ MONTHLY_OVERVIEW : "aggregated into"
+
 </div>
 
 ---
