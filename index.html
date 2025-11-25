@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script>
     const userLang = navigator.language || navigator.userLanguage;
-    let lang = userLang.substring(0,2); // 'en', 'fr', 'pt'
+    let lang = userLang.substring(0, 2); // 'en', 'fr', 'pt'
 
-    if (["en","fr","pt"].includes(lang)) {
+    if (["en", "fr", "pt"].includes(lang)) {
       window.location.href = "/" + lang + "/about/";
     } else {
       window.location.href = "/en/about/"; // fallback
     }
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8788198578394110"
+    crossorigin="anonymous">
+    </script>
 </head>
+
 <body>
   Redirecting...
 </body>
+
 </html>

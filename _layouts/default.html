@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
 
-  <!-- Head -->
-  <head>
+<!-- Head -->
+
+<head>
   {%- if page.redirect -%}
-    <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
+  <meta http-equiv="refresh" content="3; url={{ site.baseurl }}/" />
   {%- endif -%}
   {% include head.html %}
-  </head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8788198578394110"
+    crossorigin="anonymous">
+    </script>
+</head>
 
-  <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+<!-- Body -->
 
-    <!-- Header -->
-    {%- include header.html %}
+<body
+  class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
 
-    <!-- Content -->
-    <div class="container mt-5">
-      {{ content }}
-    </div>
+  <!-- Header -->
+  {%- include header.html %}
 
-    <!-- Footer -->
-    {%- include footer.html %}
+  <!-- Content -->
+  <div class="container mt-5">
+    {{ content }}
+  </div>
 
-    <!-- JavaScripts -->
-    {% include scripts/jquery.html %}
-    {% include scripts/bootstrap.html %}
-    {% include scripts/masonry.html %}
-    {% include scripts/misc.html %}
-    {% include scripts/mathjax.html %}
-    {% include scripts/analytics.html %}
-    {% include scripts/progressBar.html %}
-  </body>
+  <!-- Footer -->
+  {%- include footer.html %}
+
+  <!-- JavaScripts -->
+  {% include scripts/jquery.html %}
+  {% include scripts/bootstrap.html %}
+  {% include scripts/masonry.html %}
+  {% include scripts/misc.html %}
+  {% include scripts/mathjax.html %}
+  {% include scripts/analytics.html %}
+  {% include scripts/progressBar.html %}
+</body>
+
 </html>
