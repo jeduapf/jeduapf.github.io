@@ -1,7 +1,17 @@
 ---
 layout: default
+title: blog
+pagination:
+enabled: true
+collection: posts
 lang: en
 key: blog
-permalink: /en/blog/
+permalink: /en/blog/:num/
+per_page: 5
+sort_field: date
+sort_reverse: true
+trail:
+before: 1 # The number of links before the current page
+after: 3 # The number of links after the current page
 ---
 {% include blog_index.html %}
