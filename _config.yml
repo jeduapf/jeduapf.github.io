@@ -123,7 +123,7 @@ bing_site_verification: 6fbe1b0cf3b8308419f0d3fc06d20665  # out your bing-site-v
 blog_name: Zelog  #al-folio # blog_name will be displayed in your blog page
 blog_nav_title: Blog #blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: a simple whitespace theme for academics
-permalink: /blog/:year/:title/
+permalink: /:lang/blog/:year/:title/
 
 # Pagination
 pagination:
@@ -150,6 +150,11 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
+  posts:
+    defaults:
+      layout: post
+    output: true
+    permalink: /:lang/blog/:year/:title/
   projects:
     output: true
     permalink: /projects/:path/
@@ -238,9 +243,9 @@ jekyll-archives:
     tag: archive-tag
     category: archive-category
   permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-    category: '/blog/category/:name/'
+    year: '/:lang/blog/:year/'
+    tag: '/:lang/blog/tag/:name/'
+    category: '/:lang/blog/category/:name/'
 
 display_tags: ['formatting', 'images', 'links', 'math', 'code'] # this tags will be dispalyed on the front page of your blog
 
