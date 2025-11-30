@@ -120,8 +120,8 @@ bing_site_verification: 6fbe1b0cf3b8308419f0d3fc06d20665  # out your bing-site-v
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Zlog #al-folio # blog_name will be displayed in your blog page
-blog_nav_title: Blog #blog # your blog must have a title for it to be displayed in the nav bar
+blog_name:  #al-folio # blog_name will be displayed in your blog page
+blog_nav_title:  #blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: 
 permalink: /blog/:year/:title/
 
@@ -158,6 +158,11 @@ collections:
 news_scrollable: true # adds a vertical scroll bar if there are more than 3 news items
 news_limit: 5 # leave blank to include all the news in the `_news` folder
 
+translations:
+  news_title:
+    en: "News"
+    fr: "Actualités"
+    pt: "Notícias"
 # -----------------------------------------------------------------------------
 # Jekyll settings
 # -----------------------------------------------------------------------------
