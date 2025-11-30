@@ -1,9 +1,10 @@
 <div class="news">
-  <h2>news</h2>
   {% if site.news != blank -%}
   {%- assign current_lang = page.lang | default: site.default_lang | default: "en" -%}
   {%- assign lang_news = site.news | where: "lang", current_lang -%}
   {%- assign news_size = lang_news | size -%}
+
+  <h2>{{ site.translations.news_title[current_lang] }}</h2>
   <div class="table-responsive" {% if site.news_scrollable and news_size> 3 %}style="max-height: 10vw"{% endif %}>
     <table class="table table-sm table-borderless">
       {%- assign news = lang_news | reverse -%}
