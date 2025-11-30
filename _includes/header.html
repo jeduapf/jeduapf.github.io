@@ -1,47 +1,48 @@
 <style>
-.lang-switcher {
-  display: flex;
-  gap: 0.5rem;
-}
+  .lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+  }
 
-.lang-btn {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  color: #fff;
-  background-color: #003057;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
+  .lang-btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #003057;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+  }
 
-.lang-btn:hover {
-  background-color: #001f3f;
-}
+  .lang-btn:hover {
+    background-color: #001f3f;
+  }
 
-.lang-btn.active {
-  background-color: #fb2525;
-}
+  .lang-btn.active {
+    background-color: #fb2525;
+  }
 </style>
 
 <header>
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}">
+  <nav id="navbar"
+    class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}">
     <div class="container">
 
       <!-- Brand / Logo -->
       {% if page.permalink != '/' %}
-        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == "blank" %}
-            {% if site.first_name %}<span class="font-weight-bold">{{ site.first_name }}&nbsp;</span>{% endif %}
-            {% if site.middle_name %}{{ site.middle_name }}&nbsp;{% endif %}
-            {% if site.last_name %}{{ site.last_name }}{% endif %}
-          {% else %}
-            {{ site.title }}
-          {% endif %}
-        </a>
+      <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
+        {% if site.title == "blank" %}
+        {% if site.first_name %}<span class="font-weight-bold">{{ site.first_name }}&nbsp;</span>{% endif %}
+        {% if site.middle_name %}{{ site.middle_name }}&nbsp;{% endif %}
+        {% if site.last_name %}{{ site.last_name }}{% endif %}
+        {% else %}
+        {{ site.title }}
+        {% endif %}
+      </a>
       {% elsif site.enable_navbar_social %}
-        <div class="navbar-brand social">
-          {% include social.html %}
-        </div>
+      <div class="navbar-brand social">
+        {% include social.html %}
+      </div>
       {% endif %}
 
       <!-- Navbar Toggle for mobile -->
@@ -61,11 +62,11 @@
           <div class="lang-switcher d-flex align-items-center mr-3">
             {% assign langs = site.languages %}
             {% for l in langs %}
-              {% assign target_page = site.pages | where: "key", page.key | where: "lang", l | first %}
-              {% if target_page %}
-                <a href="{{ target_page.url | relative_url }}"
-                  class="lang-btn {% if l == page.lang %}active{% endif %}">{{ l | upcase }}</a>
-              {% endif %}
+            {% assign target_page = site.pages | where: "key", page.key | where: "lang", l | first %}
+            {% if target_page %}
+            <a href="{{ target_page.url | relative_url }}" class="lang-btn {% if l == page.lang %}active{% endif %}">{{
+              l | upcase }}</a>
+            {% endif %}
             {% endfor %}
           </div>
 
@@ -80,8 +81,10 @@
             </li>
 
             {% if site.blog_nav_title %}
+            {% assign blog_page = site.pages | where: "key", "blog" | where: "lang", page.lang | first %}
             <li class="nav-item {% if page.url contains 'blog' %}active{% endif %}">
-              <a class="nav-link" href="{{ '/blog/' | relative_url }}">{{ site.blog_nav_title }}
+              <a class="nav-link" href="{{ blog_page.url | relative_url }}">
+                {{ site.blog_nav_title }}
                 {% if page.url contains 'blog' %}<span class="sr-only">(current)</span>{% endif %}
               </a>
             </li>
@@ -90,48 +93,48 @@
             {% comment %} Other pages dynamically per current language {% endcomment %}
             {% assign sorted_pages = site.pages | sort: "nav_order" %}
             {% for p in sorted_pages %}
-              {% if p.nav and p.autogen == nil %}
-                {% assign target_page = site.pages | where: "key", p.key | where: "lang", page.lang | first %}
-                {% if target_page %}
-                  {% if p.dropdown %}
-                    <li class="nav-item dropdown {% if page.key == p.key %}active{% endif %}">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ target_page.title }}
-                        {% if page.key == p.key %}<span class="sr-only">(current)</span>{% endif %}
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        {% for child in p.children %}
-                          {% assign child_target = site.pages | where: "key", child.key | where: "lang", page.lang | first %}
-                          {% if child_target %}
-                            {% if child.title == 'divider' %}
-                              <div class="dropdown-divider"></div>
-                            {% else %}
-                              <a class="dropdown-item" href="{{ child_target.url | relative_url }}">{{ child_target.title }}</a>
-                            {% endif %}
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-                    </li>
-                  {% else %}
-                    <li class="nav-item {% if page.key == p.key %}active{% endif %}">
-                      <a class="nav-link" href="{{ target_page.url | relative_url }}">{{ target_page.title }}
-                        {% if page.key == p.key %}<span class="sr-only">(current)</span>{% endif %}
-                      </a>
-                    </li>
-                  {% endif %}
+            {% if p.nav and p.autogen == nil %}
+            {% assign target_page = site.pages | where: "key", p.key | where: "lang", page.lang | first %}
+            {% if target_page %}
+            {% if p.dropdown %}
+            <li class="nav-item dropdown {% if page.key == p.key %}active{% endif %}">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{{ target_page.title }}
+                {% if page.key == p.key %}<span class="sr-only">(current)</span>{% endif %}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                {% for child in p.children %}
+                {% assign child_target = site.pages | where: "key", child.key | where: "lang", page.lang | first %}
+                {% if child_target %}
+                {% if child.title == 'divider' %}
+                <div class="dropdown-divider"></div>
+                {% else %}
+                <a class="dropdown-item" href="{{ child_target.url | relative_url }}">{{ child_target.title }}</a>
                 {% endif %}
-              {% endif %}
+                {% endif %}
+                {% endfor %}
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item {% if page.key == p.key %}active{% endif %}">
+              <a class="nav-link" href="{{ target_page.url | relative_url }}">{{ target_page.title }}
+                {% if page.key == p.key %}<span class="sr-only">(current)</span>{% endif %}
+              </a>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endif %}
             {% endfor %}
           </div>
 
           <!-- Right: dark/light toggle -->
           {% if site.enable_darkmode %}
-            <li class="toggle-container nav-item ml-auto">
-              <button id="light-toggle" title="Change theme" class="btn btn-link p-0">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-              </button>
-            </li>
+          <li class="toggle-container nav-item ml-auto">
+            <button id="light-toggle" title="Change theme" class="btn btn-link p-0">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </button>
+          </li>
           {% endif %}
 
         </ul>
@@ -140,10 +143,10 @@
   </nav>
 
   {% if site.enable_progressbar %}
-    <progress id="progress" value="0">
-      <div class="progress-container">
-        <span class="progress-bar"></span>
-      </div>
-    </progress>
+  <progress id="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
   {% endif %}
 </header>
