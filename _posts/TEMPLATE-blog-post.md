@@ -5,6 +5,8 @@ title: Your Blog Post Title Here
 date: 2025-11-30 19:00:00+01:00
 description: A brief, compelling description of your post (shown in blog listing)
 lang: fr  # Use: en, fr, or pt
+key: blog
+permalink: /blog/:year/:title/
 
 # Optional: Tags and Categories
 tags: tag1 tag2 tag3
