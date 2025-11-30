@@ -15,7 +15,7 @@ profile:
   address: >
     Bezons, France
 
-# news: false  # inclut une liste d’actualités
+news: true  # inclut une liste d’actualités
 selected_papers: false # inclut une liste de publications marquées comme "selected={true}"
 social: true  # inclut les icônes sociales en bas de la page
 ---
