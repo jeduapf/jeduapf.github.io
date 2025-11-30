@@ -2,97 +2,94 @@
 layout: default
 ---
 <style>
-.cv-download a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 18px;
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
+  .cv-download a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+  }
 
-.cv-download a:hover {
-  background: #0056b3;
-}
-
+  .cv-download a:hover {
+    background: #0056b3;
+  }
 </style>
+
 <!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          
-          <h1 class="post-title">
-           {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
-          </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-          
-        </header>
+<div class="post">
+  <header class="post-header">
 
-        <article>
-          {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+    <h1 class="post-title">
+      {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+      {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
+    </h1>
+    <p class="desc">{{ page.subtitle }}</p>
 
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
+  </header>
 
-              <!-- Wrap the profile image in a CV download link -->
-              <a href="https://jeduapf.github.io/assets/pdf/CV.pdf"
-                download="CV_Jose_ALVES_en_fr_pt.pdf"
-                title="Download my CV">
-                {% include figure.html 
-                  path=profile_image_path 
-                  class=profile_image_class
-                  alt=page.profile.image -%}
-              </a>
-            {% endif -%}
-            {%- if page.profile.address %}
-            <div class="address">
-              {{ page.profile.address }}
-            </div>
-            {%- endif %}
+  <article>
+    {% if page.profile -%}
+    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+      {%- if page.profile.image %}
+      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-          </div>
+      {% if page.profile.image_circular %}
+      {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+      {% else %}
+      {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+      {% endif %}
+
+      <!-- Wrap the profile image in a CV download link -->
+      <a href="https://jeduapf.github.io/assets/pdf/CV.pdf" download="CV_Jose_ALVES_en_fr_pt.pdf"
+        title="Download my CV">
+        {% include figure.html
+        path=profile_image_path
+        class=profile_image_class
+        alt=page.profile.image -%}
+      </a>
+      {% endif -%}
+
+      {%- if page.profile.address %}
+      <div class="address">
+        {{ page.profile.address }}
+      </div>
+      {%- endif %}
+
+    </div>
+</div>
+{%- endif %}
+
+<div class="clearfix">
+  {{ content }}
+</div>
+
+{% if page.news -%}
+<!-- News -->
+{%- include news.html %}
+{%- endif %}
+
+{% if page.selected_papers -%}
+<!-- Selected papers -->
+{%- include selected_papers.html %}
+{%- endif %}
+{%- if page.social %}
+
+<!-- Social -->
+<div class="social">
+  <div class="contact-icons">
+    {% include social.html %}
+  </div>
 
 
+  <div class="contact-note">
+    {{ site.contact_note }}
+  </div>
 
-
-          </div>
-          {%- endif %}
-
-          <div class="clearfix">
-            {{ content }}
-          </div>
-
-          {% if page.news -%}
-          <!-- News -->
-          {%- include news.html %}
-          {%- endif %}
-
-          {% if page.selected_papers -%}
-            <!-- Selected papers -->
-            {%- include selected_papers.html %}
-          {%- endif %}
-          {%- if page.social %}
-
-          <!-- Social -->
-          <div class="social">
-            <div class="contact-icons">
-            {% include social.html %}
-            </div>
-    
-
-            <div class="contact-note">
-              {{ site.contact_note }}
-            </div>
-            
-          </div>
-          {%- endif %}
-        </article>
+</div>
+{%- endif %}
+</article>
 
 </div>
