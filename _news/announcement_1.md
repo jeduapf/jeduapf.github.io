@@ -1,7 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2025-11-30 19:34:38+01:00
 inline: true
+lang: en
 ---
 
-A simple inline announcement.
+Website is now online! 
