@@ -13,7 +13,7 @@ profile:
   image: CV.png
   image_circular: true # recadre l’image pour la rendre circulaire
   address: >
-    {{ 'now' | date: "%Y" | minus: 1998 }} ans
+    Bezons, France
 
 news: true  # inclut une liste d’actualités
 selected_papers: false # inclut une liste de publications marquées comme "selected={true}"

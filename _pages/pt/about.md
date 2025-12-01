@@ -13,14 +13,14 @@ profile:
   image: CV.png
   image_circular: true # crops the image to make it circular
   address: >
-    {{ 'now' | date: "%Y" | minus: 1998 }} anos
+    Bezons, França
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Opa, me chamo **José Eduardo**, um **Data Scientist** curioso e motivado, apaixonado por **sistemas de energia** e pelo seu futuro.
+Olá, me chamo **José Eduardo**, um **Data Scientist** curioso e motivado, apaixonado por **sistemas de energia** e pelo seu futuro.
 
 Este site é o meu espaço para compartilhar minhas ideias, projetos, experimentos e aprendizados. Alguns desses projetos não estão necessariamente ligados à energia ou à área de dados, podendo ser simplesmente coisas novas que quero explorar, documentar e acompanhar. Fico sempre feliz em conversar, seja para tirar dúvidas, receber sugestões ou simplesmente trocar ideias.
 

@@ -15,7 +15,7 @@ profile:
   image: CV.png
   image_circular: true # crops the image to make it circular
   address: >
-    {{ 'now' | date: "%Y" | minus: 1998 }} years old
+    Bezons, France
 
 
 
