@@ -13,13 +13,17 @@ profile:
   image: CV.png
   image_circular: true # crops the image to make it circular
   address: >
-    Bezons, France
+    {{ 'now' | date: "%Y" | minus: 1998 }} anos
 
-# news: false  # includes a list of news items
+news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
-Sou **José Eduardo Alves Pereira Filho**, um **Cientista de Dados** com {{ 'now' | date: "%Y" | minus: 1998 }} anos especializado no setor de **Energia** com fortes bases em engenharia elétrica.  
+Opa, me chamo **José Eduardo**, um **Data Scientist** curioso e motivado, apaixonado por **sistemas de energia** e pelo seu futuro.
 
-Minha jornada acadêmica inclui um **Duplo Diploma em Engenharia** pela **UNICAMP** e **École Centrale de Nantes**, onde me concentrei em análise de dados, processamento de sinais e imagens, e fui reconhecido como o melhor estudante de engenharia elétrica com o **Prêmio CREA-SP 2022**. Logo em seguida realizei um **Mestrado de Especialização em Otimização de Sistemas Energéticos (OSE)** na **MINES PARIS - PSL**, com foco em modelagem financeira, otimização estocástica e economia da energia.
+Este site é o meu espaço para compartilhar minhas ideias, projetos, experimentos e aprendizados. Alguns desses projetos não estão necessariamente ligados à energia ou à área de dados, podendo ser simplesmente coisas novas que quero explorar, documentar e acompanhar. Fico sempre feliz em conversar, seja para tirar dúvidas, receber sugestões ou simplesmente trocar ideias.
+
+Concluí um **Duplo Diploma de Engenharia** pela **UNICAMP** e **École Centrale de Nantes**, onde me aprofundei em análise de dados, processamento de sinais e processamento de imagens, e recebi o **Prêmio CREA SP 2022** de excelência acadêmica.
+
+Mais recentemente, concluí o **Mestrado Especializado OSE** na **MINES PARIS PSL**, com foco em otimização, mercados de energia, modelagem financeira e métodos estocásticos.

@@ -10,7 +10,7 @@ translations:
 description: Uma coleção de alguns projetos
 nav: false
 nav_order: 2
-display_categories: [trabalho, diversão]
+display_categories: [diversão, trabalho]
 horizontal: false
 ---
 

@@ -13,15 +13,17 @@ profile:
   image: CV.png
   image_circular: true # recadre l’image pour la rendre circulaire
   address: >
-    Bezons, France
+    {{ 'now' | date: "%Y" | minus: 1998 }} ans
 
 news: true  # inclut une liste d’actualités
 selected_papers: false # inclut une liste de publications marquées comme "selected={true}"
 social: true  # inclut les icônes sociales en bas de la page
 ---
 
-Je suis **José Eduardo Alves Pereira Filho**, un **Data Scientist** de {{ 'now' | date: "%Y" | minus: 1998 }} ans spécialisé dans le secteur de l’**énergie**, avec de solides bases en ingénierie électrique.  
+Bonjour, je m’appelle **José Eduardo**. Je suis un **Data Scientist** curieux et motivé, passionné par les **systèmes énergétiques** et leur évolution.
 
-Mon parcours académique comprend un **double diplôme d’ingénieur** obtenu à la **UNICAMP** et à l’**École Centrale de Nantes**, où je me suis concentré sur l’analyse de données, le traitement du signal et de l’image, et où j’ai été reconnu comme le meilleur étudiant en génie électrique avec le **Prix CREA-SP 2022**. J’ai ensuite poursuivi un **Mastère Spécialisé en Optimisation des Systèmes Énergétiques (OSE)** à **MINES Paris – PSL**, avec un accent sur la modélisation financière, l’optimisation stochastique et l’économie de l’énergie.
+Ce site web est mon espace personnel pour partager mes idées, projets, expériences et apprentissages. Certains projets ne sont pas forcément liés à l’énergie ou à la donnée, et peuvent simplement être de nouvelles choses que j’ai envie d’explorer, documenter et conserver. Je serai ravi d’échanger avec vous, que ce soit pour une question, une suggestion ou simplement pour discuter.
 
+J’ai obtenu un **Double Diplôme d’Ingénieur** à l’**UNICAMP** et à l’**École Centrale de Nantes**, où je me suis spécialisé en analyse de données, traitement du signal et traitement d’images, et j’ai reçu le **Prix CREA SP 2022** pour excellence académique chez **UNICAMP**.
 
+Plus récemment, j’ai terminé le **Mastère Spécialisé OSE** à **MINES PARIS PSL**, avec un focus sur l’optimisation, les marchés de l’énergie, la modélisation financière et les méthodes stochastiques.

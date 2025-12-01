@@ -15,7 +15,7 @@ profile:
   image: CV.png
   image_circular: true # crops the image to make it circular
   address: >
-    Bezons, France
+    {{ 'now' | date: "%Y" | minus: 1998 }} years old
 
 
 
@@ -24,7 +24,15 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am **José Eduardo Alves Pereira Filho**, a {{ 'now' | date: "%Y" | minus: 1998 }} years old **Data Scientist** specializing in **Energy** with a strong foundation in electrical engineering.
+Hi, I’m **José Eduardo**, a curious and motivated **Data Scientist** passionate about **energy systems** and their future.
 
-My academic journey includes a **Double Engineering Degree** from **École Centrale de Nantes** and **UNICAMP** , where I focused on data analysis, signal, and image processing, and was recognized as the best student in electrical engineering with the **CREA-SP 2022 Award**. This was followed by a **Specialized Master's in Optimization of Energy Systems (OSE)** from **MINES PARIS - PSL** , focusing on financial modeling, stochastic optimization, and energy economics.
+This website is my space to share what I’m working on: ideas, projects, experiments, and things I’m learning. Some of these projects are not necessarily related to energy or data, and can simply be new things I want to explore, document, and keep track of. I’m always happy to connect, whether you have a question, a suggestion, or just want to chat.
+
+I earned a **Double Engineering Degree** from **UNICAMP** and **École Centrale de Nantes**, where I dove deep into data analysis, signal and image processing, and received the **CREA SP 2022 Award** at **UNICAMP** for academic excellence.
+
+More recently, I completed the **OSE Specialized Master’s** at **MINES PARIS PSL**, focusing on optimization, energy markets, financial modeling, and stochastic methods.
+
+
+
+
 
