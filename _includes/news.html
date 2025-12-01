@@ -5,7 +5,7 @@
   {%- assign news_size = lang_news | size -%}
 
   <h2>{{ site.translations.news_title[current_lang] }}</h2>
-  <div class="table-responsive" {% if site.news_scrollable and news_size> 3 %}style="max-height: 10vw"{% endif %}>
+  <div class="table-responsive" {% if site.news_scrollable and news_size> 3 %}style="max-height: 60vh"{% endif %}>
     <table class="table table-sm table-borderless">
       {%- assign news = lang_news | reverse -%}
       {% if site.news_limit %}
