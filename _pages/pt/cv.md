@@ -9,5 +9,5 @@ translations:
   fr: /fr/cv/
 nav: false
 nav_order: 4
-cv_pdf: CV_pt.pdf
+# cv_pdf: CV_pt.pdf # Un-comment this line to add a download button for the CV
 ---

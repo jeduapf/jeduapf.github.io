@@ -42,14 +42,10 @@ layout: default
       {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
       {% endif %}
 
-      <!-- Wrap the profile image in a CV download link -->
-      <a href="https://jeduapf.github.io/assets/pdf/CV.pdf" download="CV_Jose_ALVES_en_fr_pt.pdf"
-        title="Download my CV">
-        {% include figure.html
-        path=profile_image_path
-        class=profile_image_class
-        alt=page.profile.image -%}
-      </a>
+      {% include figure.html
+      path=profile_image_path
+      class=profile_image_class
+      alt=page.profile.image -%}
       {% endif -%}
 
       {%- if page.profile.address %}
