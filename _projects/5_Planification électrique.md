@@ -11,11 +11,14 @@ category: travail
 ## Introduction
 
 Ce projet analyse et optimise la **planification journalière de la production d'électricité** en utilisant la **programmation linéaire en nombres entiers mixtes (MILP)**.  
-Développé par **José ALVES**, ce travail a été réalisé dans le cadre du cours de [Sophie DEMASSEY](https://sofdem.github.io/) à l’**École des Mines de Paris (PSL)**.  
+
+Ce travail a été réalisé dans le cadre du cours de [Sophie DEMASSEY](https://sofdem.github.io/) à l’**École des Mines de Paris (PSL)**.  
 
 Le projet étudie différentes configurations de centrales électriques (thermiques et hydroélectriques) afin de **minimiser les coûts de production** tout en respectant les contraintes de **demande** et de **réserve**.  
 
-L'objectif principal est de déterminer le **nombre optimal de centrales à activer** et leurs **puissances** à chaque période de la journée, en tenant compte des **coûts de fonctionnement**, des **coûts de démarrage** et des **contraintes opérationnelles**.
+L'objectif principal est de déterminer le **nombre optimal de centrales à activer** et leurs **puissances** à chaque période de la journée, en tenant compte des **coûts de fonctionnement**, des **coûts de démarrage** et des **contraintes opérationnelles**. 
+
+Il faut tenir en compte que ce projet simplifie la nature réelle du problème, en supposant que la **demande** est connue et fixe avant la planification. En réalité, la demande est une variable aléatoire, et la planification doit tenir compte de la **réserve** pour assurer la stabilité de la réseau électrique.
 
 ---
 
@@ -67,6 +70,8 @@ Ainsi, l’étude conjointe du primal et du dual permet non seulement d’identi
 | B         | 10     | 1250      | 1750      | 1.3          | 2600        | 1000       |
 | C         | 5      | 1500      | 4000      | 3.0          | 3000        | 500        |
 
+
+
 ### Profil de Demande Journalière
 
 | Période    | Heures | Demande (MW) |
@@ -112,6 +117,7 @@ où :
 
 **Résultat : Coût optimal = 869 k€**
 
+En Gurobi, les variables sont déclarées comme suit : 
 ```python
 # Variables
 N = {}  # Nombre de centrales actives (entières)
@@ -157,6 +163,7 @@ $$
 
 **Résultat : Coût optimal = 1014 k€** (+3.6% par rapport au modèle 2.1)
 
+En Gurobi, les variables sont déclarées comme suit : 
 ```python
 # Contrainte de démarrage
 for p in HOURS.keys():
@@ -196,6 +203,7 @@ Cette approche reflète une **planification sur 24h répétable quotidiennement*
 
 L'optimisation cyclique permet de **réduire les coûts de démarrage** en optimisant la transition jour-nuit.
 
+En Gurobi, cette contrainte peut être implémentée comme suit :
 ```python
 def Ntp(t, p, N, cyclique=True):
     if p == 1:
@@ -243,6 +251,7 @@ où $$M_t$$ est la vitesse d'abaissement du réservoir (en m/h).
 
 Le coût du pompage compense partiellement l'économie réalisée par l'hydro.
 
+En Gurobi, cette contrainte peut être implémentée comme suit :
 ```python
 # Contrainte de pompage
 left_side = sum(P[f"{t},{p}"]*HOURS[p] for t in USINES.keys() for p in HOURS.keys())

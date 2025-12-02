@@ -8,73 +8,78 @@ importance: 1
 category: work
 ---
 
+
 ## Introduction
 
-This project analyzes and optimizes the **daily planning of electricity generation** using **Mixed-Integer Linear Programming (MILP)**.  
-Developed by **José ALVES**, this work was carried out as part of the course taught by [Sophie DEMASSEY](https://sofdem.github.io/) at the **École des Mines de Paris (PSL)**.  
+This project analyzes and optimizes **daily electricity generation planning** using **Mixed-Integer Linear Programming (MILP)**.  
 
-The project studies different configurations of power plants (thermal and hydroelectric) in order to **minimize production costs** while satisfying **demand** and **reserve constraints**.  
+This work was carried out as part of the course by [Sophie DEMASSEY](https://sofdem.github.io/) at **École des Mines de Paris (PSL)**.  
 
-The main objective is to determine the **optimal number of plants to operate** and their **power outputs** at each time period of the day, considering **operating costs**, **startup costs**, and **operational constraints**.
+The project studies different configurations of power plants (thermal and hydroelectric) in order to **minimize production costs** while respecting **demand** and **reserve** constraints.  
+
+The main objective is to determine the **optimal number of plants to activate** and their **power outputs** at each period of the day, taking into account **operating costs**, **start-up costs**, and **operational constraints**.  
+
+Note that this project simplifies the real-world problem by assuming that **demand** is known and fixed before planning. In reality, demand is stochastic, and planning must consider **reserve margins** to ensure grid stability.
 
 ---
 
 ## Theoretical Background on Linear Optimization
 
-**Linear Programming (LP)** aims to minimize (or maximize) a linear function subject to a set of linear constraints. In its standard form, a primal problem is written as:
+**Linear Programming (LP)** consists of minimizing (or maximizing) a linear function subject to a set of linear constraints. In standard form, a primal problem is written as:
 
 $$
-\min_{x} \; c^T x \quad \text{s.t.} \quad A x = b, \; x \ge 0
+\min_{x} \; c^T x \quad \text{subject to} \quad A x = b, \; x \ge 0
 $$
 
-Its associated **dual problem** is:
+Associated with this problem is a **dual problem**, expressed as:
 
 $$
-\max_{y} \; b^T y \quad \text{s.t.} \quad A^T y \le c
+\max_{y} \; b^T y \quad \text{subject to} \quad A^T y \le c
 $$
 
-**Primal feasibility** means that there exists a vector $$x$$ satisfying $$A x = b$$ and $$x \ge 0$$, while **dual feasibility** requires a vector $$y$$ satisfying $$A^T y \le c$$.
-When both problems admit feasible solutions, the **strong duality** theorem guarantees that their optimal values coincide:
+**Primal feasibility** means that there exists at least one vector $$x$$ satisfying $$A x = b$$ and $$x \ge 0$$, while **dual feasibility** requires a vector $$y$$ such that $$A^T y \le c$$.  
+When a problem has feasible solutions for both the primal and dual, **strong duality** ensures that their optimal values coincide:
 
 $$
 c^T x^* = b^T y^*
 $$
 
-This property forms the basis of much of the economic theory behind optimization: the Lagrange multipliers $$y_i$$ in the dual can be interpreted as **marginal costs** or **shadow prices**, representing the economic value of one additional unit of resource $$b_i$$.
+This property underpins much of the economic theory of optimization: the Lagrange multipliers $$y_i$$ associated with the dual can be interpreted as **marginal costs** or **shadow prices**, representing the economic value of an additional unit of resource $$b_i$$.
 
-In practice, the so-called **complementarity conditions** link the primal and dual optimal solutions:
+In practice, **complementary slackness** conditions link primal and dual solutions at the optimum:
 
 $$
 x_j (c_j - A_j^T y) = 0, \quad y_i (A_i x - b_i) = 0
 $$
 
-These relations show that:
-- a strictly positive variable $$x_j$$ corresponds to a tight dual constraint,
-- and a saturated primal constraint implies a nonzero dual multiplier.
+These relationships show that:
 
-Thus, analyzing both the primal and the dual helps not only to identify the optimal solution but also to understand the **system’s sensitivity** to variations in demand, costs, or generation capacities.
+* A strictly positive variable $$x_j$$ corresponds to a saturated dual constraint.
+* A saturated primal constraint implies a non-zero dual multiplier.
+
+Thus, studying the primal and dual together allows not only the identification of the optimal solution but also an understanding of the **system's sensitivity** to changes in demand, costs, or production capacities.
 
 ---
 
 ## Problem Data
 
-### Characteristics of Thermal Plants
+### Thermal Power Plant Characteristics
 
 | Category | Number | Pmin (MW) | Pmax (MW) | Cmwh (€/MWh) | Cbase (€/h) | Cstart (€) |
-|-----------|--------|-----------|-----------|--------------|-------------|------------|
-| A         | 12     | 850       | 2000      | 2.0          | 1000        | 2000       |
-| B         | 10     | 1250      | 1750      | 1.3          | 2600        | 1000       |
-| C         | 5      | 1500      | 4000      | 3.0          | 3000        | 500        |
+|----------|--------|-----------|-----------|--------------|-------------|------------|
+| A        | 12     | 850       | 2000      | 2.0          | 1000        | 2000       |
+| B        | 10     | 1250      | 1750      | 1.3          | 2600        | 1000       |
+| C        | 5      | 1500      | 4000      | 3.0          | 3000        | 500        |
 
 ### Daily Demand Profile
 
 | Period    | Hours | Demand (MW) |
-|------------|--------|--------------|
-| 00h - 06h  | 6      | 15000        |
-| 06h - 09h  | 3      | 30000        |
-| 09h - 15h  | 6      | 25000        |
-| 15h - 18h  | 3      | 40000        |
-| 18h - 00h  | 6      | 27000        |
+|-----------|-------|-------------|
+| 00h-06h   | 6     | 15000       |
+| 06h-09h   | 3     | 30000       |
+| 09h-15h   | 6     | 25000       |
+| 15h-18h   | 3     | 40000       |
+| 18h-00h   | 6     | 27000       |
 
 ---
 
@@ -111,6 +116,7 @@ where:
 
 **Result: Optimal cost = 869 k€**
 
+Gurobi variable declaration:
 ```python
 # Variables
 N = {}  # Number of active plants (integer)

@@ -11,7 +11,8 @@ category: cool
 ## Introduction
 
 Le projet **CAPM du Marché Parisien** étudie la relation entre le risque et le rendement des plus grandes entreprises cotées sur **Euronext Paris** entre **janvier 2000 et janvier 2025**, selon le **modèle d’évaluation des actifs financiers (CAPM)**.  
-Développé par **José Eduardo Alves**, ce travail vise à reconstituer la **frontière efficiente** du marché à partir des rendements journaliers, en considérant un **taux sans risque de 3 %**.
+
+Ce travail vise à reconstituer la **frontière efficiente** du marché à partir des rendements journaliers, en considérant un **taux sans risque de 3 %**.
 
 Afin d’assurer la liquidité et la représentativité du portefeuille, seules les entreprises dont le **volume moyen d’échange** est supérieur à la **moyenne + un écart-type** du marché total ont été retenues.
 
@@ -23,13 +24,21 @@ L’analyse repose sur les hypothèses fondamentales du **CAPM** :
 
 - **Période d’étude** : janvier 2000 – janvier 2025  
 - **Fréquence** : journalière  
-- **Taux sans risque (Rf)** : 3 % par an  
+- **Taux sans risque ($R_f$)** : 3 % par an  
 - **Univers** : actions cotées sur **Euronext Paris**  
 - **Critère de sélection** : volumes > moyenne + 1 écart-type  
 - **Optimisation** : minimisation de la variance pour un rendement cible donné  
 - **Contraintes** : pondérations positives et somme unitaire des poids  
 
-Les points de la **frontière efficiente** sont obtenus en résolvant, pour chaque niveau de volatilité, le portefeuille offrant le rendement maximal, conformément au modèle moyenne-variance de Markowitz.
+Les points de la **frontière efficiente** sont obtenus en résolvant, pour chaque niveau de rendement cible $R_\text{target}$, le portefeuille offrant la variance minimale, conformément au modèle moyenne-variance de Markowitz :
+
+$$
+\begin{aligned}
+\min_{\mathbf{w}} \quad & \mathbf{w}^\top \mathbf{\Sigma} \mathbf{w} \\
+\text{s.t.} \quad & \mathbf{w}^\top \mathbf{R} = R_\text{target} \\
+& \sum_i w_i = 1, \quad w_i \ge 0 \ \forall i
+\end{aligned}
+$$
 
 ### Modèle CAPM
 
@@ -40,10 +49,10 @@ E[R_i] = R_f + \beta_i \, (E[R_m] - R_f)
 $$
 
 où :  
-- $E[R_i]$ : rendement attendu de l’action $i$  
-- $R_f$ : taux sans risque  
-- $E[R_m]$ : rendement attendu du marché  
-- $\beta_i$ : sensibilité de l’actif $i$ au marché, calculée comme :
+- $$E[R_i]$$ : rendement attendu de l’action $$i$$  
+- $$R_f$$ : taux sans risque  
+- $$E[R_m]$$ : rendement attendu du marché  
+- $$\beta_i$$ : sensibilité de l’actif $$i$$ au marché, calculée comme :
 
 $$
 \beta_i = \frac{\operatorname{Cov}(R_i, R_m)}{\operatorname{Var}(R_m)}
@@ -55,7 +64,7 @@ $$
 R_i - R_f = \beta_i (R_m - R_f) + \epsilon_i
 $$
 
-avec $\epsilon_i$ un terme d’erreur non systématique.
+avec $$\epsilon_i$$ un terme d’erreur non systématique.
 
 ---
 
@@ -127,13 +136,14 @@ Les résultats confirment la **validité empirique du CAPM** sur le marché fran
 ## Conclusion
 
 L’étude met en lumière la stabilité du **marché parisien** et la cohérence de sa structure rendement-risque sur 25 ans.  
+
 Le **modèle CAPM**, appliqué à un ensemble restreint d’entreprises liquides, reproduit une **frontière efficiente stable et économiquement interprétable**.
 
-Les résultats démontrent que, même sur la base de données journalières, la **prime de risque** du marché français reste positive et qu’un **investisseur rationnel** peut optimiser son portefeuille le long de cette frontière selon son appétence au risque.
+Les résultats démontrent que, même sur la base de données journalières, la **prime de risque** du marché français reste positive et qu’un **investisseur rationnel** peut optimiser son portefeuille le long de cette frontière selon son appétence au risque en choisissant une proportion de portefeuille d'actions et de titres obligataires.
 
 ---
 
 ## Code source
 
-L’intégralité du code Python utilisé pour la génération de la frontière efficiente est disponible ici :  
+L’intégralité du code Python utilisé pour la génération de la frontière efficiente est disponible ici et les variables comme les années, les actions selectionées et le taux sans risque peuvent être modifiées :  
 👉 [Voir le code sur Google Colab](https://colab.research.google.com/drive/12_D6r0LAcYi9bpXKJdYyxmCcEk9qtQUc?usp=sharing)

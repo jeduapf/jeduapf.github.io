@@ -10,8 +10,9 @@ category: travail
 
 ## Introduction
 
-Le projet **Décarbonisation du S&P500** propose une approche d’investissement durable, dérivée de l’indice S&P500.  
-Développé par **José Eduardo Alves** et **Mathias Trochon**, ce travail vise à concevoir des portefeuilles réduisant l’intensité carbone tout en préservant la performance financière et l’exposition au marché.
+Le projet **Décarbonisation du S&P500** propose une approche d’investissement durable, dérivée de l’indice S&P500 et ses actifs.  
+
+Développé par **José Eduardo Alves** et **Mathias Trochon**, ce travail vise à concevoir des portefeuilles réduisant l’intensité carbone tout en préservant la performance financière et l’exposition au marché. 
 
 L’objectif est de permettre aux investisseurs institutionnels d’aligner leurs portefeuilles sur les objectifs environnementaux, sans compromettre la rentabilité à long terme.
 
@@ -37,17 +38,19 @@ Quatre profils d’investissement ont été définis :
 ## Formules des portefeuilles
 
 Les poids optimaux $$ω = (w_1, w_2, \dots, w_n)$$ sont déterminés à partir d’un ensemble d’optimisations quadratiques ou non linéaires, selon la stratégie considérée.  
+
 Chaque problème est résolu sous les contraintes suivantes :
 
 - $$\sum_{i=1}^{n} w_i = 1$$  
 - $$w_i \ge 0 \quad \forall i \in \{1, 2, \dots, n\}$$  
-- $$w^\top F \le \xi \, \dfrac{e^\top F}{e^\top e}$$  (*Empreinte carbone du portefeuille inférieure à la moyenne*)  
+- $$w^\top F \le \xi \, \dfrac{e^\top F}{e^\top e}$$  (*Empreinte carbone du portefeuille inférieure à la moyenne des actifs du S&P500*)  
 - où $$e^\top = (1, 1, \dots, 1)$$  
 
 ---
 ## Méthodologie
 
 Les portefeuilles sont réoptimisés tous les **3 mois** à partir de fenêtres glissantes de **2 ans** sur des données hebdomadaires.  
+
 Les hypothèses clés incluent :
 
 - Données carbone (Scope 1 et 2) fixes basées sur 2019.  
@@ -61,6 +64,7 @@ Les fonctions d’optimisation couvrent plusieurs approches :
 ### Buy & Hold sur période de test
 
 Pour chaque fenêtre d’apprentissage de 2 ans, le portefeuille est conservé pendant 3 mois.  
+
 Le rendement de la période $$p$$ est :
 
 $$
@@ -172,6 +176,7 @@ Les performances des portefeuilles ont été testées sur **30 ans de données (
 ### Rendements et volatilité
 
 Les portefeuilles **Global Minimum Variance (GMV)** et **Tracking Error (TE)** affichent la plus faible volatilité annuelle.  
+
 À l’inverse, la stratégie **Également pondérée (EW)** présente la variabilité la plus importante, notamment sous contrainte carbone stricte (ξ = 0.2).
 
 <div class="row">
@@ -221,6 +226,7 @@ Une simulation d’investissement de **1 000 $** au 1er janvier 1989 montre que 
 ### Ratios de Sharpe
 
 Les ratios de Sharpe confirment la solidité des stratégies, avec des valeurs stables autour de 1 pour les portefeuilles **Risk Parity (RP)** et **Equally Weighted (EW)**.  
+
 Une contrainte carbone plus faible (ξ = 0.8) tend à améliorer le ratio de Sharpe.
 
 <div class="row">
@@ -243,7 +249,9 @@ Une contrainte carbone plus faible (ξ = 0.8) tend à améliorer le ratio de Sha
 ### Répartition sectorielle
 
 Les portefeuilles sont naturellement diversifiés.  
+
 Sous contrainte carbone stricte, les secteurs **Énergie** et **Services publics** deviennent quasi inexistants.  
+
 La stratégie **Risk Parity** tend à équilibrer les secteurs, même sans contrainte d’égalisation imposée.
 
 <div class="mt-3 text-center">

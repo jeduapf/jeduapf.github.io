@@ -11,9 +11,10 @@ category: travail
 ## Introduction
 
 **TranspoZé** est un projet d’analyse énergétique visant à modéliser la consommation d’énergie des véhicules thermiques et éléctriques dans une optique de **décarbonation du transport routier**.  
+
 Conçu dans le cadre de mon alternance chez EDF, le projet combine une approche **physique, mathématique et algorithmique** pour simuler les déplacements, estimer la consommation et analyser les leviers d’amélioration énergétique.
 
-L’objectif est de proposer une méthode reproductible permettant de **quantifier les émissions et la dépense énergétique** d’un véhicule en fonction de son profil de conduite, du relief et d'autres conditions du véhicules ou de la route.
+L’objectif est de proposer une méthode reproductible et claire permettant de **quantifier les émissions et la dépense énergétique** d’un véhicule en fonction de son profil de conduite, du relief et d'autres conditions du véhicules ou de la route.
 
 ---
 
@@ -26,6 +27,8 @@ $$
 $$
 
 où :
+
+$$E$$ est l'énergie consommée
 
 $$m$$ est la masse du véhicule
 
@@ -41,13 +44,16 @@ $$C_d$$ le coefficient aérodynamique
 
 $$A$$ la surface frontale
 
-$$P_{elim}$$ la puissance perdue
+$$P_{elim}$$ les puissances auxiliaires comme la climatisation par exemple
+
+$$\frac{\delta E}{\delta s}$$ est la consommation d'énergie par unité de distance parcourue
 
 ---
 
 ## Données d’entrée
 
 Le modèle repose sur des **données de trajet détaillées** récupérées de la base française [BD Topo](https://geoservices.ign.fr/bdtopo), comprenant :  
+
 - le profil d’altitude,  
 - les vitesses maximales par segment.  
 

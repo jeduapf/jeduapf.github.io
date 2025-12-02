@@ -10,8 +10,10 @@ category: fun
 
 ## Introduction
 
-This project aims to build a **complete restaurant management system** that runs entirely on a **local Wi-Fi network (LAN)**.  
-When a client sits down, they can scan a **QR code** printed on their table, if they don't want, the waiter can do it for them and bring a paper menu instead.  
+This project aims to build a **complete restaurant management system** that runs entirely on a **local Wi-Fi network (LAN)**. 
+
+When a client sits down, they can scan a **QR code** printed on their table, if they don't want, the waiter can do it for them and bring a paper menu instead.
+
 The QR code automatically connects to the local web app and encodes the **table ID**, allowing the system to know which table is placing the order, no internet required.
 
 Everything — from the backend to the web menu — runs **inside the restaurant’s private local network**.
@@ -34,8 +36,9 @@ It manages:
 
 ### 🍽️ Frontend for Clients
 
-Clients access the menu through their browser after scanning the QR code (or paper menu if asked)
-The system automatically loads the correct table and displays a modern, mobile-friendly web interface where clients can:
+Clients access the menu through their browser after scanning the QR code (or paper menu if asked).
+
+The system automatically loads the correct table and displays a modern, mobile-friendly web interface (React) where clients can:
 - Browse dishes  
 - Customize options  
 - Place orders directly  
@@ -57,14 +60,17 @@ This ensures instant updates: as soon as an order is placed, the kitchen sees it
 ### 🧩 Easy Deployment with Docker
 
 Everything is containerized using **Docker** for simplicity.  
+
 The restaurant owner just needs to:
+
 1. Install Docker on a local computer or small server.  
 2. Run one command (`docker-compose up`).  
 3. The system automatically sets up:
    - Backend API  
    - WebSocket server  
    - Database  
-   - Frontend web app  
+   - Frontend web app 
+4. Insert the menu items and basic items in the database as well as the staff members and tables (QR codes are created automatically).
 
 The goal is to make installation **as easy as plugging in a coffee machine** ☕ fully automated and ready to go.
 
@@ -289,14 +295,14 @@ Below is the **request and role-based dataflow** for both public clients and aut
 Even though the system runs locally, several important security questions arise:
 
 1. **Payment Integration:**  
-   Should payments be handled within the same local system, or should they be **decoupled** (handled by an external terminal or service)?  
-   - If decoupled, how can we securely record the payment status in the local database?  
+   Should payments be handled within the same local system, or should they be **decoupled** (handled by an external terminal or service)? 
+   - If decoupled, how can we securely record the payment status in the local database? 
    - Would an API endpoint for “payment success” be enough, or is a more robust protocol needed?  
 
 2. **Network Isolation:**  
-   Is it truly safe to host the backend on a local Wi-Fi network accessible to clients?  
-   - Should the network be split into two VLANs, one for staff and one for customers?  
-   - How can we prevent malicious access or API abuse if a client tries to inspect network traffic?
+   Is it truly safe to host the backend on a local Wi-Fi network accessible to clients? 
+   - Should the network be split into two VLANs, one for staff and one for customers? 
+   - How can we prevent malicious access or API abuse if a client tries to inspect network traffic man-in-the-middle attacks?
 
 3. **Data Integrity and Reliability:**  
    What happens if the local server restarts during peak hours?  
@@ -308,7 +314,8 @@ Even though the system runs locally, several important security questions arise:
    - Is this modular structure appropriate, or should all roles share a common `/orders` endpoint with role-based filtering?  
    - How could WebSocket channels be organized? Per role, per table, or globally?  
 
-I’d love to hear feedback from developers and system designers on these architectural and security choices.  
+I’d love to hear feedback from developers and system designers on these architectural and security choices. 
+ 
 Your insights could help refine this concept into a production-ready, open-source solution for small restaurants. Thank you guys :D
 
 ---
