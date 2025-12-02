@@ -84,14 +84,14 @@
       description:
         - "Participation in a Petrobras-funded project for large-scale 3D marine seismic image processing for oil exploration"
         - "Processing and analysis of large volumes of 3D marine seismic data"
-        - "Development of denoising and super-resolution algorithms, including DIP-RED, for reservoir imaging enhancement"
+        - "Development of denoising and super-resolution algorithms (DIP-RED) for reservoir imaging enhancement"
       skills: "Python, NumPy, Neural Networks, Digital Signal Processing, CNNs, Stochastic Optimization"
 
     - title: "Teaching Assistant"
       institution: "UNICAMP"
       year: "2016 - 2023"
       description:
-        - "Only top-ranked students were selected as Teaching Assistants"
+        - "Only top-ranked students could be selected as Teaching Assistants"
         - "TA for: General Physics 1, Analytic Geometry, Linear Algebra, Lagrangian & Hamiltonian Mechanics, Basic Electronics 1"
       skills: "Teaching, Communication, Organization, Mathematics, Physics, Electronics"
 
@@ -129,11 +129,11 @@
       institution: "<a href='https://www.ec-nantes.fr/' target='_blank'>École Centrale de Nantes</a> (France) & <a href='https://www.fee.unicamp.br/' target='_blank'>UNICAMP</a> (Brazil)"
       year: "2016 - 2023"
       description:
-        - "Centrale Nantes: general engineering with specialization in data analysis and signal/image processing"
-        - "UNICAMP: Electrical Engineering, one of the top universities in Latin America"
+        - "Centrale Nantes: General engineering with specialization in data analysis and signal/image processing"
+        - "UNICAMP: Electrical engineering, in one of the top universities in Latin America"
         - "Awarded the CREA-SP Prize 2022 for best electrical engineering student"
 
-- title: "Other Interests"
+- title: "Hobbies"
   type: "list"
   contents:
     - "Karate"
