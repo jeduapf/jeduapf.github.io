@@ -52,34 +52,48 @@ $$\frac{\delta E}{\delta s}$$ est la consommation d'énergie par unité de dista
 
 ## Données d’entrée
 
-Le modèle repose sur des **données de trajet détaillées** récupérées de la base française [BD Topo](https://geoservices.ign.fr/bdtopo), comprenant :  
+Le modèle repose sur des **données de trajet détaillées** qui contiennent les points de latitude et de longitude du trajet original enrichies par la base française [BD Topo](https://geoservices.ign.fr/bdtopo). Ces points sont enrichis avec les informations suivantes :  
 
 - le profil d’altitude,  
 - les vitesses maximales par segment.  
 
-L’altitude permet d’estimer la **densité de l’air**, tandis que les **vitesses maximales** sont **ajustées** pour estimer un **profil de vitesses** simulant une conduite réaliste.
+L’altitude permet d’estimer la **densité de l’air** et la **pente** de la route, tandis que les **vitesses maximales** sont "ajustées" pour estimer un **profil de vitesses** simulant une conduite réaliste.
+
+À la fin, une liste de points de latitude, longitude, altitude et vitesse maximale seront entrés dans le modèle physique pour estimer la consommation d'énergie entre chaque deux points consécutifs.
+
+Le trajet peut être visualisé sur la carte de la [Figure 2](#figure-2-carte-du-trajet) et le profil de vitesses maximales ainsi que les altitudes récupérées de la base BD Topo sont montrés sur la [Figure 3](#figure-3-vitesses-et-altitudes).
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     {% include figure.html path="assets/img/transpoze_map.png" title="Profil de route et altitudes" class="img-fluid rounded z-depth-1" %}
   </div>
+</div>
+<div class="caption" id="figure-2-carte-du-trajet">
+    Figure 2 : Exemple d'une carte contenant le trajet défini par l'utilisateur.
+</div>
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/img/transpoze_altitude.png" title="Profil de route et altitudes" class="img-fluid rounded z-depth-1" %}
+  </div>
   <div class="col-sm mt-3 mt-md-0">
     {% include figure.html path="assets/img/transpoze_speed.png" title="Profil de vitesse simulé" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-<div class="caption">
-    Figure 2 : Exemples de profils d’entrée utilisés dans les simulations.
+<div class="caption" id="figure-3-vitesses-et-altitudes">
+    Figure 3 : Exemples des vitesses maximales courbe en rouge seulement et des altitudes récupérées de la base BD Topo pour un des trajets de la Figure 2.
 </div>
+
 
 ---
 
 ## Estimation de la Vitesse
 
-Le profil de vitesse réel est estimé à partir des **vitesses maximales réglementaires** (`V_max`) de chaque segment routier, en appliquant un **coefficient d'ajustement** $$\alpha$$ dépendant du type de route et des styles de conduite de la région en question (la France).
+Le profil de vitesse réel est estimé à partir des **vitesses maximales réglementaires** ($$V_{max}$$) de chaque segment routier, en appliquant un **coefficient d'ajustement** $$\alpha$$ dépendant du type de route et des styles de conduite de la région en question (la France).
 
 ### Modèle polynomial d'ajustement
 
-Le coefficient $$\alpha$$ est calculé par un modèle polynomial calibré empiriquement :
+Comme première approche, le coefficient $$\alpha$$ est calculé par un modèle polynomial calibré empiriquement sur des données réelles mesurées sur la route :
 
 $$
 \alpha(V_{\text{max}}) = 9.27 \times 10^{-6} V_{\text{max}}^4 - 7.37 \times 10^{-4} V_{\text{max}}^3 + 0.0225 V_{\text{max}}^2 - 0.314 V_{\text{max}} + 2.34
@@ -87,13 +101,20 @@ $$
 
 avec $$\alpha$$ plafonné à 0.98 pour garantir que la vitesse réelle reste inférieure à la limite réglementaire.
 
-La vitesse réelle "instantanée" est alors calculée en tout point $$s$$ de la route en fonction du profil de vitesse maximale récupéré par la base BD Topo:
+La vitesse réelle "instantanée" est alors calculée en tout point $$s$$ de la route en fonction du profil de vitesse maximale récupéré par la base BD Topo ([Figure 4](#figure-4-coefficient-ajustement)):
 
 $$
 v_{\text{réelle}}(s) = \alpha \times V_{\text{max}}(s)
 $$
 
-<!-- ESPACE RÉSERVÉ POUR IMAGE DU PROFIL DE VITESSE -->
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/img/transpoze_alpha.png" title="Détermination du coefficient d'ajustement" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption" id="figure-4-coefficient-ajustement">
+    Figure 4 : Détermination du coefficient d'ajustement $$\alpha$$.
+</div>
 
 ### Contraintes d'accélération
 
@@ -101,11 +122,22 @@ L'accélération maximale est limitée par le minimum entre :
 - La **capacité moteur** : $$a_{\text{moteur}} = \frac{1000 P_{\text{moteur}} \eta_{\text{mot}}}{V_{\text{max}} m}$$
 - Le **frottement statique** : $$a_{\text{friction}} = g \mu_s \cos(\theta)$$
 
-où $$P_moteur$$ est la puissance du moteur (kW), $$\eta_{mot}$$ l'efficacité de transmission du moteur, et $$\mu_s ≈ 0.9$$ le coefficient de frottement statique.
+où $$P_{\text{moteur}}$$ est la puissance du moteur (kW), $$\eta_{\text{mot}}$$ l'efficacité de transmission du moteur, et $$\mu_s ≈ 0.9$$ le coefficient de frottement statique.
+
+La [Figure 5](#figure-5-profil-vitesse-reelle) montre le résultat final du profil de vitesse réelle.
+
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.html path="assets/img/transpoze_final_speed.png" title="Détermination du profil de vitesse réelle $$v_{\text{réelle}}(s)$$ a partir du profil de vitesse maximale $$V_{\text{max}}(s)$$ et du coefficient d'ajustement $$\alpha$$." class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption" id="figure-5-profil-vitesse-reelle">
+    Figure 5 : Détermination du profil de vitesse réelle $$v_{\text{réelle}}(s)$$ à partir du profil de vitesse maximale $$V_{\text{max}}(s)$$ et du coefficient d'ajustement $$\alpha$$.
+</div>
+
 
 ---
-
-<!-- ESPACE RÉSERVÉ POUR IMAGE DU PROFIL DE VITESSE -->
 
 ## Propagation des Incertitudes
 
@@ -139,7 +171,7 @@ Pour l'équation énergétique complète, les principales dérivées partielles 
 
 - **Masse** : $$\partial E/\partial m = (g sin(θ) + g μ_d cos(θ)) Δs$$
 - **Inclinaison** : $$\partial E/\partial θ = m g (cos(θ) - μ_d sin(θ)) Δs$$
-- **Vitesse** : $$\partial E/\partial v = (ρ_ar C_d A v - P_elim/v²) Δs$$
+- **Vitesse** : $$\partial E/\partial v = (ρ_{ar} C_d A v - P_{elim}/v²) Δs$$
 
 L'incertitude totale $$\sigma_E$$ sur l'énergie consommée s'exprime en **joules** ou **kWh**, permettant de définir des **marges d'erreur** pour chaque simulation.
 
@@ -157,17 +189,19 @@ $$
 \text{IC}_{95\%} = \mu \pm 1.96 \sigma
 $$
 
-Cela signifie qu'il y a **95% de chances** que la consommation réelle se situe dans cet intervalle.
+Cela signifie qu'il y a **95 % de chances** que la consommation réelle se situe dans cet intervalle.
 
 ### Visualisation du TCL
 
+La [Figure 6](#figure-6-theoreme-central-limite) illustre ce principe à travers une simulation.
+
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="assets/img/clt_simulation_edf.gif" title="Simulation du Théorème Central Limite" class="img-fluid rounded z-depth-1" %}
+    {% include figure.html path="assets/img/transpoze_clt.gif" title="Simulation du Théorème Central Limite" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-<div class="caption">
-    Figure 3 : Illustration du Théorème Central Limite. La somme de nombreuses mesures indépendantes converge vers une distribution gaussienne.
+<div class="caption" id="figure-6-theoreme-central-limite">
+    Figure 6 : Illustration du Théorème Central Limite. La somme de nombreuses mesures indépendantes converge vers une distribution gaussienne.
 </div>
 
 Cette approche probabiliste renforce la **robustesse** du modèle et permet de fournir des **estimations quantifiées** avec leurs marges d'incertitude.
@@ -183,6 +217,23 @@ Une accélération douce et un maintien de vitesse stable permettent de réduire
 
 Les routes présentant des pentes supérieures à **5 %** entraînent une hausse exponentielle de la demande énergétique, confirmant le rôle majeur du relief dans les bilans carbone des transports.
 
+Ci-dessous, la [Figure 7](#figure-7-dashboard-resultats) présente le dashboard de visualisation des résultats qui permet de comparer les différentes pertes énergétiques (accélération, vent, frottement, etc.) sur un trajet donné, ainsi que l'incertitude finale sur la consommation totale. La [Figure 8](#figure-8-analyse-consommation) montre une analyse détaillée de la consommation énergétique selon différents paramètres.
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.html 
+       path="assets/img/transpoze_dashboard.png" 
+       title="Dashboard de visualisation des résultats" 
+       class="img-fluid rounded z-depth-1" 
+    %}
+  </div>
+</div>
+<div class="caption" id="figure-7-dashboard-resultats">
+    Figure 7 : Dashboard de visualisation des résultats condensés.
+</div>
+
+
+
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     {% include figure.html 
@@ -192,8 +243,8 @@ Les routes présentant des pentes supérieures à **5 %** entraînent une hausse
     %}
   </div>
 </div>
-<div class="caption">
-    Figure 4 : Analyse de la consommation énergétique selon différents paramètres.
+<div class="caption" id="figure-8-analyse-consommation">
+    Figure 8 : Analyse de la consommation énergétique selon différents paramètres.
 </div>
 
 
