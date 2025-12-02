@@ -20,12 +20,12 @@
   type: "list"
   contents:
     - "Programmation : Python, Matlab, SQL, C/C++"
-    - "Data Engineering : NumPy, Pandas, Dask, Polars, PySpark (en apprentissage)"
+    - "Data Engineering : NumPy, Pandas, Dask, Polars"
     - "Web & Applications : Streamlit, FastAPI, Flask"
     - "DevOps & Cloud : Conda, Docker, CI/CD"
     - "Optimisation : MILP, optimisation stochastique, SciPy, Gurobi"
-    - "Machine Learning : Réseaux de neurones, CNNs, PINNs, scikit-learn, PyTorch, TensorFlow, JAX"
-    - "Visualisation : PowerBI, Tableau, Plotly"
+    - "Machine Learning : Réseaux de neurones, CNNs, PINNs, scikit-learn, PyTorch, TensorFlow"
+    - "Visualisation : Plotly, Tableau, PowerBI"
     - "Outils d’ingénierie : AutoCAD, Simulink, PSpice, Quartus, SolidWorks, Eagle"
     - "Gestion de projet : Git, Jira"
     - "Bureautique : Excel, PowerPoint, Word, Google Workspace"
@@ -38,9 +38,9 @@
       institution: "EDF, La Défense"
       year: "2024 - 2025"
       description:
-        - "Réalisation d’études opérationnelles et d’analyses techno-économiques pour des projets de transition énergétique, de l’échelle de quartier à régionale"
+        - "Réalisation d’études opérationnelles et d’analyses techno-économiques pour des projets de transition énergétique, pouvant aller de l’échelle d’un quartier à une région"
         - "Évaluation des indicateurs clés : prix du gaz, taux d’électrification industrielle, consommation énergétique des véhicules, coûts opérationnels"
-        - "Développement d’outils de modélisation pour l’analyse de scénarios énergétiques prospectifs"
+        - "Développement d’outils de modélisation pour l’analyse de scénarios énergétiques prospectifs, notamment, <a href='https://jeduapf.github.io/projects/3_TranspoZ%C3%A9/' target='_blank'>TranspoZé</a>"
       skills: "Python, Streamlit, Pandas, Polars, Excel, PowerPoint, Tableau, Plotly, Dask"
 
     - title: "Chercheur en Cybersécurité"
@@ -82,17 +82,17 @@
       institution: "UNICAMP"
       year: "2022"
       description:
-        - "Participation à un projet financé par Petrobras pour le traitement d’images sismiques marines 3D à grande échelle pour l’exploration pétrolière"
+        - "Participation à un projet financé par Petrobras pour le traitement d’images sismiques marines 3D pour l’exploration pétrolière"
         - "Traitement et analyse de grands volumes de données sismiques marines 3D"
-        - "Développement d’algorithmes de débruitage et de super-résolution, incluant DIP-RED, pour l’amélioration de l’imagerie des réservoirs"
+        - "Développement d’algorithmes de débruitage et de super-résolution (DIP-RED) pour l’amélioration de l’imagerie des réservoirs"
       skills: "Python, NumPy, Réseaux de Neurones, Traitement du Signal Numérique, CNNs, Optimisation Stochastique"
 
     - title: "Assistant d’Enseignement"
       institution: "UNICAMP"
       year: "2016 - 2023"
       description:
-        - "Seuls les étudiants les mieux classés étaient sélectionnés comme assistants"
-        - "TA pour : Physique Générale 1, Géométrie Analytique, Algèbre Linéaire, Mécanique Lagrangienne & Hamiltonienne, Électronique de Base 1"
+        - "Seuls les étudiants les mieux classés pouvaient être sélectionnés comme assistants"
+        - "Sujets enseignés : Physique Générale 1, Géométrie Analytique, Algèbre Linéaire, Mécanique Lagrangienne & Hamiltonienne, Électronique 1"
       skills: "Enseignement, Communication, Organisation, Mathématiques, Physique, Électronique"
 
     - title: "Professeur de Collège"
@@ -129,11 +129,11 @@
       institution: "<a href='https://www.ec-nantes.fr/' target='_blank'>École Centrale de Nantes</a> (France) & <a href='https://www.fee.unicamp.br/' target='_blank'>UNICAMP</a> (Brésil)"
       year: "2016 - 2023"
       description:
-        - "Centrale Nantes : ingénierie générale avec spécialisation en analyse de données et traitement signal/image"
-        - "UNICAMP : Génie Électrique, l’une des meilleures universités d’Amérique Latine"
+        - "Centrale Nantes : Ingénierie générale avec spécialisation en analyse de données et traitement signal/image"
+        - "UNICAMP : Génie électrique, dans l’une des meilleures universités d’Amérique Latine"
         - "Lauréat du Prix CREA-SP 2022 pour le meilleur étudiant en génie électrique"
 
-- title: "Autres Centres d’Intérêt"
+- title: "Hobbies"
   type: "list"
   contents:
     - "Karaté"

@@ -20,12 +20,12 @@
   type: "list"
   contents:
     - "Programação: Python, Matlab, SQL, C/C++"
-    - "Engenharia de Dados: NumPy, Pandas, Dask, Polars, PySpark (aprendizado)"
+    - "Engenharia de Dados: NumPy, Pandas, Dask, Polars"
     - "Web & Apps: Streamlit, FastAPI, Flask"
     - "DevOps & Cloud: Conda, Docker, CI/CD"
     - "Otimização: MILP, otimização estocástica, SciPy, Gurobi"
-    - "Machine Learning: Redes Neurais, CNNs, PINNs, scikit-learn, PyTorch, TensorFlow, JAX"
-    - "Visualização: PowerBI, Tableau, Plotly"
+    - "Machine Learning: Redes Neurais, CNNs, PINNs, scikit-learn, PyTorch, TensorFlow"
+    - "Visualização: Plotly, Tableau, PowerBI"
     - "Ferramentas de Engenharia: AutoCAD, Simulink, PSpice, Quartus, SolidWorks, Eagle"
     - "Gestão de Projetos: Git, Jira"
     - "Pacote Office: Excel, PowerPoint, Word, Google Workspace"
@@ -38,7 +38,7 @@
       institution: "EDF, La Défense"
       year: "2024 - 2025"
       description:
-        - "Realização de estudos operacionais e análises tecnoeconômicas para projetos de transição energética, do nível de bairro ao regional"
+        - "Realização de estudos operacionais e análises tecnoeconômicas para projetos de transição energética, do nível de um bairro à uma região"
         - "Avaliação de métricas-chave: preços do gás, taxas de eletrificação industrial, consumo energético de veículos, custos operacionais"
         - "Desenvolvimento de ferramentas de modelagem para análise de cenários energéticos prospectivos"
       skills: "Python, Streamlit, Pandas, Polars, Excel, PowerPoint, Tableau, Plotly, Dask"
@@ -82,24 +82,24 @@
       institution: "UNICAMP"
       year: "2022"
       description:
-        - "Participação em projeto financiado pela Petrobras para processamento de imagens sísmicas marinhas 3D em larga escala para exploração de petróleo"
+        - "Participação em projeto financiado pela Petrobras para processamento de imagens sísmicas marinhas 3D para exploração de petróleo"
         - "Processamento e análise de grandes volumes de dados sísmicos marinhos 3D"
-        - "Desenvolvimento de algoritmos de denoising e super-resolução, incluindo DIP-RED, para aprimoramento da imagem de reservatórios"
+        - "Desenvolvimento de algoritmos de denoising e super-resolução (DIP-RED) para aprimoramento da imagem de reservatórios"
       skills: "Python, NumPy, Redes Neurais, Processamento Digital de Sinais, CNNs, Otimização Estocástica"
 
-    - title: "Assistente de Ensino"
+    - title: "Assistente de Ensino (PAD)"
       institution: "UNICAMP"
       year: "2016 - 2023"
       description:
-        - "Apenas os alunos melhor classificados foram selecionados como assistentes"
-        - "TA para: Física Geral 1, Geometria Analítica, Álgebra Linear, Mecânica Lagrangeana & Hamiltoniana, Eletrônica Básica 1"
+        - "Apenas os alunos com melhor classificação podem ser selecionados como assistentes"
+        - "PAD de: Física Geral 1, Geometria Analítica, Álgebra Linear, Mecânica Lagrangeana & Hamiltoniana, Eletrônica Básica 1"
       skills: "Ensino, Comunicação, Organização, Matemática, Física, Eletrônica"
 
     - title: "Professor de Ensino Fundamental"
       institution: "UNICAMP"
       year: "2016 - 2017"
       description:
-        - "Ensino de matemática e física básica para alunos do ensino fundamental"
+        - "Ensino de matemática e física básica para alunos do ensino fundamental de uma escola pública em Barão Geraldo"
       skills: "Ensino, Comunicação, Motivação"
 
     - title: "Instrutor de Karatê"
@@ -130,8 +130,8 @@
       year: "2016 - 2023"
       description:
         - "Centrale Nantes: engenharia geral com especialização em análise de dados e processamento de sinais/imagens"
-        - "UNICAMP: Engenharia Elétrica, uma das melhores universidades da América Latina"
-        - "Vencedor do Prêmio CREA-SP 2022 para o melhor aluno de Engenharia Elétrica"
+        - "UNICAMP: Engenharia Elétrica, na melhor faculdade da América Latina (FEEC)"
+        - "Vencedor do Prêmio CREA-SP 2022 como o melhor aluno de Engenharia Elétrica"
 
 - title: "Outros Interesses"
   type: "list"
