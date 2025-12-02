@@ -113,7 +113,7 @@ $$
   </div>
 </div>
 <div class="caption" id="figure-4-coefficient-ajustement">
-    Figure 4 : Détermination du coefficient d'ajustement $$\alpha$$.
+    Figure 4 : Détermination du coefficient d'ajustement.
 </div>
 
 ### Contraintes d'accélération
@@ -129,11 +129,11 @@ La [Figure 5](#figure-5-profil-vitesse-reelle) montre le résultat final du prof
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="assets/img/transpoze_final_speed.png" title="Détermination du profil de vitesse réelle $$v_{\text{réelle}}(s)$$ a partir du profil de vitesse maximale $$V_{\text{max}}(s)$$ et du coefficient d'ajustement $$\alpha$$." class="img-fluid rounded z-depth-1" %}
+    {% include figure.html path="assets/img/transpoze_final_speed.png" title="Détermination du profil de vitesse réelle à partir du profil de vitesse maximale et du coefficient d'ajustement." class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 <div class="caption" id="figure-5-profil-vitesse-reelle">
-    Figure 5 : Détermination du profil de vitesse réelle $$v_{\text{réelle}}(s)$$ à partir du profil de vitesse maximale $$V_{\text{max}}(s)$$ et du coefficient d'ajustement $$\alpha$$.
+    Figure 5 : Détermination du profil de vitesse réelle à partir du profil de vitesse maximale et du coefficient d'ajustement.
 </div>
 
 
