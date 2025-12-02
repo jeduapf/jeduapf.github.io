@@ -107,14 +107,14 @@
       year: "2016 - 2023"
       description:
         - "Taught karate to university students and adults"
-        - "Founded the UNICAMP karate club"
+        - "Founded the <a href='https://www.instagram.com/karateunicamp/' target='_blank'>UNICAMP karate club</a>"
         - "Provided free karate classes"
       skills: "Teaching, Communication, Organization, Karate"
 
 - title: "Education"
   type: "time_table"
   contents:
-    - title: "Mastère Spécialisé – Optimisation des Systèmes Énergétiques <a href='https://www.mastereose.fr/' target='_blank'>OSE</a>"
+    - title: "Mastère Spécialisé – <a href='https://www.mastereose.fr/' target='_blank'>Optimisation des Systèmes Énergétiques (OSE)</a>"
       institution: "<a href='https://www.minesparis.psl.eu/' target='_blank'>Mines Paris – PSL</a>  (in partnership with <a href='https://www.edhec.edu/fr' target='_blank'>EDHEC</a> & <a href='https://www.creden.fr/fr/accueil.html' target='_blank'>CREDEN</a>)"
       year: "2024 - 2025"
       description:

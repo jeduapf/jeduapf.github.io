@@ -1,91 +1,144 @@
-- title: Informations Générales
-  type: map
+- title: "Informations Générales"
+  type: "map"
   contents:
-    - name: Nom complet
-      value: José Eduardo Alves Pereira Filho
-    - name: Âge
-      value: 27
-    - name: Langues
-      value: Portugais (C2), Français (C1), Anglais (C1), Chinois (A1)
-    - name: Contact
-      value: jeduapf@gmail.com
-    - name: GitHub
-      value: github.com/jeduapf
-    - name: LinkedIn
-      value: linkedin.com/in/jeduapf
+    - name: "Nom Complet"
+      value: "José Eduardo Alves Pereira Filho"
+    - name: "Âge"
+      value: "27"
+    - name: "Langues"
+      value: "Portugais (C2), Français (C1), Anglais (C1), Chinois (A1)"
+    - name: "Contact"
+      value: "jeduapf@gmail.com"
+    - name: "GitHub"
+      value: "<a href='https://github.com/jeduapf' target='_blank'>github.com/jeduapf</a>"
+    - name: "LinkedIn"
+      value: "<a href='https://www.linkedin.com/in/jeduapf' target='_blank'>linkedin.com/in/jeduapf</a>"
+    - name: "Dernière Mise à Jour"
+      value: "2025-12-02"
 
-- title: Formation
-  type: time_table
+- title: "Compétences (classées par niveau de maîtrise)"
+  type: "list"
   contents:
-    - title: Mastère Spécialisé – Optimisation des Systèmes Énergétiques (OSE)
-      institution: Mines Paris – PSL (en partenariat avec EDHEC & CREDEN)
-      year: 2024 - 2025
-      description:
-        - "Axé sur la modélisation financière, les statistiques appliquées, l’optimisation stochastique et l’économie de l’énergie"
-        - "Alternance chez EDF : outils quantitatifs pour l’optimisation des coûts, l’électrification et l’évaluation technico-économique"
-    
-    - title: Double Diplôme d’Ingénieur
-      institution: École Centrale de Nantes (France) & UNICAMP (Brésil)
-      year: 2016 - 2023
-      description:
-        - "Centrale Nantes : ingénierie généraliste, spécialisation en analyse de données, traitement du signal et de l’image"
-        - "UNICAMP : Génie électrique, une des meilleures universités d’Amérique latine"
-        - "Lauréat du Prix CREA-SP 2022 comme meilleur étudiant en génie électrique"
+    - "Programmation : Python, Matlab, SQL, C/C++"
+    - "Data Engineering : NumPy, Pandas, Dask, Polars, PySpark (en apprentissage)"
+    - "Web & Applications : Streamlit, FastAPI, Flask"
+    - "DevOps & Cloud : Conda, Docker, CI/CD"
+    - "Optimisation : MILP, optimisation stochastique, SciPy, Gurobi"
+    - "Machine Learning : Réseaux de neurones, CNNs, PINNs, scikit-learn, PyTorch, TensorFlow, JAX"
+    - "Visualisation : PowerBI, Tableau, Plotly"
+    - "Outils d’ingénierie : AutoCAD, Simulink, PSpice, Quartus, SolidWorks, Eagle"
+    - "Gestion de projet : Git, Jira"
+    - "Bureautique : Excel, PowerPoint, Word, Google Workspace"
+    - "Autres : Permis de conduire (Permis B)"
 
-- title: Expérience Professionnelle
-  type: time_table
+- title: "Expérience"
+  type: "time_table"
   contents:
-    - title: Responsable d’Études Énergétiques (Alternance)
-      institution: EDF, La Défense & Sophia Antipolis
-      year: 2024 - 2025
+    - title: "Responsable d’Études Énergétiques (Alternance)"
+      institution: "EDF, La Défense"
+      year: "2024 - 2025"
       description:
-        - "Réalisation d’études opérationnelles et d’analyses technico-économiques pour des projets de transition énergétique à l’échelle d’un quartier à une région"
-        - "Évaluation d’indicateurs clés : prix du gaz, taux d’électrification industrielle, consommation énergétique des véhicules, coûts opérationnels"
+        - "Réalisation d’études opérationnelles et d’analyses techno-économiques pour des projets de transition énergétique, de l’échelle de quartier à régionale"
+        - "Évaluation des indicateurs clés : prix du gaz, taux d’électrification industrielle, consommation énergétique des véhicules, coûts opérationnels"
         - "Développement d’outils de modélisation pour l’analyse de scénarios énergétiques prospectifs"
-    
-    - title: Chercheur en Cybersécurité
-      institution: INSA Lyon
-      year: 2024
-      description:
-        - "Intégration de réseaux de neurones informés par la physique (PINNs) dans la détection des cyberattaques"
-        - "Validation des méthodes par tests automatisés"
-    
-    - title: Analyste de Données
-      institution: Eldorado/Motorola
-      year: 2021 - 2023
-      description:
-        - "Conception de modèles d’IA pour la détection de défauts sur les réseaux 4G/5G"
-        - "Mise en place de pipelines automatisés pour l’alerte en cas de défaut"
-        - "Développement de variables prédictives des préférences des consommateurs via Google Cloud Platform"
-    
-    - title: Chercheur en Intelligence Artificielle
-      institution: Fiberwork
-      year: 2021
-      description:
-        - "Développement d’algorithmes de surveillance via signaux de fibres optiques (DAS)"
-    
-    - title: Chercheur Réseaux HVDC
-      institution: SuperGrid
-      year: 2020 - 2021
-      description:
-        - "Développement d’un logiciel de surveillance de réseaux HVDC basé sur la théorie de l’action et la planification automatique"
-        - "Création d’un modèle simplifié de réseaux HVDC avec convertisseurs modulaires multiniveaux"
+      skills: "Python, Streamlit, Pandas, Polars, Excel, PowerPoint, Tableau, Plotly, Dask"
 
-- title: Compétences
-  type: list
-  contents:
-    - "Programmation : Python, Matlab, C/C++, SQL"
-    - "Outils : PowerBI, Tableau, Autocad, SolidWorks, Quartus, PSpice, Simulink, Eagle"
-    - "Bureautique : Excel, Word, PowerPoint"
-    - "Méthodes : Git, JIRA"
-    - "Permis B"
+    - title: "Chercheur en Cybersécurité"
+      institution: "INSA Lyon"
+      year: "2024"
+      description:
+        - "Intégration des Physics-Informed Neural Networks (PINNs) pour la détection des menaces de cyberattaques"
+        - "Validation des méthodes via des tests automatisés"
+      skills: "Python, Pandas, PowerPoint, Plotly, Réseaux de Neurones, PyTorch, NumPy"
+    
+    - title: "Data Analyst"
+      institution: "Eldorado / Motorola"
+      year: "2021 - 2023"
+      description:
+        - "Conception de modèles d’IA pour la détection de défauts sur les réseaux 4G/5G de smartphones"
+        - "Création de pipelines automatisés pour l’alerte de pannes"
+        - "Développement de fonctionnalités prédictives pour les préférences des consommateurs via Google Cloud Platform"
+      skills: "Python, Pandas, SQL, Plotly, scikit-learn, Git, Jira, Conda, Linux, BigQuery, Looker Studio"
 
-- title: Centres d’Intérêt
-  type: list
+    - title: "Chercheur en Intelligence Artificielle"
+      institution: "Fiberwork"
+      year: "2021"
+      description:
+        - "Développement d’algorithmes pour la surveillance des signaux de fibre optique (DAS)"
+      skills: "Python, Pandas, NumPy, CNNs, Conda, Traitement du Signal Numérique"
+    
+    - title: "Chercheur en Réseaux HVDC"
+      institution: "SuperGrid"
+      year: "2020 - 2021"
+      description:
+        - "Développement de logiciels de surveillance HVDC utilisant la théorie de l’action et la planification automatisée"
+        - "Création d’un modèle simplifié de réseau HVDC avec convertisseurs modulaires multiniveaux"
+      skills: "Python, NumPy, Réseaux de Neurones, Recherche en Profondeur, Recherche en Largeur, Théorie de l’Action et de la Planification, Modelica"
+
+- title: "Projets Académiques"
+  type: "time_table"
   contents:
-    - "Karaté (ceinture noire – fondateur du club UNICAMP)"
+    - title: "Projet de Recherche en Traitement d’Images Sismiques"
+      institution: "UNICAMP"
+      year: "2022"
+      description:
+        - "Participation à un projet financé par Petrobras pour le traitement d’images sismiques marines 3D à grande échelle pour l’exploration pétrolière"
+        - "Traitement et analyse de grands volumes de données sismiques marines 3D"
+        - "Développement d’algorithmes de débruitage et de super-résolution, incluant DIP-RED, pour l’amélioration de l’imagerie des réservoirs"
+      skills: "Python, NumPy, Réseaux de Neurones, Traitement du Signal Numérique, CNNs, Optimisation Stochastique"
+
+    - title: "Assistant d’Enseignement"
+      institution: "UNICAMP"
+      year: "2016 - 2023"
+      description:
+        - "Seuls les étudiants les mieux classés étaient sélectionnés comme assistants"
+        - "TA pour : Physique Générale 1, Géométrie Analytique, Algèbre Linéaire, Mécanique Lagrangienne & Hamiltonienne, Électronique de Base 1"
+      skills: "Enseignement, Communication, Organisation, Mathématiques, Physique, Électronique"
+
+    - title: "Professeur de Collège"
+      institution: "UNICAMP"
+      year: "2016 - 2017"
+      description:
+        - "Enseignement des mathématiques et de la physique de base aux élèves de collège public"
+      skills: "Enseignement, Communication, Motivation"
+
+    - title: "Instructeur de Karaté"
+      institution: "UNICAMP"
+      year: "2016 - 2023"
+      description:
+        - "Enseignement du karaté aux étudiants universitaires et aux adultes"
+        - "Fondateur du <a href='https://www.instagram.com/karateunicamp/' target='_blank'>club de karaté UNICAMP</a>"
+        - "Cours de karaté gratuits"
+      skills: "Enseignement, Communication, Organisation, Karaté"
+
+- title: "Éducation"
+  type: "time_table"
+  contents:
+    - title: "Mastère Spécialisé – <a href='https://www.mastereose.fr/' target='_blank'>Optimisation des Systèmes Énergétiques (OSE)</a>"
+      institution: "<a href='https://www.minesparis.psl.eu/' target='_blank'>Mines Paris – PSL</a>  (en partenariat avec <a href='https://www.edhec.edu/fr' target='_blank'>EDHEC</a> & <a href='https://www.creden.fr/fr/accueil.html' target='_blank'>CREDEN</a>)"
+      year: "2024 - 2025"
+      description:
+        - "Focus sur la modélisation financière, la statistique appliquée, l’optimisation stochastique et l’économie de l’énergie"
+        - "Alternance chez EDF : outils quantitatifs pour l’optimisation des coûts, l’électrification et l’évaluation techno-économique"
+        - "Thème de l’année : la décarbonisation des pays en développement"
+        - "Voyage exploratoire au Sénégal"
+        - "Au sein de l’équipe communication pour le congrès OSE. Responsable du site web."
+
+    
+    - title: "Double Diplôme d’Ingénieur"
+      institution: "<a href='https://www.ec-nantes.fr/' target='_blank'>École Centrale de Nantes</a> (France) & <a href='https://www.fee.unicamp.br/' target='_blank'>UNICAMP</a> (Brésil)"
+      year: "2016 - 2023"
+      description:
+        - "Centrale Nantes : ingénierie générale avec spécialisation en analyse de données et traitement signal/image"
+        - "UNICAMP : Génie Électrique, l’une des meilleures universités d’Amérique Latine"
+        - "Lauréat du Prix CREA-SP 2022 pour le meilleur étudiant en génie électrique"
+
+- title: "Autres Centres d’Intérêt"
+  type: "list"
+  contents:
+    - "Karaté"
     - "Boxe"
-    - "Volleyball"
+    - "Volley-ball"
     - "Échecs"
     - "Jeux vidéo"
     - "Cuisine"
