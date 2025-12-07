@@ -1,25 +1,28 @@
-<!--     {% if site.footer_fixed %}
-    <footer class="fixed-bottom">
-      <div class="container mt-0">
-        &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}. {{ site.footer_text }}
-        {%- if site.impressum_path -%}
-        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-        {%- endif -%}
-        {%- if site.last_updated -%}
-        Last updated: {{ "now" | date: '%B %d, %Y' }}.
-        {%- endif %}
-      </div>
-    </footer>
-    {%- else -%}
-    <footer class="sticky-bottom mt-5">
-      <div class="container">
-        &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}. {{ site.footer_text }}
-        {%- if site.impressum_path -%}
-        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-        {%- endif -%}
-        {%- if site.last_updated -%}
-        Last updated: {{ "now" | date: '%B %d, %Y' }}.
-        {%- endif %}
-      </div>
-    </footer>
-    {%- endif %} -->
+<footer style="
+  margin-top: 40px;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #e5e5e5;
+">
+
+  <!-- Buy Me a Coffee Button -->
+  <div style="margin-bottom: 10px;">
+    <a href="https://buymeacoffee.com/jeduapf" target="_blank" rel="noopener">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee"
+        style="height: 45px; width: auto;">
+    </a>
+  </div>
+
+  <!-- Footer Text -->
+  <div style="margin-top: 10px; color:#777;">
+    © <span id="year"></span> José Eduardo — All rights reserved.
+  </div>
+
+</footer>
+
+<!-- Auto-update copyright year -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
