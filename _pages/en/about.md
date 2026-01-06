@@ -12,7 +12,7 @@ translations:
 
 profile:
   align: right
-  image: CV.png
+  image: cartoon_me.png
   image_circular: true # crops the image to make it circular
   address: >
     Bezons, France

@@ -10,7 +10,7 @@ lang: fr
 key: about
 profile:
   align: right
-  image: CV.png
+  image: cartoon_me.png
   image_circular: true # recadre l’image pour la rendre circulaire
   address: >
     Bezons, France
