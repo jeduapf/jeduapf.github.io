@@ -1,29 +1,38 @@
 ---
 layout: page
-title: RPZeG
-description: Criador de itinerários de viagem gamificado e otimizador de rotas baseado nos algoritmos TSPTW e Mochila.
+title: RPZeG — Planejador de Viagens Gamificado e Otimizador de Rotas
+description: O melhor planejador de viagens gamificado e offline-first, impulsionado por otimização matemática MILP.
 img: assets/img/rpzeg_cover.png
 lang: pt
 importance: 1
 category: diversão
 ---
 
-> **Demonstração ao Vivo**: [rpg.jeduapf.com](https://rpg.jeduapf.com)  
-> **Código Fonte**: [github.com/jeduapf/RPZeG](https://github.com/jeduapf/RPZeG)
+> 🚀 **Aplicativo Web ao Vivo**: [rpg.jeduapf.com](https://rpg.jeduapf.com) — *Gratuito, 100% offline-first, sem necessidade de instalação!*
 
 ---
 
-## Apresentação
+## 🌟 Eleve suas Viagens ao Próximo Nível com o RPZeG!
 
-O **RPZeG** é um acompanhante de viagem gamificado offline-first que transforma qualquer itinerário em um baralho de missões RPG interativo. 
+Diga adeus aos roteiros de viagem estáticos e sem graça. O **RPZeG** é o revolucionário aplicativo de viagens gamificado que transforma qualquer férias, viagem de fim de semana ou passeio urbano em um **baralho de missões RPG interativo**!
 
-Os viajantes podem definir missões principais, secundárias, limites de orçamento e janelas de horário de refeição. Com apenas um clique, o RPZeG resolve a sequência ideal de visitas usando algoritmos de otimização matemática e exporta um arquivo HTML autônomo sem dependências que funciona 100% offline em qualquer dispositivo móvel.
+Seja explorando uma nova cidade ou organizando pontos turísticos e paradas para refeição, o RPZeG calcula a sequência de visitas matematicamente perfeita em segundos, permitindo que você aproveite a viagem como um herói completando missões.
+
+---
+
+## ⚡ Por que escolher o RPZeG?
+
+- 🎮 **Baralho de Missões RPG**: Transforme locais em objetivos principais e missões secundárias com pontos de XP, limites de tempo e custos orçamentários.
+- 📐 **Otimização Matemática de Alta Performance**: Algoritmos de Pesquisa Operacional para maximizar os pontos de XP respeitando janelas de horário e paradas de refeição.
+- 📶 **Exportação HTML 100% Offline**: Gere um arquivo HTML autônomo e leve com mapas Leaflet integrados e armazenamento offline PWA. Funciona em qualquer lugar sem internet!
+- 🎨 **Estúdio de Estilo Personalizado**: Estilize seus mapas com fontes manuscritas, camadas de mapa (Satélite, Terreno, CartoDB) e marcadores temáticos.
+- 📡 **Rastreamento GPS ao Vivo**: Reimporte o arquivo HTML no app online para acompanhar sua localização via GPS por satélite enquanto completa suas missões.
 
 ---
 
 ## 🧪 Formulação Técnica e Matemática
 
-O RPZeG modela a geração de rotas como um **Problema do Caixeiro Viajante com Janelas de Tempo (TSPTW)** combinado com o **Problema da Mochila (Knapsack)**:
+Por trás da interface divertida, o RPZeG resolve um **Problema do Caixeiro Viajante com Janelas de Tempo (TSPTW)** combinado com o **Problema da Mochila (Knapsack)**:
 
 $$
 \max \sum_{i \in Q} x_i \cdot \text{XP}_i - \lambda \sum_{i, j} d_{ij} \cdot y_{ij}
@@ -33,19 +42,14 @@ $$
 1. **Orçamento de Tempo**: $$\sum_{i \in Q} t_{\text{visita}, i} + \sum_{i,j} t_{\text{trajeto}, ij} \cdot y_{ij} \le T_{\max}$$
 2. **Orçamento Financeiro**: $$\sum_{i \in Q} c_i \cdot x_i \le C_{\max}$$
 3. **Janelas de Refeição**: Chegada $$A_m \in [\text{Início}_m, \text{Fim}_m]$$ para cada missão de refeição.
-4. **Eliminação de Subtours**: Formulação Miller-Tucker-Zemlin (MTZ) para garantir uma rota contínua sem ciclos isolados.
+4. **Eliminação de Subtours**: Formulação Miller-Tucker-Zemlin (MTZ) para garantir um itinerário contínuo e sem ciclos isolados.
 
-O motor de otimização utiliza o **Google OR-Tools** (motor C++ de Programação Linear Inteira Mista / Programação por Restrições) com gateway **FastAPI** e resolvedor **PuLP**.
-
----
-
-## Principais Destaques
-
-- 🎮 **Baralho de Missões RPG**: Atribua XP, custos, duração e papéis de parede por categoria.
-- 🎨 **Estúdio de Estilo Personalizado**: Fontes manuscritas do Google (`Caveat`, `Pacifico`, `Fredoka`), temas de mapa OpenStreetMap (CartoDB, Satélite, Terreno) e marcadores fofos (Reino, Flores de Cerejeira, Aventura).
-- 📶 **Exportação HTML Autônoma 100% Offline**: Mapa Leaflet integrado, manifesto PWA e motor de estado em um único arquivo HTML baixável.
-- 📡 **GPS ao Vivo via HTTPS / PWA**: Reimporte o arquivo HTML no app online para rastrear sua posição GPS via satélite em tempo real no celular.
+Desenvolvido com **Google OR-Tools** (motor C++ MILP / CP), **FastAPI** e **PuLP**.
 
 ---
 
-👉 **Experimente o RPZeG gratuitamente agora mesmo em [rpg.jeduapf.com](https://rpg.jeduapf.com)!**
+👉 **Pronto para a sua próxima aventura? Experimente o RPZeG gratuitamente em [rpg.jeduapf.com](https://rpg.jeduapf.com)!**
+
+---
+
+`#GameFi` `#Gamefy` `#GamifiedTravel` `#TravelPlanner` `#OfflineTravelApp` `#OfflinePlanner` `#MILP` `#OperationsResearch` `#TSPTW` `#KnapsackProblem` `#ORTools` `#SmartRouteOptimizer`

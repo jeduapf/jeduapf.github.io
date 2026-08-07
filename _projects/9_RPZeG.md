@@ -1,51 +1,55 @@
 ---
 layout: page
-title: RPZeG
-description: Gamified travel itinerary builder and smart route optimizer using TSPTW & Knapsack algorithms.
+title: RPZeG — Gamified Route & Quest Travel Planner
+description: The ultimate offline-first, gamified travel planner powered by mathematical MILP route optimization.
 img: assets/img/rpzeg_cover.png
 lang: en
 importance: 1
 category: fun
 ---
 
-> **Live Demo**: [rpg.jeduapf.com](https://rpg.jeduapf.com)  
-> **Source Code**: [github.com/jeduapf/RPZeG](https://github.com/jeduapf/RPZeG)
+> 🚀 **Live Web App**: [rpg.jeduapf.com](https://rpg.jeduapf.com) — *Free to use, 100% offline-first, zero installation needed!*
 
 ---
 
-## Overview
+## 🌟 Level Up Your Exploration with RPZeG!
 
-**RPZeG** is an offline-first, gamified travel companion that turns any trip or daily exploration into an interactive RPG quest deck. 
+Say goodbye to static, boring travel itineraries. **RPZeG** is the revolutionary gamified travel companion that turns any vacation, weekend trip, or urban adventure into an **interactive RPG quest deck**!
 
-Travelers can define main objectives, side quests, budget constraints, and preferred dining time windows. With a single click, RPZeG solves the optimal visiting sequence using mathematical optimization algorithms and exports a zero-dependency standalone HTML file that works 100% offline on any mobile device.
+Whether you are exploring a new city, hunting down hidden gems, or balancing sights with culinary stops, RPZeG calculates the mathematically optimal visiting schedule in seconds and lets you play through your trip like a hero completing quests.
+
+---
+
+## ⚡ What Makes RPZeG Powerful?
+
+- 🎮 **Gamified RPG Quest Deck**: Convert locations into main objectives and side quests with custom XP points, time budgets, and budget costs.
+- 📐 **Military-Grade Mathematical Optimization**: Solves complex route scheduling using Operations Research algorithms, optimizing XP gains while respecting time windows and meal breaks.
+- 📶 **100% Offline Single-File HTML Export**: Generate a zero-dependency, self-contained HTML file with embedded Leaflet maps and PWA offline storage. It runs anywhere without internet!
+- 🎨 **Custom Style Studio**: Customize your map experience with retro fonts (`Caveat`, `Pacifico`, `Fredoka`), satellite tile layers, and custom map markers (Kingdom, Sakura Blossom, Adventure).
+- 📡 **Live GPS Tracking**: Re-import exported itineraries online to track your live position via satellite GPS while completing quests.
 
 ---
 
 ## 🧪 Technical & Mathematical Formulation
 
-Under the hood, RPZeG formulates route generation as a **Constrained Travelling Salesperson Problem with Time Windows (TSPTW)** combined with a **Knapsack Problem**:
+Behind the playful interface, RPZeG solves a **Constrained Travelling Salesperson Problem with Time Windows (TSPTW)** combined with a **Multi-Objective Knapsack Optimization**:
 
 $$
 \max \sum_{i \in Q} x_i \cdot \text{XP}_i - \lambda \sum_{i, j} d_{ij} \cdot y_{ij}
 $$
 
-**Constraints:**
-1. **Time Budget**: $$\sum_{i \in Q} t_{\text{visit}, i} + \sum_{i,j} t_{\text{travel}, ij} \cdot y_{ij} \le T_{\max}$$
+**Subject to:**
+1. **Total Time Budget**: $$\sum_{i \in Q} t_{\text{visit}, i} + \sum_{i,j} t_{\text{travel}, ij} \cdot y_{ij} \le T_{\max}$$
 2. **Financial Budget**: $$\sum_{i \in Q} c_i \cdot x_i \le C_{\max}$$
 3. **Meal Time Windows**: For meal quests $$m$$, arrival time $$A_m \in [\text{Earliest}_m, \text{Latest}_m]$$
-4. **Subtour Elimination**: Miller-Tucker-Zemlin (MTZ) formulation preventing disconnected loops.
+4. **Subtour Elimination**: Miller-Tucker-Zemlin (MTZ) formulation guaranteeing a continuous non-looping itinerary.
 
-The optimization gateway leverages **Google OR-Tools** (C++ MILP / Constraint Programming engine) backed by **FastAPI** and **PuLP** reference solvers.
-
----
-
-## Key Features
-
-- 🎮 **Gamified Quest Deck**: Assign custom XP weights, budget costs, and category wallpapers.
-- 🎨 **Custom Style Studio**: Personalized Google Latin fonts (`Caveat`, `Pacifico`, `Fredoka`), custom map tile layers (CartoDB, Satellite, Terrain), and cute map marker icons (Kingdom, Sakura Blossom, Travel Adventure).
-- 📶 **100% Offline Single-File HTML Export**: Embedded Leaflet map, PWA manifest, and offline state engine in a single downloadable HTML file.
-- 📡 **HTTPS & PWA Live GPS**: Re-import exported HTML files online to track your real-time satellite GPS coordinates.
+Powered by **Google OR-Tools** (C++ MILP / CP Engine), **FastAPI**, and **PuLP**.
 
 ---
 
-👉 **Try RPZeG for free right now at [rpg.jeduapf.com](https://rpg.jeduapf.com)!**
+👉 **Ready for your next adventure? Try RPZeG live for free now at [rpg.jeduapf.com](https://rpg.jeduapf.com)!**
+
+---
+
+`#GameFi` `#Gamefy` `#GamifiedTravel` `#TravelPlanner` `#OfflineTravelApp` `#OfflinePlanner` `#MILP` `#OperationsResearch` `#TSPTW` `#KnapsackProblem` `#ORTools` `#SmartRouteOptimizer`
