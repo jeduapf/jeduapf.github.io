@@ -4,6 +4,7 @@ title: Electricity Production Planning
 description: Optimization of electricity generation through Mixed-Integer Linear Programming (MILP)
 img: assets/img/electricity_planning.jpg
 lang: en
+key: electric-planning
 importance: 1
 category: work
 ---

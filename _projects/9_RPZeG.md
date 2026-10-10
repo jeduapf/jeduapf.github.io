@@ -4,6 +4,7 @@ title: RPZeG — Gamified Route & Quest Travel Planner
 description: The ultimate offline-first, gamified travel planner powered by mathematical MILP route optimization.
 img: assets/img/rpzeg_cover.png
 lang: en
+key: rpzeg
 importance: 1
 category: fun
 ---

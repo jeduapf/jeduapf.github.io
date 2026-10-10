@@ -4,6 +4,7 @@ title: Restaurant System
 description: A local full-stack restaurant system hosted over Wi-Fi, built for speed, simplicity, and privacy.
 img: assets/img/zeco_simple.png
 lang: en
+key: zeco
 importance: 1
 category: fun
 ---

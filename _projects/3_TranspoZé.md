@@ -4,6 +4,7 @@ title: TranspoZé
 description: Optimisation énergétique pour une mobilité décarbonée
 img: assets/img/transpoze_cover.png
 lang: fr
+key: transpoze
 importance: 2
 category: travail
 ---

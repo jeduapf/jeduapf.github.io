@@ -54,6 +54,19 @@
         <span class="icon-bar bottom-bar"></span>
       </button>
 
+      {% assign current_lang = page.lang %}
+      {% if current_lang == nil or current_lang == '' %}
+        {% if page.url contains '/en/' %}
+          {% assign current_lang = 'en' %}
+        {% elsif page.url contains '/fr/' %}
+          {% assign current_lang = 'fr' %}
+        {% elsif page.url contains '/pt/' %}
+          {% assign current_lang = 'pt' %}
+        {% else %}
+          {% assign current_lang = site.default_lang | default: 'en' %}
+        {% endif %}
+      {% endif %}
+
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 d-flex justify-content-between align-items-center flex-nowrap">
@@ -62,11 +75,70 @@
           <div class="lang-switcher d-flex align-items-center mr-3">
             {% assign langs = site.languages %}
             {% for l in langs %}
-            {% assign target_page = site.pages | where: "key", page.key | where: "lang", l | first %}
-            {% if target_page %}
-            <a href="{{ target_page.url | relative_url }}" class="lang-btn {% if l == page.lang %}active{% endif %}">{{
-              l | upcase }}</a>
-            {% endif %}
+              {% assign target_url = nil %}
+
+              {% comment %} 1. Check explicit translations dictionary on the current page {% endcomment %}
+              {% if page.translations and page.translations[l] %}
+                {% assign target_url = page.translations[l] %}
+              {% endif %}
+
+              {% comment %} 2. If page has a key, search in site.projects, site.posts, and site.pages {% endcomment %}
+              {% if target_url == nil and page.key and page.key != '' %}
+                {% assign project_match = site.projects | where: "key", page.key | where: "lang", l | first %}
+                {% if project_match %}
+                  {% assign target_url = project_match.url %}
+                {% else %}
+                  {% assign post_match = site.posts | where: "key", page.key | where: "lang", l | first %}
+                  {% if post_match %}
+                    {% assign target_url = post_match.url %}
+                  {% else %}
+                    {% assign page_match = site.pages | where: "key", page.key | where: "lang", l | first %}
+                    {% if page_match %}
+                      {% assign target_url = page_match.url %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+
+              {% comment %} 3. Fallback for project pages without direct translation in language l {% endcomment %}
+              {% if target_url == nil and page.url contains '/projects/' %}
+                {% assign p_idx = site.pages | where: "key", "projects" | where: "lang", l | first %}
+                {% if p_idx %}
+                  {% assign target_url = p_idx.url %}
+                {% endif %}
+              {% endif %}
+
+              {% comment %} 4. Fallback for blog posts or blog listing without direct translation in language l {% endcomment %}
+              {% if target_url == nil and page.url contains '/blog/' %}
+                {% assign b_idx = site.pages | where: "key", "blog" | where: "lang", l | first %}
+                {% if b_idx %}
+                  {% assign target_url = b_idx.url %}
+                {% endif %}
+              {% endif %}
+
+              {% comment %} 5. Prefix replacement fallback: e.g. /fr/about/ -> /en/about/ {% endcomment %}
+              {% if target_url == nil and current_lang and current_lang != '' %}
+                {% assign curr_prefix = '/' | append: current_lang | append: '/' %}
+                {% assign new_prefix = '/' | append: l | append: '/' %}
+                {% if page.url contains curr_prefix %}
+                  {% assign candidate_url = page.url | replace_first: curr_prefix, new_prefix %}
+                  {% assign target_url = candidate_url %}
+                {% endif %}
+              {% endif %}
+
+              {% comment %} 6. Ultimate fallback to About page in target language {% endcomment %}
+              {% if target_url == nil %}
+                {% assign target_about = site.pages | where: "key", "about" | where: "lang", l | first %}
+                {% if target_about %}
+                  {% assign target_url = target_about.url %}
+                {% else %}
+                  {% assign target_url = '/' | append: l | append: '/about/' %}
+                {% endif %}
+              {% endif %}
+
+              <a href="{{ target_url | relative_url }}" class="lang-btn {% if l == current_lang %}active{% endif %}">
+                {{ l | upcase }}
+              </a>
             {% endfor %}
           </div>
 
@@ -74,14 +146,16 @@
           <div class="d-flex justify-content-center flex-grow-1">
             {% comment %} About page {% endcomment %}
             {% assign about_page = site.pages | where: "permalink", "/" | first %}
+            {% if about_page and about_page.title %}
             <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
               <a class="nav-link" href="{{ about_page.url | relative_url }}">{{ about_page.title }}
                 {% if page.permalink == '/' %}<span class="sr-only">(current)</span>{% endif %}
               </a>
             </li>
+            {% endif %}
 
             {% if site.blog_nav_title %}
-            {% assign blog_page = site.pages | where: "key", "blog" | where: "lang", page.lang | first %}
+            {% assign blog_page = site.pages | where: "key", "blog" | where: "lang", current_lang | first %}
             <li class="nav-item {% if page.url contains 'blog' %}active{% endif %}">
               <a class="nav-link" href="{{ blog_page.url | relative_url }}">
                 {{ site.blog_nav_title }}
@@ -94,7 +168,7 @@
             {% assign sorted_pages = site.pages | sort: "nav_order" %}
             {% for p in sorted_pages %}
             {% if p.nav and p.autogen == nil %}
-            {% assign target_page = site.pages | where: "key", p.key | where: "lang", page.lang | first %}
+            {% assign target_page = site.pages | where: "key", p.key | where: "lang", current_lang | first %}
             {% if target_page %}
             {% if p.dropdown %}
             <li class="nav-item dropdown {% if page.key == p.key %}active{% endif %}">
@@ -104,7 +178,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 {% for child in p.children %}
-                {% assign child_target = site.pages | where: "key", child.key | where: "lang", page.lang | first %}
+                {% assign child_target = site.pages | where: "key", child.key | where: "lang", current_lang | first %}
                 {% if child_target %}
                 {% if child.title == 'divider' %}
                 <div class="dropdown-divider"></div>

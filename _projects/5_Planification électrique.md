@@ -4,6 +4,7 @@ title: Planification de la Production d'Électricité
 description: Optimisation de la production électrique par programmation linéaire en nombres entiers mixtes (MILP)
 img: assets/img/electricity_planning.jpg
 lang: fr
+key: electric-planning
 importance: 1
 category: travail
 ---

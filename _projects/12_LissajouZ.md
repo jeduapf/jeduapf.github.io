@@ -4,6 +4,7 @@ title: LissajouZ – Harmonic Epicycles & Lissajous Phase Space Visualizer
 description: Interactive Ptolemaic Fourier epicycle composer and electrical (V, I) phase space simulator with Green's theorem area calculation and real-time planar DFT curve synthesis.
 img: assets/img/lissajouz_cover.png
 lang: en
+key: lissajouz
 importance: 1
 category: fun
 ---

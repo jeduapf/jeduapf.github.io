@@ -4,6 +4,7 @@ title: Modèle CAPM du Marché Parisien
 description: Analyse de la frontière efficiente du marché français (2000–2025)
 img: assets/img/CAPM_Paris.png
 lang: fr
+key: capm
 importance: 1
 category: cool
 ---

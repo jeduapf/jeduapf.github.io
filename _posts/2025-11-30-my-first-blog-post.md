@@ -4,6 +4,7 @@ title: My First Blog Post
 date: 2025-11-30 19:00:00+01:00
 description: This is my first blog post explaining my projects and thoughts
 lang: en
+key: my-first-blog-post
 tags: projects energy optimization
 ---
 
