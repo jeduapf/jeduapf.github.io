@@ -8,8 +8,7 @@ importance: 1
 category: diversão
 ---
 
-> 🌐 **Aplicativo Web ao Vivo**: [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Ferramenta interativa gratuita, 100% no navegador, sem necessidade de instalação!*  
-> 💻 **Código Fonte**: [github.com/jeduapf/LissajouZ](https://github.com/jeduapf/LissajouZ)
+> 🌐 **Aplicativo Web ao Vivo**: [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Ferramenta interativa gratuita, 100% no navegador, sem necessidade de instalação!*
 
 ---
 

@@ -8,8 +8,7 @@ importance: 1
 category: cool
 ---
 
-> 🌐 **Application Web en Direct** : [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Outil interactif gratuit, 100% exécuté dans le navigateur, sans installation !*  
-> 💻 **Code Source** : [github.com/jeduapf/LissajouZ](https://github.com/jeduapf/LissajouZ)
+> 🌐 **Application Web en Direct** : [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Outil interactif gratuit, 100% exécuté dans le navigateur, sans installation !*
 
 ---
 

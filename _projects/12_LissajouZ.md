@@ -8,8 +8,7 @@ importance: 1
 category: fun
 ---
 
-> 🌐 **Live Web App**: [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Free interactive tool, 100% client-side, zero installation needed!*  
-> 💻 **Source Code**: [github.com/jeduapf/LissajouZ](https://github.com/jeduapf/LissajouZ)
+> 🌐 **Live Web App**: [lissajouz.jeduapf.com](https://lissajouz.jeduapf.com) — *Free interactive tool, 100% client-side, zero installation needed!*
 
 ---
 
