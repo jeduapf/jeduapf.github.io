@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page
 title: LissajouZ – Épicycles Harmoniques & Visualiseur d'Espace de Phase de Lissajous
 description: Compositeur interactif d'épicycles de Fourier ptolémaïques et simulateur d'espace de phase électrique (V, I) avec calcul d'aire par le théorème de Green et synthèse DFT en temps réel.

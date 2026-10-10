@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page
 title: LissajouZ – Epiciclos Harmônicos & Visualizador de Espaço de Fase de Lissajous
 description: Compositor interativo de epiciclos de Fourier ptolemaicos e simulador de espaço de fase elétrico (V, I) com cálculo de área pelo teorema de Green e síntese DFT em tempo real.
