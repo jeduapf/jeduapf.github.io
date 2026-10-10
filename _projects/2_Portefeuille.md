@@ -4,6 +4,7 @@ title: Décarbonisation du S&P500
 description: Stratégies d’investissement à faibles émissions de carbone
 img: assets/img/AT.png
 lang: fr
+key: portefeuille
 importance: 3
 category: travail
 ---

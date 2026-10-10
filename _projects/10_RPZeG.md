@@ -4,6 +4,7 @@ title: RPZeG — Planificateur de Voyage Gamifié & Optimiseur de Route
 description: Le compagnon de voyage ultime gamifié et hors-ligne, propulsé par l'optimisation mathématique MILP.
 img: assets/img/rpzeg_cover.png
 lang: fr
+key: rpzeg
 importance: 1
 category: cool
 ---

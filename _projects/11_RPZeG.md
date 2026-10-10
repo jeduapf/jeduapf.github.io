@@ -4,6 +4,7 @@ title: RPZeG — Planejador de Viagens Gamificado e Otimizador de Rotas
 description: O melhor planejador de viagens gamificado e offline-first, impulsionado por otimização matemática MILP.
 img: assets/img/rpzeg_cover.png
 lang: pt
+key: rpzeg
 importance: 1
 category: diversão
 ---

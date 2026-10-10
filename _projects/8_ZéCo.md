@@ -4,6 +4,7 @@ title: Système de Restaurant
 description: Un système de restaurant local full-stack hébergé sur Wi-Fi, conçu pour la rapidité, la simplicité et la confidentialité.
 img: assets/img/zeco_simple.png
 lang: fr
+key: zeco
 importance: 1
 category: cool
 ---
